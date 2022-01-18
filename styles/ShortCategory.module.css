@@ -1,0 +1,11 @@
+.btn_after::after{
+    content: '';
+    display: block;
+    height: 3px;
+    width: 100%;
+    border-bottom: 3px solid red;
+    transition: 0.3s;
+}
+.btn_after:hover:after{
+    border-bottom: 3px solid #8ad2eb;
+}
