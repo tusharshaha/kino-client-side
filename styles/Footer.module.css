@@ -1,0 +1,25 @@
+.menu{
+    display: flex;
+    align-items: center;
+}
+.menu li{
+    margin: 0 10px;
+}
+.menu li a{
+    transition: 0.3s;
+}
+.menu li a:hover{
+    color: #24b5e6;
+}
+.links{
+    margin-left: 20px;
+}
+.links li{
+    margin-top: 10px;
+    list-style: initial;
+}
+.contact_list li{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
