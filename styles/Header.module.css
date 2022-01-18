@@ -1,0 +1,11 @@
+.shop_menu{
+    display: flex;
+    align-items: center;
+}
+.shop_menu li{
+    margin: 0 10px;
+}
+
+.search_field{
+    width: 200px;
+}

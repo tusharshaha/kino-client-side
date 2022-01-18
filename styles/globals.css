@@ -1,5 +1,7 @@
+/* font poppins  */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
+/* font abril  */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 html,
 body {
   padding: 0;
@@ -14,4 +16,8 @@ a {
 
 * {
   box-sizing: border-box;
+}
+.logo{
+  display: flex;
+  font-family: 'Abril Fatface', cursive;
 }

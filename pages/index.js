@@ -11,7 +11,9 @@ export default function Home() {
       </Head>
       <Header></Header>
       <main>
-        <h2 className='text-3xl font-bold underline'>this is main part</h2>
+        <div className='cus-container'>
+          <h2 className='font-bold underline'>this is main part</h2>
+        </div>
       </main>
       <Footer></Footer>
     </>

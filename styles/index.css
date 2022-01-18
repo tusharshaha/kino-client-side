@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base{
+    h1{
+        @apply text-6xl;
+    }
+    h2{
+        @apply text-5xl;
+    }
+    h3{
+        @apply text-4xl;
+    }
+    h4{
+        @apply text-3xl;
+    }
+    h5{
+        @apply text-2xl;
+    }
+}
+
+@layer components{
+    .cus-container{
+        @apply container mx-auto;
+    }
+    .cus-btn{
+       @apply items-center py-1 px-3 bg-sky-500 text-white font-bold rounded-full;
+    }
+}
+@layer utilities{
+    .nav-container{
+        max-width: 1300px;
+        margin: 0 auto;
+    }
+}
