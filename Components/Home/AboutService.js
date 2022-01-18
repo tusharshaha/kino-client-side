@@ -14,7 +14,7 @@ const AboutService = () => {
                 <div className='grid grid-rows-1 py-16'>
                     <div className='grid grid-cols-3 gap-6'>
                         {
-                            services.map(sev =><div key={sev.id} className='flex items-center justify-center bg-white rounded-md text-slate-700 py-10 px-6 transition duration-300 hover:-translate-y-4'>
+                            services.map(sev =><div key={sev.id} className='flex items-center justify-center bg-white rounded-md text-slate-700 py-10 px-6 transition duration-300 hover:-translate-y-2'>
                                 <div className={`${sev.class} text-6xl mr-3`}>
                                     {sev.icons}
                                 </div>

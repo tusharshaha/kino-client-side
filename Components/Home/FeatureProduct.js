@@ -1,6 +1,6 @@
 import React from 'react';
 import {BsShieldCheck} from 'react-icons/bs'
-const FeatureProduct = () => {
+const FeatureProduct = ({children}) => {
     return (
         <div className='cus-container mt-20'>
             <div className='flex justify-between items-end border-b-2 border-slate-400 pb-3'>
@@ -15,6 +15,9 @@ const FeatureProduct = () => {
                         <li className='flex items-center mr-4 text-2xl'><BsShieldCheck className='text-sky-500 mr-2'/>Top Rated</li>
                     </ul>
                 </div>
+            </div>
+            <div>
+                {children}
             </div>
         </div>
     );
