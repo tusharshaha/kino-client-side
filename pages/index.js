@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import AboutService from '../Components/Home/AboutService'
+import FeatureProduct from '../Components/Home/FeatureProduct'
 import ShortCategory from '../Components/Home/ShortCategory'
 import TopBanner from '../Components/Home/TopBanner'
 import Footer from '../Shared/Footer'
@@ -15,6 +17,8 @@ export default function Home() {
       <main>
         <TopBanner></TopBanner>
         <ShortCategory></ShortCategory>
+        <FeatureProduct></FeatureProduct>
+        <AboutService></AboutService>
       </main>
       <Footer></Footer>
     </>

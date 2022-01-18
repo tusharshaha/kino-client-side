@@ -9,11 +9,11 @@ const Footer = () => {
         <footer>
             <div className='cus-container'>
                 {/* footer top part  */}
-                <div className='grid grid-rows-1 border-b-2 border-plate-500 pt-5'>
+                <div className='grid grid-rows-1 border-b-2 border-plate-500 pt-16'>
                     <div className='grid grid-cols-4 gap-6 text-slate-500 pb-16'>
                         <div>
                             <h5 className='text-slate-600'>About Company</h5>
-                            <p className='py-3'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus, ipsa autem laborum pariatur veritatis vitae!</p>
+                            <p className='py-3'>But must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born</p>
                             <div className='flex'>
                                 <div className='icon mr-4'>
                                     <FaFacebookF />
