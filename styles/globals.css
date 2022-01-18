@@ -1,12 +1,12 @@
-/* font poppins  */
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+/* font mukta  */
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
 /* font abril  */
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Mukta', sans-serif;
 }
 
 a {

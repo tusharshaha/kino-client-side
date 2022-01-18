@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import TopBanner from '../Components/TopBanner'
 import Footer from '../Shared/Footer'
 import Header from '../Shared/Header'
 import styles from '../styles/Home.module.css'
@@ -11,9 +12,7 @@ export default function Home() {
       </Head>
       <Header></Header>
       <main>
-        <div className='cus-container'>
-          <h2 className='font-bold underline'>this is main part</h2>
-        </div>
+        <TopBanner></TopBanner>
       </main>
       <Footer></Footer>
     </>

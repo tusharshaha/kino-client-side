@@ -1,0 +1,11 @@
+.top_banner{
+    background-image: url('/slider-hero-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+
+}

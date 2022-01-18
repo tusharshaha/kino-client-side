@@ -35,7 +35,7 @@ const Header = () => {
                 </div>
             </nav>
             {/* this is shop navbar  */}
-            <nav className='py-3 px-2 nav-container'>
+            <nav className='py-3 px-2 nav-container sticky top-0'>
                 <div className='nav-container flex items-center justify-between'>
                     <h3 className='logo'><FaBriefcaseMedical className='text-sky-400 mr-2'/> Kino</h3>
                     <ul className={`${styles.shop_menu}  text-slate-600`}>
