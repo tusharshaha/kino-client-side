@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import AboutService from '../Components/Home/AboutService'
+import DealsTimer from '../Components/Home/DealsTimer'
 import FeatureProduct from '../Components/Home/FeatureProduct'
 import ShortCategory from '../Components/Home/ShortCategory'
 import TopBanner from '../Components/Home/TopBanner'
@@ -18,6 +19,8 @@ export default function Home() {
         <TopBanner></TopBanner>
         <ShortCategory></ShortCategory>
         <FeatureProduct></FeatureProduct>
+        sdfa
+        <DealsTimer></DealsTimer>
         <AboutService></AboutService>
       </main>
       <Footer></Footer>
