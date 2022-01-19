@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import AboutService from '../Components/Home/AboutService'
+import Brands from '../Components/Home/Brands'
 import DealsTimer from '../Components/Home/DealsTimer'
 import FeatureProduct from '../Components/Home/FeatureProduct'
+import NewsBlogs from '../Components/Home/NewsBlogs'
 import ShortCategory from '../Components/Home/ShortCategory'
 import TopBanner from '../Components/Home/TopBanner'
 import Footer from '../Shared/Footer'
@@ -21,6 +23,8 @@ export default function Home() {
         <FeatureProduct></FeatureProduct>
         sdfa
         <DealsTimer></DealsTimer>
+        <NewsBlogs></NewsBlogs>
+        <Brands></Brands>
         <AboutService></AboutService>
       </main>
       <Footer></Footer>
