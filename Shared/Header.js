@@ -11,7 +11,7 @@ const Header = () => {
     return (
         <>
             {/* this is navbar is user navbar */}
-            <nav className='py-3 px-2 border-b-2 nav-container flex items-center justify-between'>
+            <nav id='top' className='py-3 px-2 border-b-2 nav-container flex items-center justify-between'>
                 <div className='flex items-center'>
                     <p className='text-slate-500 md:flex hidden'><BsSuitHeartFill className='text-2xl text-red-600 mr-2' />Welcome to Medibazae. We provides <span className='text-sky-500 font-bold mx-2'>Covid-19</span> medical accessories</p>
                     <span className='flex items-center py-1 px-3 bg-sky-500 text-white font-bold rounded-full ml-2'>

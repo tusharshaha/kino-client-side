@@ -11,11 +11,11 @@
 .btn_after::after{
     content: '';
     display: block;
-    height: 2px;
-    border-bottom: 2px solid black;
+    height: 3px;
+    border-bottom: 3px solid black;
     width: 100%;
     transition: 0.3s;
 }
 .btn_after:hover::after{
-    border-bottom: 2px solid #81cbe4;
+    border-bottom: 3px solid #81cbe4;
 }

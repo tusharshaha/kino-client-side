@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
 import { GoLocation } from 'react-icons/go'
+import {BiArrowToTop} from 'react-icons/bi'
 import {AiOutlinePhone, AiOutlineMail} from 'react-icons/ai'
 import styles from '../styles/Footer.module.css'
 const Footer = () => {
@@ -64,6 +65,9 @@ const Footer = () => {
                             </ul>
                         </div>
                     </div>
+                <a href='#top' className='text-left bg-sky-500 text-white text-3xl p-3 flex items-center justify-center rounded-full fixed bottom-20 right-10 z-10'>
+                    <BiArrowToTop/>
+                </a>
                 </div>
                 {/* footer bootom part  */}
                 <div className='py-5 text-slate-500 flex justify-between'>

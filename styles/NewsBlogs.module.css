@@ -1,0 +1,30 @@
+.card::before{
+    content: '';
+    height: 150px;
+    width: 200px;
+    background-color: #b8e1ee;
+    position: absolute;
+    left: -15px;
+    top: -15px;
+    z-index: -10;
+}
+.card:hover::before{
+    background-color: #0cbaf0;
+}
+.btn_after{
+    transition: 0.3s;
+}
+.btn_after:hover{
+    color: #64ccee;
+}
+.btn_after::after{
+    content: '';
+    display: block;
+    height: 3px;
+    border-bottom: 3px solid #939090;
+    width: 100%;
+    transition: 0.3s;
+}
+.btn_after:hover::after{
+    border-bottom: 3px solid #64ccee;
+}
