@@ -51,13 +51,13 @@ const Header = () => {
                             <Link href='/category'><a className='transition duration-300 hover:text-sky-500'>Category</a></Link>
                         </li>
                         <li>
-                            <Link href='/Blog'><a className='transition duration-300 hover:text-sky-500'>Blog</a></Link>
+                            <Link href='/blog'><a className='transition duration-300 hover:text-sky-500'>Blog</a></Link>
                         </li>
                         <li>
                             <Link href='/pages'><a className='transition duration-300 hover:text-sky-500'>Pages</a></Link>
                         </li>
                         <li>
-                            <Link href='/Contact Us'><a className='transition duration-300 hover:text-sky-500'>Contact Us</a></Link>
+                            <Link href='/contactUs'><a className='transition duration-300 hover:text-sky-500'>Contact Us</a></Link>
                         </li>
                         <li>
                             <div className={`${styles.search_field} relative`}>
@@ -66,7 +66,7 @@ const Header = () => {
                             </div>
                         </li>
                         <li>
-                            <button onClick={()=>setSideToggle(!sideToggle)}><FiMenu className='text-2xl' /></button>
+                            <button onClick={()=>setSideToggle(!sideToggle)}><FiMenu className='text-2xl hidden md:block' /></button>
                         </li>
                         <li>
                             <button className='flex cus-btn py-2'>

@@ -16,7 +16,6 @@ export default function Home() {
       <Head>
         <title>Kino | Home</title>
       </Head>
-      <Header></Header>
       <main>
         <TopBanner></TopBanner>
         <ShortCategory></ShortCategory>
@@ -27,7 +26,6 @@ export default function Home() {
         <Brands></Brands>
         <AboutService></AboutService>
       </main>
-      <Footer></Footer>
     </>
   )
 }
