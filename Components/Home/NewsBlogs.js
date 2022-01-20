@@ -12,7 +12,7 @@ const NewsBlogs = () => {
         { id: 3, img: blog3, cap: 'MEDICAL', title: 'Dolorem eum fugiat quo voluptas nulla pariatur' },
     ]
     return (
-        <div className='cus-container pt-20'>
+        <div className='cus-container pt-20 pb-10'>
             <div className='text-center mb-10'>
                 <h3>Latest News & Blog</h3>
                 <p className='text-slate-500 mt-2'>Sed ut perspiciatis unde omnis iste natus error</p>

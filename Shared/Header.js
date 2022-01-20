@@ -1,13 +1,15 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { BsSuitHeartFill, BsHeart } from 'react-icons/bs'
 import { AiOutlinePhone, AiOutlineShoppingCart } from 'react-icons/ai'
 import { FiLock, FiSearch, FiMenu } from 'react-icons/fi'
 import { FaRegUserCircle, FaBriefcaseMedical } from 'react-icons/fa'
 import { useRouter } from 'next/router';
 import styles from '../styles/Header.module.css'
+import Sidebar from '../Components/Home/Sidebar';
 const Header = () => {
     const route = useRouter();
+    const [sideToggle, setSideToggle] = useState(false);
     return (
         <>
             {/* this is navbar is user navbar */}
@@ -64,7 +66,7 @@ const Header = () => {
                             </div>
                         </li>
                         <li>
-                            <button><FiMenu className='text-2xl' /></button>
+                            <button onClick={()=>setSideToggle(!sideToggle)}><FiMenu className='text-2xl' /></button>
                         </li>
                         <li>
                             <button className='flex cus-btn py-2'>
@@ -75,6 +77,8 @@ const Header = () => {
                     </ul>
                 </div>
             </nav>
+
+            <Sidebar setToggle={setSideToggle} toggle={sideToggle}/>
         </>
     );
 };
