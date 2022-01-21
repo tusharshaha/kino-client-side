@@ -20,7 +20,7 @@ export default function Home() {
         <TopBanner></TopBanner>
         <ShortCategory></ShortCategory>
         <FeatureProduct></FeatureProduct>
-        sdfa
+        component break
         <DealsTimer></DealsTimer>
         <NewsBlogs></NewsBlogs>
         <Brands></Brands>
