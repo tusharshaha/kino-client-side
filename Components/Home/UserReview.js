@@ -43,7 +43,7 @@ const UserReview = () => {
                                 <p className='my-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, distinctio? Ipsam illo, voluptatem fuga sapiente accusantium autem veritatis itaque temporibus officiis similique eaque maiores. Natus velit odio corporis minus nam?</p>
                                 <div>
                                     <h5 className='font-bold'>{rv.name}</h5>
-                                    <p className='text-red-500'>{rv.role}</p>
+                                    <p className='text-red-500 font-bold'>{rv.role}</p>
                                 </div>
                             </div>
                         </SwiperSlide>)
