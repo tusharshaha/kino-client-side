@@ -1,3 +1,4 @@
+
 .user{
     display: flex;
     align-items: center;
@@ -8,4 +9,16 @@
     width: 70px;
     height: 70px;
     border-radius: 50%;
+}
+.role{
+    position: relative;
+}
+.role::before{
+    content: '';
+    height: 60px;
+    top: 0;
+    left: -63px;
+    width: 3px;
+    position: absolute;
+    background-color: #218be2;
 }

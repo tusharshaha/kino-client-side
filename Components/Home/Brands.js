@@ -16,19 +16,14 @@ import img12 from '/public/12.png';
 const Brands = () => {
     const brands = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12]
     return (
-        <div className='cus-container'>
-            <div className='grid grid-rows-2 gap-20 py-28'>
-                <div className='grid grid-cols-6 gap-20'>
-                    {
-                        brands.slice(0,6).map((br,i)=><Image key={i} src={br} height={100} width={100} alt='brand image'/>)
-                    }
-                </div>
-                <div className='grid grid-cols-6 gap-20'>
-                    {
-                        brands.slice(6,12).map((br,i)=><Image key={i} src={br} height={100} width={100} alt='brand image'/>)
-                    }
-                </div>
+        <div className='cus-container py-28'>
+
+            <div className='grid grid-cols-6 gap-20'>
+                {
+                    brands.map((br, i) => <Image key={i} src={br} height={100} width={100} alt='brand image' />)
+                }
             </div>
+
         </div>
     );
 };
