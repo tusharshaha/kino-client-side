@@ -18,11 +18,11 @@ const NewsBlogs = () => {
                 <p className='text-slate-500 mt-2'>Sed ut perspiciatis unde omnis iste natus error</p>
             </div>
             <div className='grid grid-rows-1'>
-                <div className="grid grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {
                         blogs.map(bl => <div className={`border bg-white relative ${styles.card}`} key={bl.id}>
                             <div className='relative'>
-                                <Image src={bl.img} height={250} width={400} alt='' />
+                                <Image src={bl.img} height={450} width={700} alt='' />
                                 <span className='absolute bottom-0 left-7 text-white bg-red-500 font-bold px-3 rounded-full'>{bl.cap}</span>
                             </div>
                             <div className='p-8'>

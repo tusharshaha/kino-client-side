@@ -11,7 +11,7 @@ const ShortCategory = () => {
     return (
         <div className='cus-container mt-6'>
             <div className='grid grid-rows-2 gap-6'>
-                <div className='grid grid-cols-3 gap-6'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                     {
                         categories.slice(0, 3).map(cat => <div style={{
                             backgroundImage: `url(${cat.bgImg})`, backgroundRepeat: 'no-repeat',
@@ -25,7 +25,7 @@ const ShortCategory = () => {
                         </div>)
                     }
                 </div>
-                <div className='grid grid-cols-2 gap-6'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                     {
                         categories.slice(3, 5).map(cat => <div style={{
                             backgroundImage: `url(${cat.bgImg})`, backgroundRepeat: 'no-repeat',

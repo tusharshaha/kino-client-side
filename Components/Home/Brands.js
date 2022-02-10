@@ -18,7 +18,7 @@ const Brands = () => {
     return (
         <div className='cus-container py-28'>
 
-            <div className='grid grid-cols-6 gap-20'>
+            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-20'>
                 {
                     brands.map((br, i) => <Image key={i} src={br} height={100} width={100} alt='brand image' />)
                 }

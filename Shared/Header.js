@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { BsSuitHeartFill, BsHeart } from 'react-icons/bs'
 import { AiOutlinePhone, AiOutlineShoppingCart } from 'react-icons/ai'
-import { FiLock, FiSearch, FiMenu } from 'react-icons/fi'
+import { FiLock, FiSearch, FiMenu} from 'react-icons/fi'
 import { FaRegUserCircle, FaBriefcaseMedical } from 'react-icons/fa'
 import { useRouter } from 'next/router';
 import styles from '../styles/Header.module.css'
@@ -10,10 +10,11 @@ import Sidebar from '../Components/Home/Sidebar';
 const Header = () => {
     const route = useRouter();
     const [sideToggle, setSideToggle] = useState(false);
+    const [navToggle, setNavToggle] = useState(false);
     return (
         <>
             {/* this is navbar is user navbar */}
-            <nav id='top' className='py-3 px-2 border-b-2 nav-container flex items-center justify-between'>
+            <nav id='top' className='py-3 px-2 flex-col gap-4 text-center sm:flex-row border-b-2 nav-container flex items-center justify-between'>
                 <div className='flex items-center'>
                     <p className='text-slate-500 md:flex hidden'><BsSuitHeartFill className='text-2xl text-red-600 mr-2' />Welcome to Medibazae. We provides <span className='text-sky-500 font-bold mx-2'>Covid-19</span> medical accessories</p>
                     <span className='flex items-center py-1 px-3 bg-sky-500 text-white font-bold rounded-full ml-2'>
@@ -38,9 +39,9 @@ const Header = () => {
             </nav>
             {/* this is shop navbar  */}
             <nav className='py-3 px-2 nav-container sticky top-0 bg-white z-10'>
-                <div className='nav-container flex items-center justify-between'>
+                <div className='nav-container relative flex items-center justify-between'>
                     <h3 className='logo'><FaBriefcaseMedical className='text-sky-400 mr-2'/> Kino</h3>
-                    <ul className={`${styles.shop_menu}  text-slate-600`}>
+                    <ul className={`${!navToggle ? styles.shop_menu : styles.show_menu}  text-slate-600`}>
                         <li>
                             <Link href='/'><a className='transition duration-300 hover:text-sky-500'>Home</a></Link>
                         </li>
@@ -66,7 +67,7 @@ const Header = () => {
                             </div>
                         </li>
                         <li>
-                            <button onClick={()=>setSideToggle(!sideToggle)}><FiMenu className='text-2xl hidden md:block' /></button>
+                            <button className='text-2xl' onClick={()=>setSideToggle(!sideToggle)}><FiMenu /></button>
                         </li>
                         <li>
                             <button className='flex cus-btn py-2'>
@@ -75,6 +76,10 @@ const Header = () => {
                             </button>
                         </li>
                     </ul>
+                    {/* toggle button  */}
+                    <button onClick={()=> setNavToggle(!navToggle)} className={`${styles.menu} text-2xl text-slate-500`}>
+                        <FiMenu/>
+                    </button>
                 </div>
             </nav>
 

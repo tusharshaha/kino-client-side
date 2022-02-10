@@ -12,9 +12,10 @@ function MyApp({ Component, pageProps }) {
       setLoading(false)
     }, 1000)
   }, [])
-  return loading ? <div className='heart'>
-    <BsSuitHeartFill />
-  </div> :
+  return loading ?
+    <div className='heart'>
+      <BsSuitHeartFill />
+    </div> :
     <Layout>
       <Component {...pageProps} />
     </Layout>

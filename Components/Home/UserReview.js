@@ -18,7 +18,7 @@ const UserReview = () => {
         { img: 'https://i.pinimg.com/236x/78/f7/c5/78f7c57534670a8ae692921b9822607f.jpg', name: 'Alden Smith', role: 'Designer' },
     ]
     return (
-        <div className='bg-slate-100 py-20'>
+        <div className='bg-slate-100 py-20 hidden sm:block'>
             <div className='text-center mb-10'>
                 <h4>What Our Client’s Say</h4>
                 <p className='text-slate-500 mt-2'>Sed ut perspiciatis unde omnis iste natus error</p>

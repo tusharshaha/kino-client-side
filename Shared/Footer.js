@@ -11,7 +11,7 @@ const Footer = () => {
             <div className='cus-container'>
                 {/* footer top part  */}
                 <div className='grid grid-rows-1 border-b-2 border-plate-500 pt-16'>
-                    <div className='grid grid-cols-4 gap-6 text-slate-500 pb-16'>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-slate-500 pb-16'>
                         <div>
                             <h5 className='text-slate-600'>About Company</h5>
                             <p className='py-3'>But must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born</p>
@@ -70,7 +70,7 @@ const Footer = () => {
                 </a>
                 </div>
                 {/* footer bootom part  */}
-                <div className='py-5 text-slate-500 flex justify-between'>
+                <div className='py-5 hidden text-slate-500 sm:flex justify-between'>
                     <p>Copyright 2021.KlbTheme. All rights reserved.</p>
                     <ul className={`${styles.menu}`}>
                         <li>

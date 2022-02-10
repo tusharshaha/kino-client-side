@@ -1,11 +1,48 @@
 .shop_menu{
     display: flex;
     align-items: center;
+    transition: 0.3s;
 }
 .shop_menu li{
     margin: 0 10px;
 }
-
+.show_menu{
+    display: none;
+    position: absolute;
+    top: -100px;
+    width: 100%;
+    padding: 30px;
+    background-color: white;
+    text-align: center;
+    margin: 0 auto;
+    transition: 0.3s;
+}
+.show_menu li{
+    margin-top: 5px;
+}
+.show_menu li button{
+    margin: 0 auto;
+}
 .search_field{
     width: 200px;
+}
+.menu{
+    display: none;
+}
+@media only screen and (max-width: 1020px) {
+    .search_field{
+        display: none;
+        transition: 0.3s;
+    }
+    .menu{
+        display: block;
+    }
+    .show_menu{
+        display: block;
+        top: 50px;
+        transition: 0.3s;
+    }
+    .shop_menu{
+        display: none;
+    }
 }

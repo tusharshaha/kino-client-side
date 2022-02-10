@@ -12,7 +12,7 @@ const AboutService = () => {
         <div className='bg-slate-100'>
             <div className='cus-container'>
                 <div className='grid grid-rows-1 py-20'>
-                    <div className='grid grid-cols-3 gap-6'>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                         {
                             services.map(sev =><div key={sev.id} className='flex items-center justify-center bg-white rounded-md text-slate-700 py-10 px-6 transition duration-300 hover:-translate-y-2'>
                                 <div className={`${sev.class} text-6xl mr-3`}>
