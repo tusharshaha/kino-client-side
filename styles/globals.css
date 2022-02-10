@@ -21,6 +21,23 @@ a {
   display: flex;
   font-family: 'Abril Fatface', cursive;
 }
+.heart{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 70px;
+  color: #218be2;
+  animation: beat .25s infinite alternate;
+	transform-origin: center;
+}
+@keyframes beat{
+	to {
+    transform: scale(1.4);
+  }
+}
 ::-webkit-scrollbar{
   width: 11px;
 }
