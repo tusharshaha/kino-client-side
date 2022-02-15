@@ -6,6 +6,7 @@ import FeatureProduct from '../Components/Home/FeatureProduct'
 import NewsBlogs from '../Components/Home/NewsBlogs'
 import ShortCategory from '../Components/Home/ShortCategory'
 import ShortProduct from '../Components/Home/ShortProduct'
+import ShowProducts from '../Components/Home/ShowProducts'
 import TopBanner from '../Components/Home/TopBanner'
 import UserReview from '../Components/Home/UserReview'
 import Footer from '../Shared/Footer'
@@ -26,6 +27,7 @@ export default function Home() {
         <FeatureProduct></FeatureProduct>
         <DealsTimer></DealsTimer>
         <ShortProduct></ShortProduct>
+        <ShowProducts></ShowProducts>
         <UserReview></UserReview>
         <NewsBlogs></NewsBlogs>
         <Brands></Brands>

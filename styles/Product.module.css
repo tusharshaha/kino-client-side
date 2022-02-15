@@ -1,0 +1,14 @@
+.shopping{
+    position: absolute;
+    left: calc(50% - 80px);
+    bottom: 0;
+    opacity: 0;
+    transition: 0.3s;
+}
+.show{
+    background-color: #f8f8f8;
+}
+.shop_card:hover .shopping{
+    bottom: 30px;
+    opacity: 1;
+}
