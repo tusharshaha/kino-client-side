@@ -20,3 +20,6 @@
 .btn_after:hover::after{
     border-bottom: 3px solid #81cbe4;
 }
+.s{
+    color: rgba(0, 0, 0, 0.477)
+}

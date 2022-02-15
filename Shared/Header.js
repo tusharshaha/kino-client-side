@@ -23,7 +23,7 @@ const Header = () => {
                     </span>
                 </div>
                 <div className='flex items-center text-slate-500'>
-                    <button onClick={() => route.push('/my-account')} className='flex items-center'>
+                    <button onClick={() => route.push('/my_account')} className='flex items-center'>
                         <FiLock className='mr-2' />
                         <span className=''>Login</span>
                     </button>
