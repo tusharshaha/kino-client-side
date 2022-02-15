@@ -1,9 +1,12 @@
 import React from 'react';
 import useProducts from '../Hooks/useProducts';
 import Product from './Product';
+import styles from '../../styles/Home/ShowProducts.module.css';
+import { useRouter } from 'next/router';
 
 const ShowProducts = () => {
     const { products } = useProducts();
+    const router = useRouter();
     return (
         <div className='cus-container my-20'>
             <div className='flex justify-between items-end mb-12'>
@@ -12,7 +15,7 @@ const ShowProducts = () => {
                     <p className='text-slate-500'>Sed ut perspiciatis unde omnis iste natus error</p>
                 </div>
                 <div>
-                    <button className='uppercase text-slate-500 font-bold'>View all Products <span className='text-3xl'>&#8594;</span></button>
+                    <button onClick={()=>{router.push('/products')}} className={`${styles.view} uppercase text-slate-500 font-bold`}>View all Products <span className='text-3xl'>&#8594;</span></button>
                 </div>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>

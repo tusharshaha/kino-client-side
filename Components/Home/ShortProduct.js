@@ -3,7 +3,7 @@ import React from 'react';
 import cat1 from '/public/cat-1.png'
 import cat2 from '/public/cat-2.png'
 import cat3 from '/public/cat-3.png'
-import Styles from '../../styles/ShortProduct.module.css'
+import Styles from '../../styles/Home/ShortProduct.module.css'
 const ShortProduct = () => {
     const products = [
         { img: cat1, category: 'Digital Meter', name: 'Blood Pressure Meter', prevPrice: '155.99', curPrice: '109.99', bg: 'bg-blue-50' },

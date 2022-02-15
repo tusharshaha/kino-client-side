@@ -1,8 +1,10 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import {FiHeart, FiSearch} from 'react-icons/fi'
 import {MdAddShoppingCart} from 'react-icons/md'
-import styles from '../../styles/Product.module.css'
+import styles from '../../styles/Home/Product.module.css'
 const Product = ({product, mode}) => {
+    const router = useRouter();
     return (
         <div className={`${styles.shop_card} ${mode === 'show product' && styles.show} text-center`}>
             <div className='relative'>
@@ -13,7 +15,7 @@ const Product = ({product, mode}) => {
 
                     <button className='cus-btn p-4 uppercase transition duration-300 hover:bg-red-500'><MdAddShoppingCart/></button>
 
-                    <button className='cus-btn p-4 uppercase transition duration-300 hover:bg-red-500'><FiSearch/></button>
+                    <button onClick={()=>{router.push(product._id)}} className='cus-btn p-4 uppercase transition duration-300 hover:bg-red-500'><FiSearch/></button>
                 </div>
             </div>
             <div className='mt-6 font-bold pb-8'>

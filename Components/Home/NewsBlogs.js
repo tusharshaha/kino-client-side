@@ -4,7 +4,7 @@ import blog1 from '/public/blog-1.png';
 import blog2 from '/public/blog-2.png';
 import blog3 from '/public/blog-3.png';
 import { BiCalendar } from 'react-icons/bi'
-import styles from '../../styles/NewsBlogs.module.css'
+import styles from '../../styles/Home/NewsBlogs.module.css'
 const NewsBlogs = () => {
     const blogs = [
         { id: 1, img: blog1, cap: 'COVID-19', title: 'Mirage Deep Dive Under anding Timin Response' },

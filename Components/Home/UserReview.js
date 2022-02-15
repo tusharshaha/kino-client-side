@@ -3,8 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination"
 import "swiper/css/navigation"
-import { BsStarFill, BsStarHalf } from 'react-icons/bs'
-import Styles from '../../styles/UserReview.module.css'
+import { BsStarFill, BsStarHalf } from 'react-icons/bs';
+import Styles from '../../styles/Home/UserReview.module.css';
 import SwiperCore, {
     Pagination, Navigation
 } from 'swiper';

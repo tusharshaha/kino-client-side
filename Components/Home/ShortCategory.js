@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/ShortCategory.module.css'
+import styles from '../../styles/Home/ShortCategory.module.css';
 const ShortCategory = () => {
     const categories = [
         { id: 1, category: 'Super Sale', title: 'New Collection', bgImg: '/01-banner.png' },

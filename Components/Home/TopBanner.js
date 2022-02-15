@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import bannerImg from '/public/slider-hero-img.png'
-import styles from '../../styles/TopBanner.module.css'
+import styles from '../../styles/Home/TopBanner.module.css'
 const TopBanner = () => {
     return (
         <div className={styles.top_banner}>

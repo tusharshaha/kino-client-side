@@ -1,0 +1,17 @@
+.view{
+    transition: 0.3s;
+}
+.view::after{
+    content: '';
+    display: block;
+    height: 2px;
+    width: 97%;
+    background-color: #9e9c9c;
+
+}
+.view:hover{
+    color: #0397c9;
+}
+.view:hover::after{
+    background-color: #0397c9;
+}

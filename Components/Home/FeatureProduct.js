@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BsShieldCheck } from 'react-icons/bs';
 import useProducts from '../Hooks/useProducts'
 import Product from './Product';
-import styles from '../../styles/FeatureProduct.module.css';
+import styles from '../../styles/Home/FeatureProduct.module.css';
 
 const FeatureProduct = (props) => {
     const [cat, setCat] = useState('Best Seller');

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaBriefcaseMedical, FaRegWindowClose, FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
-import styles from '../../styles/Sidebar.module.css';
+import styles from '../../styles/Home/Sidebar.module.css';
 const Sidebar = ({ setToggle, toggle }) => {
     const bgImages = ['/sidebar1.jpg', '/sidebar2.jpg', '/sidebar3.jpg', '/sidebar4.jpg', '/sidebar5.jpg', '/sidebar6.jpg']
     return (

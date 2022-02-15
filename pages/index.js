@@ -11,7 +11,7 @@ import TopBanner from '../Components/Home/TopBanner'
 import UserReview from '../Components/Home/UserReview'
 import Footer from '../Shared/Footer'
 import Header from '../Shared/Header'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home/Home.module.css'
 
 export default function Home() {
   return (
