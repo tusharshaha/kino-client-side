@@ -27,7 +27,7 @@ const Header = () => {
                         <FiLock className='mr-2' />
                         <span className=''>Login</span>
                     </button>
-                    <button onClick={() => route.push('/my-account')} className='flex items-center mx-3'>
+                    <button onClick={() => route.push('/my_account')} className='flex items-center mx-3'>
                         <FaRegUserCircle className='mr-2' />
                         <span className=''>Sigh Up</span>
                     </button>
@@ -52,13 +52,10 @@ const Header = () => {
                             <Link href='/category'><a className='transition duration-300 hover:text-sky-500'>Category</a></Link>
                         </li>
                         <li>
-                            <Link href='/blog'><a className='transition duration-300 hover:text-sky-500'>Blog</a></Link>
-                        </li>
-                        <li>
-                            <Link href='/pages'><a className='transition duration-300 hover:text-sky-500'>Pages</a></Link>
-                        </li>
-                        <li>
                             <Link href='/contactUs'><a className='transition duration-300 hover:text-sky-500'>Contact Us</a></Link>
+                        </li>
+                        <li>
+                            <Link href='/aboutUs'><a className='transition duration-300 hover:text-sky-500'>About Us</a></Link>
                         </li>
                         <li>
                             <div className={`${styles.search_field} relative`}>

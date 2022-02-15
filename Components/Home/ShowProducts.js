@@ -15,7 +15,7 @@ const ShowProducts = () => {
                     <p className='text-slate-500'>Sed ut perspiciatis unde omnis iste natus error</p>
                 </div>
                 <div>
-                    <button onClick={()=>{router.push('/products')}} className={`${styles.view} uppercase text-slate-500 font-bold`}>View all Products <span className='text-3xl'>&#8594;</span></button>
+                    <button onClick={()=>{router.push('/shop')}} className={`${styles.view} uppercase text-slate-500 font-bold`}>View all Products <span className='text-3xl'>&#8594;</span></button>
                 </div>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
