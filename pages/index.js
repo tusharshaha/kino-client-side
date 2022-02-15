@@ -24,7 +24,6 @@ export default function Home() {
         <TopBanner></TopBanner>
         <ShortCategory></ShortCategory>
         <FeatureProduct></FeatureProduct>
-        component break
         <DealsTimer></DealsTimer>
         <ShortProduct></ShortProduct>
         <UserReview></UserReview>
