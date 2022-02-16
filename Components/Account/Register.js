@@ -4,6 +4,7 @@ const Register = () => {
     const handleSubmit = (e)=>{
         e.preventDefault()
     }
+
     return (
         <div>
             <h3 className='border-b-2 pb-3 mb-5'>Register</h3>

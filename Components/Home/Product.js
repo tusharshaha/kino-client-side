@@ -15,7 +15,7 @@ const Product = ({product, mode}) => {
 
                     <button className='cus-btn p-4 uppercase transition duration-300 hover:bg-red-500'><MdAddShoppingCart/></button>
 
-                    <button onClick={()=>{router.push(product._id)}} className='cus-btn p-4 uppercase transition duration-300 hover:bg-red-500'><FiSearch/></button>
+                    <button onClick={()=>{router.push(`products/${product._id}`)}} className='cus-btn p-4 uppercase transition duration-300 hover:bg-red-500'><FiSearch/></button>
                 </div>
             </div>
             <div className='mt-6 font-bold pb-8'>

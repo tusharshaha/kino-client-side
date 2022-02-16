@@ -7,7 +7,6 @@ import styles from '../../styles/Home/FeatureProduct.module.css';
 const FeatureProduct = (props) => {
     const [cat, setCat] = useState('Best Seller');
     const {products} = useProducts();
-
     // filter products
     const ftProducts = products.filter(product => product.categories.includes(cat));
 

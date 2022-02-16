@@ -12,7 +12,7 @@ export default function MyAccount() {
             <main>
                 <TopBanner name='My Account' route='My Account'></TopBanner>
                 <div className="cus-container mb-16">
-                    <div className="grid grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <Login></Login>
                         <Register></Register>
                     </div>

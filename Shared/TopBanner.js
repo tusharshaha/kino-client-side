@@ -13,26 +13,21 @@ const TopBanner = ({ name, route }) => {
             backgroundBlendMode: 'darken',
             height: '350px',
             width: '100%',
-            position: 'relative',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
             marginBottom: '100px'
         }}>
-            <div className='cus-container'>
+            <div className='cus-container flex items-center justify-start h-full relative'>
                 <h2 className='text-white font-bold'>{name}</h2>
-            </div>
-
-            <div className='
-            absolute
-            rounded-full bg-white
-            drop-shadow-md flex justify-center
-            items-center px-12 gap-3
-            text-slate-500 -bottom-8
-            left-14 py-4'>
-                <h4><Link href='/'>Home</Link></h4>
-                <FaGreaterThan />
-                <h4 className='text-sky-500'>{route}</h4>
+                <div className='
+                    absolute
+                    rounded-full bg-white
+                    drop-shadow-md flex justify-center
+                    items-center px-6 sm:px-12 gap-3
+                    text-slate-500 -bottom-8
+                    left-0 py-4'>
+                    <h4><Link href='/'>Home</Link></h4>
+                    <FaGreaterThan />
+                    <h4 className='text-sky-500'>{route}</h4>
+                </div>
             </div>
         </div>
     );
