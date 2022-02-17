@@ -20,7 +20,7 @@ const TopBanner = ({ name, route }) => {
                 <div className='
                     absolute
                     rounded-full bg-white
-                    drop-shadow-md flex justify-center
+                    drop-shadow-md flex flex-wrap justify-center
                     items-center px-6 sm:px-12 gap-3
                     text-slate-500 -bottom-8
                     left-0 py-4'>

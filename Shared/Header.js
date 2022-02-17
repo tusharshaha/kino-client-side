@@ -49,7 +49,7 @@ const Header = () => {
                             <Link href='/shop'><a className='transition duration-300 hover:text-sky-500'>Shop</a></Link>
                         </li>
                         <li>
-                            <Link href='/category'><a className='transition duration-300 hover:text-sky-500'>Category</a></Link>
+                            <Link href='/categories'><a className='transition duration-300 hover:text-sky-500'>Category</a></Link>
                         </li>
                         <li>
                             <Link href='/contactUs'><a className='transition duration-300 hover:text-sky-500'>Contact Us</a></Link>
