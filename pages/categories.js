@@ -11,6 +11,7 @@ import cat8 from "../public/categories/p-05-1.png";
 import cat9 from "../public/categories/f-08.png";
 import cat10 from "../public/categories/f-13.png";
 import Image from "next/image";
+import Skeleton from "../Shared/Skeleton";
 
 export default function Categories() {
     const categories = [

@@ -7,15 +7,20 @@ import useProducts from '../Components/Hooks/useProducts'
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
-  const { products } = useProducts();
-  return products.length !== 0 ?
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-    :
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000)
+  }, [])
+  return loading ?
     <div className='heart'>
       <BsSuitHeartFill />
     </div>
+    :
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
 }
 
 export default MyApp
