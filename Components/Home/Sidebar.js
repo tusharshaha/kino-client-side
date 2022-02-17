@@ -2,7 +2,7 @@ import React from 'react';
 import { FaBriefcaseMedical, FaRegWindowClose, FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 import styles from '../../styles/Home/Sidebar.module.css';
 const Sidebar = ({ setToggle, toggle }) => {
-    const bgImages = ['/sidebar1.jpg', '/sidebar2.jpg', '/sidebar3.jpg', '/sidebar4.jpg', '/sidebar5.jpg', '/sidebar6.jpg']
+    const bgImages = ['/sidebarImage/sidebar1.jpg', '/sidebarImage/sidebar2.jpg', '/sidebarImage/sidebar3.jpg', '/sidebarImage/sidebar4.jpg', '/sidebarImage/sidebar5.jpg', '/sidebarImage/sidebar6.jpg']
     return (
         <div className={toggle ? styles.sidebar : styles.hide_sidebar}>
             <button onClick={() => setToggle(!toggle)} className={`${styles.close_icon} text-sky-500`}>

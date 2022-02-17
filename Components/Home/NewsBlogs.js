@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import React from 'react';
-import blog1 from '/public/blog-1.png';
-import blog2 from '/public/blog-2.png';
-import blog3 from '/public/blog-3.png';
+import blog1 from '/public/newsBlogs/blog-1.png';
+import blog2 from '/public/newsBlogs/blog-2.png';
+import blog3 from '/public/newsBlogs/blog-3.png';
 import { BiCalendar } from 'react-icons/bi'
 import styles from '../../styles/Home/NewsBlogs.module.css'
 const NewsBlogs = () => {

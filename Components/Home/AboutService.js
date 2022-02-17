@@ -6,7 +6,7 @@ const AboutService = () => {
     const services = [
         {id:1, title:'Free Shipping', icons: <FaShip/>, class:'text-sky-500'},
         {id:2, title:'Money Back', icons:<AiOutlineDollarCircle/>, class:'text-red-500'},
-        {id:3, title:'Money Back', icons:<BiLockOpen/>, class:'text-amber-300'}
+        {id:3, title:'Security', icons:<BiLockOpen/>, class:'text-amber-300'}
     ]
     return (
         <div className='bg-slate-100'>

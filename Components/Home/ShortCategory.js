@@ -2,11 +2,11 @@ import React from 'react';
 import styles from '../../styles/Home/ShortCategory.module.css';
 const ShortCategory = () => {
     const categories = [
-        { id: 1, category: 'Super Sale', title: 'New Collection', bgImg: '/01-banner.png' },
-        { id: 2, category: 'Gun Covid -19', title: 'Temperature', bgImg: '/02-banner.png' },
-        { id: 3, category: 'Pulse', title: 'Oximeter', bgImg: '/03-banner.png' },
-        { id: 4, category: 'Lab Surgery', title: 'N95 Face Mask', bgImg: '/04-banner.png' },
-        { id: 5, category: 'Surgery Lab', title: 'Hand Gloves', bgImg: '/05-banner.png' },
+        { id: 1, category: 'Super Sale', title: 'New Collection', bgImg: '/shortCategory/01-banner.png' },
+        { id: 2, category: 'Gun Covid -19', title: 'Temperature', bgImg: '/shortCategory/02-banner.png' },
+        { id: 3, category: 'Pulse', title: 'Oximeter', bgImg: '/shortCategory/03-banner.png' },
+        { id: 4, category: 'Lab Surgery', title: 'N95 Face Mask', bgImg: '/shortCategory/04-banner.png' },
+        { id: 5, category: 'Surgery Lab', title: 'Hand Gloves', bgImg: '/shortCategory/05-banner.png' },
     ]
     return (
         <div className='cus-container mt-6'>
