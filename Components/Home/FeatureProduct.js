@@ -3,10 +3,11 @@ import { BsShieldCheck } from 'react-icons/bs';
 import useProducts from '../Hooks/useProducts'
 import Product from './Product';
 import styles from '../../styles/Home/FeatureProduct.module.css';
+import Skeleton from '../../Shared/Skeleton';
 
 const FeatureProduct = (props) => {
     const [cat, setCat] = useState('Best Seller');
-    const {products} = useProducts();
+    const { products } = useProducts();
     // filter products
     const ftProducts = products.filter(product => product.categories.includes(cat));
 
@@ -20,23 +21,33 @@ const FeatureProduct = (props) => {
                 <div>
                     <ul className='flex gap-4 text-1xl sm:text-2xl'>
                         <li>
-                            <button onClick={()=>setCat('Best Seller')} className={`${styles.filter} ${cat === 'Best Seller' && styles.selected}`}><BsShieldCheck/>Best Seller</button>
+                            <button onClick={() => setCat('Best Seller')} className={`${styles.filter} ${cat === 'Best Seller' && styles.selected}`}><BsShieldCheck />Best Seller</button>
                         </li>
                         <li>
-                            <button onClick={()=>setCat('Popular')} className={`${styles.filter} ${cat === 'Popular' && styles.selected}`}><BsShieldCheck/>Popular</button>
+                            <button onClick={() => setCat('Popular')} className={`${styles.filter} ${cat === 'Popular' && styles.selected}`}><BsShieldCheck />Popular</button>
                         </li>
                         <li>
-                            <button onClick={()=>setCat('Top Rated')} className={`${styles.filter} ${cat === 'Top Rated' && styles.selected}`}><BsShieldCheck/>Top Rated</button>
+                            <button onClick={() => setCat('Top Rated')} className={`${styles.filter} ${cat === 'Top Rated' && styles.selected}`}><BsShieldCheck />Top Rated</button>
                         </li>
                     </ul>
                 </div>
             </div>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-                {
-                    ftProducts.slice(0,6).map(product => <Product key={product._id} product={product}/>)
-                }
-            </div>
+            {products.length !== 0 ?
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                    {
+                        ftProducts.slice(0, 6).map(product => <Product key={product._id} product={product} />)
+                    }
+                </div>
+                :
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                    {
+                        Array.from({ length: 6 }).map((_, i) => {
+                            <Skeleton key={i} />
+                        })
+                    }
+                </div>
+            }
         </div>
     );
 };

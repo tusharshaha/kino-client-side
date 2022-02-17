@@ -3,6 +3,7 @@ import useProducts from '../Hooks/useProducts';
 import Product from './Product';
 import styles from '../../styles/Home/ShowProducts.module.css';
 import { useRouter } from 'next/router';
+import Skeleton from '../../Shared/Skeleton';
 
 const ShowProducts = () => {
     const { products } = useProducts();
@@ -15,14 +16,24 @@ const ShowProducts = () => {
                     <p className='text-slate-500'>Sed ut perspiciatis unde omnis iste natus error</p>
                 </div>
                 <div>
-                    <button onClick={()=>{router.push('/shop')}} className={`${styles.view} uppercase text-slate-500 font-bold`}>View all Products <span className='text-3xl'>&#8594;</span></button>
+                    <button onClick={() => { router.push('/shop') }} className={`${styles.view} uppercase text-slate-500 font-bold`}>View all Products <span className='text-3xl'>&#8594;</span></button>
                 </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-                {
-                    products.slice(0,8).map(product => <Product key={product._id} product={product} mode='show product'/>)
-                }
-            </div>
+            {products.length !== 0 ?
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+                    {
+                        products.slice(0, 8).map(product => <Product key={product._id} product={product} mode='show product' />)
+                    }
+                </div>
+                :
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+                    {
+                        Array.from({ length: 8 }).map((_, i) => {
+                            <Skeleton key={i} />
+                        })
+                    }
+                </div>
+            }
         </div>
     );
 };
