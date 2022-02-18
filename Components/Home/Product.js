@@ -33,7 +33,7 @@ const Product = ({ product, mode }) => {
             </div>
             <div className='mt-6 font-bold pb-8'>
                 <p>{product?.name}</p>
-                <div className='flex gap-4 text-red-500 justify-center items-center'>
+                <div className='flex gap-2 text-red-500 justify-center items-center'>
                     {product?.prevPrice && <p><strike>&#163;{product?.prevPrice}</strike></p>}
                     <p>&#163;{product?.curPrice}</p>
                 </div>
