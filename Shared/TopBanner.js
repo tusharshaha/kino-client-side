@@ -24,9 +24,9 @@ const TopBanner = ({ name, route }) => {
                     items-center px-6 sm:px-12 gap-3
                     text-slate-500 -bottom-8
                     left-0 py-4'>
-                    <h4><Link href='/'>Home</Link></h4>
+                    <h5><Link href='/'>Home</Link></h5>
                     <FaGreaterThan />
-                    <h4 className='text-sky-500'>{route}</h4>
+                    <h5 className='text-sky-500'>{route}</h5>
                 </div>
             </div>
         </div>
