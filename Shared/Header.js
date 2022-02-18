@@ -22,18 +22,18 @@ const Header = () => {
                         <a href="tel:+123 (456) 7879">+123 (456) 7879</a>
                     </span>
                 </div>
-                <div className='flex items-center text-slate-500'>
+                <div className='flex items-center text-slate-400'>
                     <button onClick={() => route.push('/my_account')} className='flex items-center'>
                         <FiLock className='mr-2' />
-                        <span className=''>Login</span>
+                        <span className='font-bold hover:text-sky-500 transition duration-3'>Login</span>
                     </button>
                     <button onClick={() => route.push('/my_account')} className='flex items-center mx-3'>
                         <FaRegUserCircle className='mr-2' />
-                        <span className=''>Sigh Up</span>
+                        <span className='font-bold hover:text-sky-500 transition duration-3'>Sigh Up</span>
                     </button>
                     <button onClick={() => route.push('/wishlist')} className='flex items-center'>
                         <BsHeart className='mr-2' />
-                        <span className=''>Wishlist</span>
+                        <span className='font-bold hover:text-sky-500 transition duration-3'>Wishlist</span>
                     </button>
                 </div>
             </nav>
@@ -41,7 +41,7 @@ const Header = () => {
             <nav className='py-3 px-2 nav-container sticky top-0 shadow-md bg-white z-10'>
                 <div className='nav-container relative flex items-center justify-between'>
                     <h3 className='logo'><FaBriefcaseMedical className='text-sky-400 mr-2'/> Kino</h3>
-                    <ul className={`${!navToggle ? styles.shop_menu : styles.show_menu}  text-slate-600`}>
+                    <ul className={`${!navToggle ? styles.shop_menu : styles.show_menu}  text-slate-400 font-bold`}>
                         <li>
                             <Link href='/'><a className='transition duration-300 hover:text-sky-500'>Home</a></Link>
                         </li>

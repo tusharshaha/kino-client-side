@@ -19,7 +19,7 @@ const FeatureProduct = (props) => {
                     <p className='text-slate-500'>Sed ut perspiciatis unde omnis iste natus error</p>
                 </div>
                 <div>
-                    <ul className='flex gap-4 text-1xl sm:text-2xl'>
+                    <ul className='flex flex-wrap gap-4'>
                         <li>
                             <button onClick={() => setCat('Best Seller')} className={`${styles.filter} ${cat === 'Best Seller' && styles.selected}`}><BsShieldCheck />Best Seller</button>
                         </li>

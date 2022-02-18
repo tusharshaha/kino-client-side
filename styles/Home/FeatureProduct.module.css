@@ -2,7 +2,9 @@
     position: relative;
     display: flex;
     align-items: center;
-    color: gray;
+    font-size: 20px;
+    font-weight: 700;
+    color: #9d9c9c;
     gap: 5px;
     transition: 0.3s;
 }
