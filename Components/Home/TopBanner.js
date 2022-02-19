@@ -13,7 +13,7 @@ const TopBanner = () => {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Est velit laboriosam obcaecati qui veritatis aut consequuntur. Culpa maiores autem necessitatibus?
                     </div>
                     <div className='mt-10 flex flex-wrap gap-4 sm:gap-0'>
-                        <button className='flex cus-btn py-2 px-4 mr-4 uppercase transition duration-300 hover:bg-red-500'>Shop Now <span className='ml-2'>+</span></button>
+                        <button className='flex cus-btn py-4 px-8 mr-4 uppercase transition duration-300 hover:bg-red-500'>Shop Now <span className='ml-2'>+</span></button>
 
                         <button className={`${styles.btn_after} uppercase transition duration-300 hover:text-sky-500`}>Hot Collection<span className='ml-2'>+</span></button>
                     </div>
