@@ -46,7 +46,7 @@ const Header = () => {
                             <Link href='/'><a className='transition duration-300 hover:text-sky-500'>Home</a></Link>
                         </li>
                         <li>
-                            <Link href='/shop'><a className='transition duration-300 hover:text-sky-500'>Shop</a></Link>
+                            <Link href='/products'><a className='transition duration-300 hover:text-sky-500'>Shop</a></Link>
                         </li>
                         <li>
                             <Link href='/categories'><a className='transition duration-300 hover:text-sky-500'>Category</a></Link>

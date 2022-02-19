@@ -1,0 +1,9 @@
+.counter::after{
+    content: '';
+    display: block;
+    margin: 17px auto;
+    width: 70px;
+    height: 2px;
+    background-color: black;
+
+}
