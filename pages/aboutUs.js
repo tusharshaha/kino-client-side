@@ -6,6 +6,7 @@ import UserReview from "../Components/Home/UserReview";
 import TopBanner from "../Shared/TopBanner";
 import AboutTop from "../Components/About/AboutTop";
 import AboutBanner from "../Components/About/AboutBanner";
+import Team from "../Components/About/Team";
 
 export default function AboutUs() {
     return(
@@ -18,6 +19,7 @@ export default function AboutUs() {
                 <AboutTop></AboutTop>
                 <KinoAnalytics></KinoAnalytics>
                 <AboutGoals></AboutGoals>
+                <Team></Team>
                 <AboutBanner></AboutBanner>
                 <UserReview></UserReview>
                 <Brands></Brands>

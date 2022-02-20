@@ -6,7 +6,7 @@ import styles from '../../styles/About/KinoAnalytics.module.css'
 const KinoAnalytics = () => {
     return (
         <div className='cus-container border-t-2'>
-            <div className='flex py-28 justify-between items-center gap-6'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-28 gap-6'>
                 <div className='text-center'>
                     <BsHeart className='text-5xl mx-auto text-red-500 mb-3'/>
                     <h2 className={`${styles.counter} font-medium mb-4`}>2560</h2>
