@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { BsShieldCheck } from 'react-icons/bs';
-import useProducts from '../Hooks/useProducts'
 import Product from './Product';
 import styles from '../../styles/Home/FeatureProduct.module.css';
 import Skeleton from '../../Shared/Skeleton';
+import useProducts from '../../Hooks/useProducts';
 
 const FeatureProduct = (props) => {
     const [cat, setCat] = useState('Best Seller');

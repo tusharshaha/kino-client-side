@@ -3,7 +3,6 @@ import '../styles/index.css'
 import '../styles/globals.css'
 import { BsSuitHeartFill } from 'react-icons/bs'
 import Layout from '../Components/Layout/Layout'
-import useProducts from '../Components/Hooks/useProducts'
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
