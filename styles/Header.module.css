@@ -1,9 +1,10 @@
 /* logo font */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Emblema+One&display=swap');
 
 .logo{
     display: flex;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Emblema One', cursive;
+    color: #32c5f7;
 }
 .shop_menu{
     display: flex;
