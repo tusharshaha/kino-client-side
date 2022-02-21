@@ -9,7 +9,7 @@ const FeatureProduct = (props) => {
     const [cat, setCat] = useState('Best Seller');
     const { products } = useProducts();
     // filter products
-    const ftProducts = products.filter(product => product.categories.includes(cat));
+    const ftProducts = products?.filter(product => product.categories.includes(cat));
 
     return (
         <div className='cus-container my-20'>

@@ -23,7 +23,7 @@ const TopBanner = ({ name, route }) => {
                     drop-shadow-md flex flex-wrap justify-center
                     items-center px-6 sm:px-12 gap-3
                     text-slate-500 -bottom-8
-                    left-0 py-4'>
+                    left-4 py-4'>
                     <h5><Link href='/'>Home</Link></h5>
                     <FaGreaterThan />
                     <h5 className='text-sky-500'>{route}</h5>
