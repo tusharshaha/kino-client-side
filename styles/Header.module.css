@@ -1,9 +1,9 @@
 /* logo font */
-@import url('https://fonts.googleapis.com/css2?family=Emblema+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 
 .logo{
     display: flex;
-    font-family: 'Emblema One', cursive;
+    font-family: 'Abril Fatface', cursive !important;
     color: #32c5f7;
 }
 .shop_menu{
