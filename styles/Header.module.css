@@ -1,9 +1,9 @@
-/* logo font */
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 .logo{
     display: flex;
-    font-family: 'Abril Fatface', cursive !important;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 600;
     color: #32c5f7;
 }
 .shop_menu{
