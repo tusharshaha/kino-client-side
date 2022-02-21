@@ -1,7 +1,4 @@
 
-/* logo font */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
-
 html,
 body {
   padding: 0;
@@ -16,10 +13,6 @@ a {
 
 * {
   box-sizing: border-box;
-}
-.logo{
-  display: flex;
-  font-family: 'Orbitron', sans-serif;
 }
 .heart{
   position: absolute;

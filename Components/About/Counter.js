@@ -4,7 +4,7 @@ import VisibilitySensor from 'react-visibility-sensor';
 
 const Counter = ({ end }) => {
     return (
-        <CountUp end={end} duration={3} redraw={true}>
+        <CountUp end={end} duration={2} redraw={true}>
             {({ countUpRef, start }) => (
                 <VisibilitySensor onChange={start} delayedCall>
                     <span ref={countUpRef} />

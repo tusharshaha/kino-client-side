@@ -2,8 +2,6 @@ import React from 'react';
 import { BsHeart, BsClockHistory, BsPeople } from 'react-icons/bs';
 import { MdOutlineTaskAlt } from 'react-icons/md';
 import styles from '../../styles/About/KinoAnalytics.module.css'
-import CountUp from 'react-countup';
-import VisibilitySensor from 'react-visibility-sensor';
 import Counter from './Counter';
 
 const KinoAnalytics = () => {
