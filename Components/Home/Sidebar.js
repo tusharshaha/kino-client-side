@@ -9,7 +9,7 @@ const Sidebar = ({ setToggle, toggle }) => {
                 <FaRegWindowClose />
             </button>
             <div className='border-b-2 border-slate-500 pb-5'>
-                <h3 className='logo'><FaBriefcaseMedical className='text-white mr-2' /> Kino</h3>
+                <h3 className='logo text-white'><FaBriefcaseMedical className=' mr-2' /> Kino</h3>
             </div>
             <div className='pt-5'>
                 <div className='mb-6'>
@@ -43,17 +43,17 @@ const Sidebar = ({ setToggle, toggle }) => {
                     }
                 </div>
             </div>
-            <div className='flex mt-6'>
-                <div className='icon mr-4'>
+            <div className='flex gap-4 mt-6'>
+                <div className='icon text-white'>
                     <FaFacebookF />
                 </div>
-                <div className='icon mr-4'>
+                <div className='icon text-white'>
                     <FaTwitter />
                 </div>
-                <div className='icon mr-4'>
+                <div className='icon text-white'>
                     <FaInstagram />
                 </div>
-                <div className='icon'>
+                <div className='icon text-white'>
                     <FaLinkedinIn />
                 </div>
             </div>

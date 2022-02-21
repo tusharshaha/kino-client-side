@@ -10,7 +10,7 @@ const Shop = () => {
         <div className='cus-container'>
             <div className='flex gap-6'>
                 {/* this is shop filter component */}
-                <ShopFilters/>
+                <ShopFilters />
 
                 {products.length !== 0 ?
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
