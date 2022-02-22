@@ -1,4 +1,4 @@
-Visit my [Kino](https://kino-one.vercel.app/) website
+Visit my pharmacy related website [Kino](https://kino-one.vercel.app/)
 
 ## About Kino :-
 * This is a Pharmacy related website.

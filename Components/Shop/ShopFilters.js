@@ -18,7 +18,7 @@ const ShopFilters = ({ products, setCat, setRangeFilter }) => {
         }
     }
     return (
-        <div className={`flex flex-col gap-6`}>
+        <div className={`hidden md:flex flex-col gap-6`}>
             {/* this is price range filter */}
             <div className={`${styles.filter_box} ${styles.range_box}`}>
                 <h5 className='mb-6 font-medium'>Filter By Price</h5>
