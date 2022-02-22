@@ -5,9 +5,8 @@ import { BsSuitHeartFill } from 'react-icons/bs'
 import Layout from '../Components/Layout/Layout'
 
 function MyApp({ Component, pageProps }) {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 2000)
