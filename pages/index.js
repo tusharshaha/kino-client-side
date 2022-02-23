@@ -9,8 +9,6 @@ import ShortProduct from '../Components/Home/ShortProduct'
 import ShowProducts from '../Components/Home/ShowProducts'
 import TopBanner from '../Components/Home/TopBanner'
 import UserReview from '../Components/Home/UserReview'
-import Footer from '../Shared/Footer'
-import Header from '../Shared/Header'
 
 export default function Home() {
   return (
