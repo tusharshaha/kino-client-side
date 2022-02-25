@@ -15,6 +15,8 @@ const ShopFilters = ({ products, setCat, setRangeFilter }) => {
     const handleCategory = e => {
         if (e.target.checked) {
             setCat(e.target.name)
+        }else{
+            setCat('')
         }
     }
     return (
