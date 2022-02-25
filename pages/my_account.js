@@ -4,6 +4,7 @@ import Register from "../Components/Account/Register";
 import TopBanner from "../Shared/TopBanner";
 
 export default function MyAccount() {
+
     return (
         <>
             <Head>

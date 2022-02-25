@@ -8,7 +8,8 @@ const useFirebase = () => {
     const auth = getAuth();
     const [user, setUser] = useState({});
     const [authError, setAuthError] = useState('');
-    const [loading, setLoading] = useState(true)
+    const [regError, setRegError] = useState('');
+    const [loading, setLoading] = useState(true);
 
     // register new user
     const createUser = (name, email, password, Swal) => {
@@ -28,15 +29,17 @@ const useFirebase = () => {
                     displayName: name
                 }).then(() => {
                     setUser(newUser);
-                    setAuthError('')
+                    setRegError('')
                 }).catch(err => {
-                    setAuthError(err.message);
+                    setRegError(err.message);
                 })
             }).catch(err => {
                 if (err.message.includes('email-already-in-use')) {
-                    setAuthError('The email already registered! Please login..')
+                    setRegError('The email already registered! Please login..')
+                }else if(err.message.includes('auth/weak-password')) {
+                    setRegError('Set a strong password!')
                 } else {
-                    setAuthError(err.message)
+                    setRegError(err.message)
                 }
             }).finally(() => setLoading(false));
     }
@@ -55,13 +58,13 @@ const useFirebase = () => {
                 })
                 setAuthError('');
             }).catch(err => {
-                if (err.message.includes("user-not-found")) {
+                if (err.message.includes("user-not-found") || err.message.includes("auth/invalid-email")) {
                     setAuthError("invalid email and Password");
                 } else if (err.message.includes("wrong-password")) {
                     setAuthError('Your password is incorrect')
                 }
                 else {
-                    setAuthError(error.message)
+                    setAuthError(err.message)
                 }
             }).finally(() => setLoading(false));
     }
@@ -78,7 +81,9 @@ const useFirebase = () => {
             }).catch(err => {
                 if (err.message.includes("auth/configuration-not-found")) {
                     setAuthError('Email not found! Please Register')
-                } else {
+                }else if(err.message.includes("auth/invalid-email")) {
+                    setAuthError('Write a valid email!')
+                }else {
                     setAuthError(err.message)
                 }
             }).finally(() => setLoading(false));
@@ -110,6 +115,7 @@ const useFirebase = () => {
         createUser,
         logOut,
         resetPassword,
+        regError,
         loading,
         user,
         authError

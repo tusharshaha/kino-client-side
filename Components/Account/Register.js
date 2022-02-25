@@ -5,7 +5,7 @@ const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
-    const { createUser, loading, authError } = useAuth();
+    const { createUser, loading, regError } = useAuth();
     const handleSubmit = (e) => {
         e.preventDefault()
         createUser(name, email, password, Swal);
@@ -33,6 +33,9 @@ const Register = () => {
 
                 <button type='sumit' className="cus-btn px-8 py-3 transition duration-300 hover:bg-red-500">Register</button>
             </form>
+            <div className='text-center mt-12 text-red-500'>
+                {regError}
+            </div>
         </div>
     );
 };
