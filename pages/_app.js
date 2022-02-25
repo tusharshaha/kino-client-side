@@ -3,6 +3,7 @@ import '../styles/index.css'
 import '../styles/globals.css'
 import { BsSuitHeartFill } from 'react-icons/bs'
 import Layout from '../Components/Layout/Layout'
+import AuthProvider from '../Context/AuthProvider'
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(true);
@@ -16,9 +17,11 @@ function MyApp({ Component, pageProps }) {
       <BsSuitHeartFill />
     </div>
     :
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <AuthProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </AuthProvider>
 }
 
 export default MyApp

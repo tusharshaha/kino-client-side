@@ -1,8 +1,14 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import useAuth from '../../Hooks/useAuth';
+import Swal from 'sweetalert2';
 const Register = () => {
-    const handleSubmit = (e)=>{
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('')
+    const { createUser, loading, authError } = useAuth();
+    const handleSubmit = (e) => {
         e.preventDefault()
+        createUser(name, email, password, Swal);
     }
 
     return (
@@ -11,17 +17,17 @@ const Register = () => {
             <form onSubmit={handleSubmit}>
                 <label className='block mb-4'>
                     <span className="after:content-['*'] after:ml-2 after:text-red-500 block mb-2">Your Name</span>
-                    <input className="input w-full" type="text" placeholder='Your Name' required />
+                    <input onBlur={(e) => setName(e.target.value)} className="input w-full" type="text" placeholder='Your Name' required />
                 </label>
 
                 <label className='block mb-4'>
                     <span className="after:content-['*'] after:ml-2 after:text-red-500 block mb-2">Email Address</span>
-                    <input className="input w-full" type="email" placeholder='Your Email' required />
+                    <input onBlur={(e) => setEmail(e.target.value)} className="input w-full" type="email" placeholder='Your Email' required />
                 </label>
 
                 <label className='block mb-4'>
                     <span className="after:content-['*'] after:ml-2 after:text-red-500 block mb-2">Your Password</span>
-                    <input className="input w-full" type="password" placeholder='Your Password' required />
+                    <input onBlur={(e) => setPassword(e.target.value)} className="input w-full" type="password" placeholder='Your Password' required />
                 </label>
                 <p className='text-slate-400 mb-6'>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our privacy policy.</p>
 

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, initializeAuth, updateProfile, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "firebase/auth";
+import initializeFirebase from '../Firebase/firebase.init';
 
-initializeAuth();
+initializeFirebase()
 
 const useFirebase = () => {
     const auth = getAuth();
@@ -10,9 +11,9 @@ const useFirebase = () => {
     const [loading, setLoading] = useState(true)
 
     // register new user
-    const createUser = (name, email, password) => {
+    const createUser = (name, email, password, Swal) => {
         setLoading(true)
-        createUserWithEmailAndPassword(auth, email, password, Swal)
+        createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
                 setUser(result.user);
                 Swal.fire({
@@ -64,6 +65,24 @@ const useFirebase = () => {
                 }
             }).finally(() => setLoading(false));
     }
+    // reset user password
+    const resetPassword = (email, Swal) => {
+        setLoading(true)
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Email Sent. Please Check Your Email.',
+                })
+            }).catch(err => {
+                if (err.message.includes("auth/configuration-not-found")) {
+                    setAuthError('Email not found! Please Register')
+                } else {
+                    setAuthError(err.message)
+                }
+            }).finally(() => setLoading(false));
+    }
     // logout user
     const logOut = () => {
         setLoading(true)
@@ -90,6 +109,7 @@ const useFirebase = () => {
         login,
         createUser,
         logOut,
+        resetPassword,
         loading,
         user,
         authError
