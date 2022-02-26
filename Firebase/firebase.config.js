@@ -1,9 +1,9 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyAwj6cv6xAOJDn-vGdptq9-5qfsS94meR0",
-    authDomain: "kino-f6200.firebaseapp.com",
-    projectId: "kino-f6200",
-    storageBucket:"kino-f6200.appspot.com",
-    messagingSenderId: "2058241218",
-    appId: '1:2058241218:web:1207cf647803272b17275b'
+    apiKey: process.env.NEXT_PUBLIC_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_APP_ID
 };
 export default firebaseConfig;
