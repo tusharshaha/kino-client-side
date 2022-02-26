@@ -6,7 +6,7 @@ const UserLayout = ({ children }) => {
     const { logOut } = useAuth();
     return (
         <>
-            <div className='mb-52'>
+            <div className='mb-32'>
                 <div className='flex items-center gap-2 flex-wrap'>
                     <Link href='/my_account'><a className='acc-btn visited:bg-red-500'>Dashboard</a></Link>
                     <Link href='/my_account/orders'><a className='acc-btn'>Orders</a></Link>
@@ -15,7 +15,7 @@ const UserLayout = ({ children }) => {
                     <Link href='/wishlist'><a className='acc-btn'>Wishlist</a></Link>
                     <button onClick={logOut} className='acc-btn'>Logout</button>
                 </div>
-                <div className='mt-8'>
+                <div className='mt-12'>
                     {children}
                 </div>
             </div>
