@@ -5,7 +5,7 @@ const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
-    const { createUser, loading, regError } = useAuth();
+    const { createUser, regError } = useAuth();
     const handleSubmit = (e) => {
         e.preventDefault()
         createUser(name, email, password, Swal);

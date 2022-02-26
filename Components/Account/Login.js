@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
-    const { login, resetPassword, loading, authError } = useAuth();
+    const { login, resetPassword, authError } = useAuth();
     const handleSubmit = (e) => {
         e.preventDefault()
         login(email, password, Swal)
@@ -25,9 +25,6 @@ const Login = () => {
     }
     return (
         <div>
-            <div className="animate-spin text-slate-500 h-5 w-5 mr-3">
-
-            </div>
             <h3 className='border-b-2 pb-3 mb-5'>Login</h3>
             <form onSubmit={handleSubmit}>
                 <label className='block mb-4'>

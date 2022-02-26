@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import '../styles/index.css'
 import '../styles/globals.css'
-import { BsSuitHeartFill } from 'react-icons/bs'
 import Layout from '../Components/Layout/Layout'
 import AuthProvider from '../Context/AuthProvider'
+import Loader from '../Shared/Loader'
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(true);
@@ -13,9 +13,7 @@ function MyApp({ Component, pageProps }) {
     }, 2000)
   }, [])
   return loading ?
-    <div className='heart'>
-      <BsSuitHeartFill />
-    </div>
+    <Loader/>
     :
     <AuthProvider>
       <Layout>

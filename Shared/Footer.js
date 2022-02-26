@@ -65,7 +65,7 @@ const Footer = () => {
                             </ul>
                         </div>
                     </div>
-                <a href='#top' className='text-left bg-sky-500 text-white text-3xl p-3 flex items-center justify-center rounded-full fixed bottom-20 right-10 z-10'>
+                <a href='#top' className='go-top'>
                     <BiArrowToTop/>
                 </a>
                 </div>
