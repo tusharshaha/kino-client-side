@@ -1,10 +1,10 @@
 import Head from "next/head";
-import Login from "../Components/Account/Login";
-import Register from "../Components/Account/Register";
-import UserMenus from "../Components/Account/UserMenus";
-import useAuth from "../Hooks/useAuth";
-import Loader from "../Shared/Loader";
-import TopBanner from "../Shared/TopBanner";
+import Login from "../../Components/Account/Login";
+import Register from "../../Components/Account/Register";
+import UserLayout from "../../Components/Account/UserLayout";
+import useAuth from "../../Hooks/useAuth";
+import Loader from "../../Shared/Loader";
+import TopBanner from "../../Shared/TopBanner";
 
 export default function MyAccount() {
     const { loading, user } = useAuth();
@@ -25,9 +25,7 @@ export default function MyAccount() {
                         <>
                             {
                                 user?.email ?
-                                    <div>
-                                        <UserMenus></UserMenus>
-                                    </div>
+                                    <UserLayout></UserLayout>
                                     :
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <Login></Login>

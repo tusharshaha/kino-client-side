@@ -17,7 +17,9 @@ function MyApp({ Component, pageProps }) {
     :
     <AuthProvider>
       <Layout>
-        <Component {...pageProps} />
+        {
+          <Component {...pageProps} />
+        }
       </Layout>
     </AuthProvider>
 }
