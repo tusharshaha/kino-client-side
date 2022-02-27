@@ -15,14 +15,14 @@ const Footer = () => {
                         <div>
                             <h5 className='text-slate-600'>About Company</h5>
                             <p className='py-3'>But must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born</p>
-                            <div className='flex'>
-                                <div className='icon mr-4'>
+                            <div className='flex gap-4'>
+                                <div className='icon'>
                                     <FaFacebookF />
                                 </div>
-                                <div className='icon mr-4'>
+                                <div className='icon'>
                                     <FaTwitter />
                                 </div>
-                                <div className='icon mr-4'>
+                                <div className='icon'>
                                     <FaInstagram />
                                 </div>
                                 <div className='icon'>
