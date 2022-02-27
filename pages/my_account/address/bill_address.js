@@ -2,6 +2,7 @@ import Head from 'next/head';
 import React from 'react';
 import UserLayout from '../../../Components/Account/UserLayout';
 import useAuth from '../../../Hooks/useAuth';
+import PrivateRoute from '../../../PrivateRoute/PrivateRoute';
 import TopBanner from '../../../Shared/TopBanner';
 
 const BillAddress = () => {
@@ -69,4 +70,4 @@ const BillAddress = () => {
     );
 };
 
-export default BillAddress;
+export default PrivateRoute(BillAddress);

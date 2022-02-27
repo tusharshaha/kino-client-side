@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 import UserLayout from '../../../Components/Account/UserLayout';
+import PrivateRoute from '../../../PrivateRoute/PrivateRoute';
 import TopBanner from '../../../Shared/TopBanner';
 
 const Address = () => {
@@ -34,4 +35,4 @@ const Address = () => {
     );
 };
 
-export default Address;
+export default PrivateRoute(Address);

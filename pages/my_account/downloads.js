@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 import UserLayout from '../../Components/Account/UserLayout';
+import PrivateRoute from '../../PrivateRoute/PrivateRoute';
 import TopBanner from '../../Shared/TopBanner';
 
 const Downloads = () => {
@@ -24,5 +25,5 @@ const Downloads = () => {
 
 
 
-export default Downloads;
+export default PrivateRoute(Downloads);
 

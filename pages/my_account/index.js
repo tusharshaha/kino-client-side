@@ -29,7 +29,7 @@ export default function MyAccount() {
                                     <UserLayout>
                                         <div className="text-slate-400">
                                             <p className="capitalize mb-3">Hello {user?.displayName},</p>
-                                            <p>From your account dashboard you can view your <Link href='/orders'><a className="text-red-500">recent orders</a></Link>, manage your <Link href="my_account/address"><a className="text-red-500">shipping and billing</a></Link> addresses, and view your <Link href="/wishlist"><a className="text-red-500">wishlisted product</a></Link>.</p>
+                                            <p>From your account dashboard you can view your <Link href='/orders'><a className="text-red-500">recent orders</a></Link>, manage your <Link href="/my_account/address"><a className="text-red-500">shipping and billing</a></Link> addresses, and view your <Link href="/my_account/wishlist"><a className="text-red-500">wishlisted product</a></Link>.</p>
                                         </div>
                                     </UserLayout>
                                     :
