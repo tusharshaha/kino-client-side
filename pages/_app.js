@@ -13,13 +13,11 @@ function MyApp({ Component, pageProps }) {
     }, 2000)
   }, [])
   return loading ?
-    <Loader/>
+    <Loader />
     :
     <AuthProvider>
       <Layout>
-        {
-          <Component {...pageProps} />
-        }
+        <Component {...pageProps} />
       </Layout>
     </AuthProvider>
 }
