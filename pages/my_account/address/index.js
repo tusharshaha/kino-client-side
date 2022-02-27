@@ -18,12 +18,12 @@ const Address = () => {
                         <div className='flex gap-24 flex-wrap mt-3'>
                             <div>
                                 <h4 className='font-medium'>Billing address</h4>
-                                <Link href="bill_address"><a className='text-red-500'>Add</a></Link>
+                                <Link href="address/bill_address"><a className='text-red-500'>Add</a></Link>
                                 <p className='text-slate-400'>You have not set up this type of address yet.</p>
                             </div>
                             <div>
                                 <h4 className='font-medium'>Shipping address</h4>
-                                <Link href="shipping_address"><a className='text-red-500'>Add</a></Link>
+                                <Link href="address/shipping_address"><a className='text-red-500'>Add</a></Link>
                                 <p className='text-slate-400'>You have not set up this type of address yet.</p>
                             </div>
                         </div>
