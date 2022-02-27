@@ -3,7 +3,7 @@ import React from 'react';
 import useAuth from '../Hooks/useAuth';
 import Loader from '../Shared/Loader';
 
-const PrivateRoute = (Compoent) => {
+const PrivateRoute = (Component) => {
     return function Protected(props) {
         const { user, loading } = useAuth();
         const router = useRouter();
@@ -14,7 +14,7 @@ const PrivateRoute = (Compoent) => {
             router.replace('/my_account')
             return <Loader />
         }
-        return <Compoent {...props} />
+        return <Component {...props} />
     }
 };
 
