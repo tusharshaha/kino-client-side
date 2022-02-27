@@ -1,9 +1,13 @@
+import { useEffect, useState } from "react";
+import DRContainer from "../../Components/Product/DRContainer";
 import ProductTop from "../../Components/Product/ProductTop";
 
 export default function ProductDetails({ product }) {
+    const productCat = product.categories.split(', ');
     return (
         <div className="cus-container my-32">
-            <ProductTop product={product}></ProductTop>
+            <ProductTop product={product} category={productCat}></ProductTop>
+            <DRContainer></DRContainer>
         </div>
     )
 }
@@ -13,7 +17,7 @@ export async function getStaticPaths() {
     const products = await res.json();
     const paths = products?.map(product => {
         return {
-            params: { productId: product._id}
+            params: { productId: product._id }
         }
     })
     return {

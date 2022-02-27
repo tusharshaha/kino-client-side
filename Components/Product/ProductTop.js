@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
 
-const ProductTop = ({ product }) => {
+const ProductTop = ({ product, category }) => {
     const [counter, setCounter] = useState(1)
     const handleDecrase = () => {
         if (counter <= 1) {
