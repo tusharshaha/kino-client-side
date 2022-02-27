@@ -11,11 +11,12 @@ const ProductTop = ({ product }) => {
     }
     console.log(product)
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="flex flex-col md:flex-row gap-16">
             <div>
                 <img src={product.img} className="h-[480px] w-[500px] sm:w-full" alt="Product Image" />
             </div>
-            <div>
+
+            <div className='grow'>
                 <h3 className='font-medium'>{product.name}</h3>
                 <div className='flex gap-2 text-red-500 mt-3 font-bold text-[18px] items-center'>
                     {product?.prevPrice && <p><strike>&#163;{product?.prevPrice}</strike></p>}
@@ -34,7 +35,7 @@ const ProductTop = ({ product }) => {
                     </div>
                     <button className="bg-red-500 text-white uppercase font-bold py-4 px-8 rounded-full">Add To Cart +</button>
                 </div>
-                <p><span className='font-bold text-[18px]'>SKU:</span></p>
+                <p className='text-slate-400'><span className='font-bold text-black text-[18px]'>SKU:</span> {product.sku}</p>
                 <p className='my-4 text-slate-400'>Category: {product.categories}</p>
                 <div className='flex gap-3 items-center'>
                     <span className='font-bold text-[18px]'>Share Now:</span>
