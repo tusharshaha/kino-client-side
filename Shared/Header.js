@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import styles from '../styles/Header.module.css'
 import Sidebar from '../Components/Home/Sidebar';
 const Header = () => {
-    const route = useRouter();
+    const router = useRouter();
     const [sideToggle, setSideToggle] = useState(false);
     const [navToggle, setNavToggle] = useState(false);
     return (
@@ -23,15 +23,15 @@ const Header = () => {
                     </span>
                 </div>
                 <div className='flex items-center text-slate-400'>
-                    <button onClick={() => route.push('/my_account')} className='flex items-center'>
+                    <button onClick={() => router.push('/my_account')} className='flex items-center'>
                         <FiLock className='mr-2' />
                         <span className='font-bold hover:text-sky-500 transition duration-3'>Login</span>
                     </button>
-                    <button onClick={() => route.push('/my_account')} className='flex items-center mx-3'>
+                    <button onClick={() => router.push('/my_account')} className='flex items-center mx-3'>
                         <FaRegUserCircle className='mr-2' />
                         <span className='font-bold hover:text-sky-500 transition duration-3'>Sigh Up</span>
                     </button>
-                    <button onClick={() => route.push('/wishlist')} className='flex items-center'>
+                    <button onClick={() => router.push('/wishlist')} className='flex items-center'>
                         <BsHeart className='mr-2' />
                         <span className='font-bold hover:text-sky-500 transition duration-3'>Wishlist</span>
                     </button>
@@ -67,7 +67,7 @@ const Header = () => {
                             <button className='text-2xl' onClick={()=>setSideToggle(!sideToggle)}><FiMenu /></button>
                         </li>
                         <li>
-                            <button className='flex cus-btn py-2'>
+                            <button onClick={()=>router.push('/cart')} className='flex cus-btn py-2'>
                                 <AiOutlineShoppingCart className='text-2xl'/>
                                 <div className='bg-white mx-2 px-2 rounded-full text-blue-600'>0</div> My Cart
                             </button>

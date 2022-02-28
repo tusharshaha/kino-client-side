@@ -3,6 +3,7 @@ import Descriptions from './Descriptions';
 import offerImg from '../../public/shortProduct/cat-1.png';
 import Image from 'next/image';
 import styles from '../../styles/ProductDetails/ProductDetails.module.css';
+import ProductReview from './ProductReview';
 
 const DRContainer = () => {
     const [section, setSection] = useState('d');
@@ -18,7 +19,12 @@ const DRContainer = () => {
                     </li>
                 </ul>
 
-                <Descriptions></Descriptions>
+                {
+                    section === 'd' ?
+                        <Descriptions></Descriptions>
+                        :
+                        <ProductReview></ProductReview>
+                }
             </div>
 
             <div className={`${styles.offer}`}>
