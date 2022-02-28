@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
+import useProducts from '../../Hooks/useProducts';
 
-const ProductTop = ({ product, category }) => {
-    const [counter, setCounter] = useState(1)
+const ProductTop = ({ product, gallary }) => {
+    const [counter, setCounter] = useState(1);
+    const [src, setSrc] = useState(product.img);
     const handleDecrase = () => {
         if (counter <= 1) {
             return;
         }
         setCounter(prev => prev - 1)
     }
-    console.log(product)
     return (
-        <div className="flex flex-col md:flex-row gap-16">
+        <div className="flex flex-col lg:flex-row gap-16">
             <div>
-                <img src={product.img} className="h-[480px] w-[500px] sm:w-full" alt="Product Image" />
+                <img src={src} className="h-[390px] sm:h-[490px] w-[500px] sm:w-full" alt="Product Image" />
+                <div className='grid grid-cols-4 gap-2 mt-4'>
+                    {
+                        gallary.slice(0, 4).map((img, i) =>
+                            <img key={i} src={img} onClick={()=>setSrc(img)} className="w-[140px] cursor-pointer" alt='gallary image' />
+                        )
+                    }
+                </div>
             </div>
 
             <div className='grow'>
@@ -33,7 +41,7 @@ const ProductTop = ({ product, category }) => {
                         <span>{counter}</span>
                         <button onClick={() => setCounter(prev => prev + 1)} className='counter-btn'>+</button>
                     </div>
-                    <button className="bg-red-500 text-white uppercase font-bold py-4 px-8 rounded-full">Add To Cart +</button>
+                    <button className="bg-red-500 text-white uppercase font-bold py-4 px-8 rounded-full transition duration-300 hover:bg-red-600">Add To Cart +</button>
                 </div>
                 <p className='text-slate-400'><span className='font-bold text-black text-[18px]'>SKU:</span> {product.sku}</p>
                 <p className='my-4 text-slate-400'>Category: {product.categories}</p>

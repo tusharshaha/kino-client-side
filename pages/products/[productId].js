@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import DRContainer from "../../Components/Product/DRContainer";
 import ProductTop from "../../Components/Product/ProductTop";
+import RelatedProduct from "../../Components/Product/RelatedProduct";
+import useProducts from "../../Hooks/useProducts";
 
 export default function ProductDetails({ product }) {
-    const productCat = product.categories.split(', ');
+    const category = product.categories.split(', ');
+    const { products } = useProducts();
+    const catFilter = products?.filter(p => p.categories.includes(category[2] || category[0]));
+    const gallary = catFilter.map(p => p.img);
     return (
         <div className="cus-container my-32">
-            <ProductTop product={product} category={productCat}></ProductTop>
+            <ProductTop product={product} gallary={gallary}></ProductTop>
             <DRContainer></DRContainer>
+            <RelatedProduct></RelatedProduct>
         </div>
     )
 }
