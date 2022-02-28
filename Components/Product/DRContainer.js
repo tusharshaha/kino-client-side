@@ -9,7 +9,7 @@ const DRContainer = () => {
     return (
         <div className='flex flex-col lg:flex-row mt-24 gap-8'>
             <div className='grow'>
-                <ul className='flex text-2xl flex-wrap gap-12 items-center mb-12 pb-4 border-b-2 border-slate-400'>
+                <ul className='flex text-2xl flex-wrap gap-12 items-center mb-12 pb-4 border-b-2 border-slate-300'>
                     <li>
                         <button onClick={() => setSection('d')} className={`${section === 'd' && styles.selected} font-bold`}>Descripton</button>
                     </li>

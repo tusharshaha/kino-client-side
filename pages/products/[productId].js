@@ -13,7 +13,7 @@ export default function ProductDetails({ product }) {
         <div className="cus-container my-32">
             <ProductTop product={product} gallary={gallary}></ProductTop>
             <DRContainer></DRContainer>
-            <RelatedProduct></RelatedProduct>
+            <RelatedProduct related={catFilter}></RelatedProduct>
         </div>
     )
 }

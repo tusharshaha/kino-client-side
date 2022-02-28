@@ -13,7 +13,7 @@ const FeatureProduct = (props) => {
 
     return (
         <div className='cus-container my-20'>
-            <div className='flex justify-between items-end border-b-2 border-slate-400 pb-3 mb-12'>
+            <div className='flex justify-between items-end border-b-2 border-slate-300 pb-3 mb-12'>
                 <div className='hidden sm:block'>
                     <h3 className='text-slate-700'>Featured Products</h3>
                     <p className='text-slate-500'>Sed ut perspiciatis unde omnis iste natus error</p>
