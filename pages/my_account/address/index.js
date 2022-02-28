@@ -12,7 +12,7 @@ const Address = () => {
                 <title>Kino | Address</title>
             </Head>
             <main>
-                <TopBanner></TopBanner>
+                <TopBanner name="My Account" route="My Account"/>
                 <div className='cus-container'>
                     <UserLayout>
                         <p className='text-slate-400'>The following addresses will be used on the checkout page by default.</p>
