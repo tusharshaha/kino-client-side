@@ -2,7 +2,9 @@ import Image from 'next/image';
 import React from 'react';
 import bannerImg from '/public/slider-hero-img.png'
 import styles from '../../styles/Home/TopBanner.module.css'
+import { useRouter } from 'next/router';
 const TopBanner = () => {
+    const router = useRouter();
     return (
         <div className={styles.top_banner}>
             <div className='cus-container grid grid-cols-1 md:grid-cols-2 gap-6'>
@@ -13,7 +15,7 @@ const TopBanner = () => {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Est velit laboriosam obcaecati qui veritatis aut consequuntur. Culpa maiores autem necessitatibus?
                     </div>
                     <div className='mt-10 flex flex-wrap gap-4 sm:gap-0'>
-                        <button className='flex cus-btn py-4 px-8 mr-4 uppercase transition duration-300 hover:bg-red-500'>Shop Now <span className='ml-2'>+</span></button>
+                        <button onClick={()=>router.push('/products')} className='flex cus-btn py-4 px-8 mr-4 uppercase transition duration-300 hover:bg-red-500'>Shop Now <span className='ml-2'>+</span></button>
 
                         <button className={`${styles.btn_after} uppercase transition duration-300 hover:text-sky-500`}>Hot Collection<span className='ml-2'>+</span></button>
                     </div>

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import styles from '../../styles/Home/ShortCategory.module.css';
 const ShortCategory = () => {
@@ -8,6 +9,7 @@ const ShortCategory = () => {
         { id: 4, category: 'Lab Surgery', title: 'N95 Face Mask', bgImg: '/shortCategory/04-banner.png' },
         { id: 5, category: 'Surgery Lab', title: 'Hand Gloves', bgImg: '/shortCategory/05-banner.png' },
     ]
+    const router = useRouter();
     return (
         <div className='cus-container mt-6'>
             <div className='grid grid-rows-2 gap-6'>
@@ -21,7 +23,7 @@ const ShortCategory = () => {
                         }} key={cat.id}>
                             <h5 className='text-slate-500 mb-3'>{cat.category}</h5>
                             <h3>{cat.title}</h3>
-                            <button className={`uppercase transition duration-300 hover:text-sky-500 text-red-500 font-bold mt-5 ${styles.btn_after}`}>Shop Now <span className='ml-2'>+</span></button>
+                            <button onClick={()=>router.push('/products')} className={`uppercase transition duration-300 hover:text-sky-500 text-red-500 font-bold mt-5 ${styles.btn_after}`}>Shop Now <span className='ml-2'>+</span></button>
                         </div>)
                     }
                 </div>
@@ -35,7 +37,7 @@ const ShortCategory = () => {
                         }} key={cat.id}>
                             <h5 className='text-slate-500 mb-3'>{cat.category}</h5>
                             <h3>{cat.title}</h3>
-                            <button className={`uppercase transition duration-300 hover:text-sky-500 text-red-500 font-bold mt-5 ${styles.btn_after}`}>Shop Now <span className='ml-2'>+</span></button>
+                            <button onClick={()=>router.push('/products')} className={`uppercase transition duration-300 hover:text-sky-500 text-red-500 font-bold mt-5 ${styles.btn_after}`}>Shop Now <span className='ml-2'>+</span></button>
                         </div>)
                     }
                 </div>
