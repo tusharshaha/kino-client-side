@@ -6,8 +6,9 @@ import { useRouter } from 'next/router';
 import useAuth from '../../Hooks/useAuth';
 import axios from 'axios';
 import { BaseUrl } from '../../Service/BaseUrl';
+import Review from './Review';
 
-const ProductReview = ({productRev}) => {
+const ProductReview = ({ productRev }) => {
     const [rating, setRating] = useState(null);
     const [review, setReview] = useState('');
     const [loading, setLoading] = useState(false);
@@ -72,9 +73,22 @@ const ProductReview = ({productRev}) => {
     }
     return (
         <div>
-            <h5 className='font-medium'>Reviews</h5>
-            <p className='text-slate-400 my-4'>There are no review yet</p>
-            <p className='font-bold text-[17px] border-b-2 border-slate-400 pb-3'>Be the first to review “Hand Sanitizer Covid -19”</p>
+            {!productRev.length ?
+                <>
+                    <h5 className='font-medium'>Reviews</h5>
+                    <p className='text-slate-400 my-4'>There are no review yet</p>
+                    <p className='font-bold text-[17px] border-b-2 border-slate-400 pb-3'>Be the first to review “Hand Sanitizer Covid -19”</p>
+                </>
+                :
+                <>
+                    <div className='flex flex-col mb-12 gap-8'>
+                        {
+                            productRev.map(r => <Review key={r._id} review={r} />)
+                        }
+                    </div>
+                    <p className='font-bold text-[18px] border-b-2 border-slate-400 pb-3'>Add a review</p>
+                </>
+            }
             <p className='after:content-["*"] after:text-red-500 after:ml-1 mt-8'>Your Rating</p>
             <div className='flex items-center gap-2'>
                 <ReactStars
