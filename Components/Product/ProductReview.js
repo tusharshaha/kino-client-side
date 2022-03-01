@@ -2,19 +2,67 @@ import React, { useState } from 'react';
 import ReactStars from "react-rating-stars-component";
 import { FaRegStar, FaStarHalfAlt, FaStar } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import { useRouter } from 'next/router';
+import useAuth from '../../Hooks/useAuth';
+import axios from 'axios';
+import { BaseUrl } from '../../Service/BaseUrl';
 
 const ProductReview = () => {
     const [rating, setRating] = useState(null);
     const [review, setReview] = useState('');
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
+    const { user } = useAuth();
+    const date = new Date().getDate();
+    const month = new Date().toLocaleDateString("default", { month: 'long' });
+    const year = new Date().getFullYear()
+    const revDate = `${month} ${date}, ${year}`
+
+    // getting product id
+    const productId = router.query.productId;
+    // cofiguring review body
+    const revBody = {
+        email: user.email,
+        name: user.displayName,
+        userImg: user.photoURL || '',
+        productId,
+        rating,
+        review,
+        revDate
+    }
     const ratingChanged = (newRating) => {
         setRating(newRating);
     }
-    const handleSubmitReview = () => {
+    const handleSubmitReview = async () => {
         if (!rating || !review) {
             return Swal.fire({
                 icon: "warning",
                 title: "Give a Review First!"
             })
+        }
+        if (user.email) {
+            setLoading(true);
+            const res = await axios.post(`${BaseUrl}/review`, revBody);
+            const data = await res.data;
+            if (data.acknowledged) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Review Send Successfully!",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                setRating(null);
+                setReview('');
+                setLoading(false);
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Something Went Wrong! Try Again",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                setLoading(false);
+            }
         }
     }
     return (
@@ -38,8 +86,10 @@ const ProductReview = () => {
                 {rating && <span className='font-bold text-slate-400'>({rating})</span>}
             </div>
             <p className='after:content-["*"] after:text-red-500 after:ml-1 mt-4 mb-2'>Your Review</p>
-            <textarea onChange={(e) => setReview(e.target.value)} className='input text-[17px]' cols="620" rows="8"></textarea>
+            <textarea onChange={(e) => setReview(e.target.value)} value={review} className='input text-[17px]' cols="620" rows="8"></textarea>
             <button onClick={handleSubmitReview} className='acc-btn rounded-full mt-8 uppercase'>Submit</button>
+
+            {loading && <h4 className='mt-4 text-center text-blue-400 animate-pulse'>Loading...</h4>}
         </div>
     );
 };
