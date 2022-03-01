@@ -7,7 +7,7 @@ import useAuth from '../../Hooks/useAuth';
 import axios from 'axios';
 import { BaseUrl } from '../../Service/BaseUrl';
 
-const ProductReview = () => {
+const ProductReview = ({productRev}) => {
     const [rating, setRating] = useState(null);
     const [review, setReview] = useState('');
     const [loading, setLoading] = useState(false);

@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
-import useProducts from '../../Hooks/useProducts';
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaRegStar, FaStarHalfAlt, FaStar } from 'react-icons/fa';
+import ReactStars from "react-rating-stars-component";
 
-const ProductTop = ({ product, gallary }) => {
+const ProductTop = ({ product, gallary, productRev }) => {
     const [counter, setCounter] = useState(1);
     const [src, setSrc] = useState(product.img);
+    const totalReview = productRev?.length;
+    const totalRating = productRev.reduce((prev, curr) => prev + curr.rating, 0);
+    const countAvg = parseFloat(totalRating / totalReview).toFixed(1);
+    const avgRating = parseFloat(countAvg);
+
     const handleDecrase = () => {
         if (counter <= 1) {
             return;
@@ -18,7 +23,7 @@ const ProductTop = ({ product, gallary }) => {
                 <div className='grid grid-cols-4 gap-2 mt-4'>
                     {
                         gallary.slice(0, 4).map((img, i) =>
-                            <img key={i} src={img} onClick={()=>setSrc(img)} className="w-[140px] cursor-pointer" alt='gallary image' />
+                            <img key={i} src={img} onClick={() => setSrc(img)} className="w-[140px] cursor-pointer" alt='gallary image' />
                         )
                     }
                 </div>
@@ -26,6 +31,23 @@ const ProductTop = ({ product, gallary }) => {
 
             <div className='grow'>
                 <h3 className='font-medium'>{product.name}</h3>
+                {productRev.length > 0 &&
+                    <div className='flex items-center mt-2 gap-2'>
+                        <ReactStars
+                            count={5}
+                            size={20}
+                            value={avgRating}
+                            emptyIcon={<FaRegStar />}
+                            halfIcon={<FaStarHalfAlt />}
+                            fullIcon={<FaStar />}
+                            activeColor="#ffd700"
+                            edit={false}
+                            isHalf={true}
+                            color="#bebcbc"
+                        />
+                        <span className='text-slate-400 font-bold'>({avgRating})</span>
+                    </div>
+                }
                 <div className='flex gap-2 text-red-500 mt-3 font-bold text-[18px] items-center'>
                     {product?.prevPrice && <p><strike>&#163;{product?.prevPrice}</strike></p>}
                     <p>&#163;{product?.curPrice}</p>

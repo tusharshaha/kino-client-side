@@ -5,7 +5,7 @@ import Image from 'next/image';
 import styles from '../../styles/ProductDetails/ProductDetails.module.css';
 import ProductReview from './ProductReview';
 
-const DRContainer = ({productRev}) => {
+const DRContainer = ({ productRev }) => {
     const [section, setSection] = useState('d');
     return (
         <div className='flex flex-col lg:flex-row mt-24 gap-8'>
@@ -23,7 +23,7 @@ const DRContainer = ({productRev}) => {
                     section === 'd' ?
                         <Descriptions></Descriptions>
                         :
-                        <ProductReview></ProductReview>
+                        <ProductReview productRev={productRev}></ProductReview>
                 }
             </div>
 
