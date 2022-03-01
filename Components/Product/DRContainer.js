@@ -15,7 +15,7 @@ const DRContainer = () => {
                         <button onClick={() => setSection('d')} className={`${section === 'd' && styles.selected} font-bold`}>Descripton</button>
                     </li>
                     <li>
-                        <button onClick={() => setSection('r')} className={`${section === 'r' && styles.selected} font-bold`}>Review</button>
+                        <button onClick={() => setSection('r')} className={`${section === 'r' && styles.selected} font-bold`}>Review (0)</button>
                     </li>
                 </ul>
 
@@ -28,8 +28,11 @@ const DRContainer = () => {
             </div>
 
             <div className={`${styles.offer}`}>
-                <div>
+                <div className='relative'>
                     <Image src={offerImg} height={300} width={300} alt="Pressure meter image" />
+                    <div className='discount'>
+                        <p>-20% <br /> OFF</p>
+                    </div>
                 </div>
                 <h5 className='font-medium mt-4'>Blood Pressure Meter</h5>
                 <p className='font-bold text-red-500 my-4'>&#163;250.99</p>

@@ -26,7 +26,7 @@
         @apply container px-6 mx-auto;
     }
     .go-top{
-        @apply text-left bg-sky-500 text-white text-3xl p-3 flex items-center justify-center rounded-full fixed bottom-20 right-10 z-10
+        @apply text-left bg-sky-500 text-white text-3xl p-3 flex items-center justify-center rounded-full fixed bottom-20 right-10 z-10;
     }
     .cus-btn{
        @apply items-center py-1 px-3 bg-sky-500 text-white font-bold rounded-full;
@@ -34,20 +34,23 @@
     .counter-btn{
         @apply rounded-full h-[40px] w-[40px] bg-white transition duration-300 hover:bg-red-500 hover:text-white;
     }
+    .discount{
+        @apply bg-red-500 text-white text-[16px] absolute top-0 right-0 font-bold rounded-full w-[60px] h-[60px] flex items-center justify-center;
+    }
     .acc-btn{
-        @apply py-3 px-6 font-bold bg-sky-500 text-white rounded-md focus:bg-red-500 transition duration-300 hover:bg-red-500
+        @apply py-3 px-6 font-bold bg-sky-500 text-white rounded-md focus:bg-red-500 transition duration-300 hover:bg-red-500;
     }
     .addr-btn{
-        @apply cus-btn transition duration-300 hover:bg-red-500 py-3 px-8 uppercase w-[210px]
+        @apply cus-btn transition duration-300 hover:bg-red-500 py-3 px-8 uppercase w-[210px];
     }
     .icon{
-        @apply text-slate-400 ring-1 ring-slate-400 rounded-full p-2.5 transition duration-300 hover:bg-sky-500 hover:text-white hover:ring-sky-500
+        @apply text-slate-400 ring-1 ring-slate-400 rounded-full p-2.5 transition duration-300 hover:bg-sky-500 hover:text-white hover:ring-sky-500;
     }
     .icon2{
-        @apply text-slate-500 outline outline-1 rounded-full p-3
+        @apply text-slate-500 outline outline-1 rounded-full p-3;
     }
     .input{
-        @apply px-4 py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full sm:text-sm focus:ring-1
+        @apply px-4 py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full sm:text-sm focus:ring-1;
     }
 }
 @layer utilities{

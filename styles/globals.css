@@ -60,7 +60,6 @@ a {
   z-index: 2;
 }
 
-
 /* Removing the default appearance */
 .thumb,
 .thumb::-webkit-slider-thumb {

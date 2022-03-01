@@ -5,6 +5,7 @@
     flex-direction: column;
     padding: 30px;
     width: 1800px;
+    height: 480px;
     background-image: -webkit-linear-gradient(-48deg, rgba(78, 151, 253, 0.12157) 0%, rgba(126, 130, 191, 0.11) 32%, rgba(228, 87, 61, 0.1) 99%);
 }
 .selected{
@@ -23,5 +24,6 @@
 @media only screen and (max-width: 1030px){
     .offer{
         width: 100%;
+        height: 100%;
     }
 }
