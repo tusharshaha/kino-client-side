@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { BaseUrl } from '../Service/BaseUrl';
 
 const useProducts = () => {
     const [products, setProducts] = useState([]);
     useEffect(()=>{
         (async ()=>{
-            const res = await fetch('https://desolate-brushlands-14140.herokuapp.com/products');
-            const data = await res.json();
-            setProducts(data);
+            const res = await axios.get(`${BaseUrl}/products`);
+            setProducts(res.data);
         })()
     },[])
     return { products }
