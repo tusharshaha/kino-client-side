@@ -5,7 +5,7 @@ import Image from 'next/image';
 import styles from '../../styles/ProductDetails/ProductDetails.module.css';
 import ProductReview from './ProductReview';
 
-const DRContainer = () => {
+const DRContainer = ({productRev}) => {
     const [section, setSection] = useState('d');
     return (
         <div className='flex flex-col lg:flex-row mt-24 gap-8'>
@@ -15,7 +15,7 @@ const DRContainer = () => {
                         <button onClick={() => setSection('d')} className={`${section === 'd' && styles.selected} font-bold`}>Descripton</button>
                     </li>
                     <li>
-                        <button onClick={() => setSection('r')} className={`${section === 'r' && styles.selected} font-bold`}>Review (0)</button>
+                        <button onClick={() => setSection('r')} className={`${section === 'r' && styles.selected} font-bold`}>Review ({productRev.length})</button>
                     </li>
                 </ul>
 
