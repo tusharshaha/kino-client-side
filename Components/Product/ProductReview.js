@@ -7,11 +7,13 @@ import useAuth from '../../Hooks/useAuth';
 import axios from 'axios';
 import { BaseUrl } from '../../Service/BaseUrl';
 import Review from './Review';
+import useReviews from '../../Hooks/useReviews';
 
 const ProductReview = ({ productRev }) => {
     const [rating, setRating] = useState(null);
     const [review, setReview] = useState('');
     const [loading, setLoading] = useState(false);
+    const { setChange } = useReviews();
     const router = useRouter();
     const { user } = useAuth();
     const date = new Date().getDate();
@@ -55,6 +57,7 @@ const ProductReview = ({ productRev }) => {
                 setRating(null);
                 setReview('');
                 setLoading(false);
+                setChange(prev => !prev);
             } else {
                 Swal.fire({
                     icon: "error",

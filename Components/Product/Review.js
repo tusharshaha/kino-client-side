@@ -7,9 +7,9 @@ const Review = ({ review }) => {
     return (
         <div className='flex gap-3'>
             <div className='rounded-full w-[45px] h-[50px] overflow-hidden'>
-                <Image src="/user.png" height={55} width={55} alt="User Image" />
+                <Image src="/user.png" height={200} width={200} alt="User Image" />
             </div>
-            <div>
+            <div className='w-[200px] grow'>
                 <ReactStars
                     count={5}
                     value={review.rating}
