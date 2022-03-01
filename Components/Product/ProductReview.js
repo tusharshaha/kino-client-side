@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
 import ReactStars from "react-rating-stars-component";
 import { FaRegStar, FaStarHalfAlt, FaStar } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const ProductReview = () => {
     const [rating, setRating] = useState(null);
+    const [review, setReview] = useState('');
     const ratingChanged = (newRating) => {
         setRating(newRating);
+    }
+    const handleSubmitReview = () => {
+        if (!rating || !review) {
+            return Swal.fire({
+                icon: "warning",
+                title: "Give a Review First!"
+            })
+        }
     }
     return (
         <div>
@@ -28,8 +38,8 @@ const ProductReview = () => {
                 {rating && <span className='font-bold text-slate-400'>({rating})</span>}
             </div>
             <p className='after:content-["*"] after:text-red-500 after:ml-1 mt-4 mb-2'>Your Review</p>
-            <textarea className='input' cols="700" rows="8"></textarea>
-            <button className='acc-btn rounded-full mt-8 uppercase'>Submit</button>
+            <textarea onChange={(e) => setReview(e.target.value)} className='input text-[17px]' cols="620" rows="8"></textarea>
+            <button onClick={handleSubmitReview} className='acc-btn rounded-full mt-8 uppercase'>Submit</button>
         </div>
     );
 };
