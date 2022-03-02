@@ -40,6 +40,9 @@
     .acc-btn{
         @apply py-3 px-6 font-bold bg-sky-500 text-white rounded-md focus:bg-red-500 transition duration-300 hover:bg-red-500;
     }
+    .product-btn{
+        @apply cus-btn p-4 uppercase transition duration-300 hover:bg-red-500;
+    }
     .addr-btn{
         @apply cus-btn transition duration-300 hover:bg-red-500 py-3 px-8 uppercase w-[210px];
     }
