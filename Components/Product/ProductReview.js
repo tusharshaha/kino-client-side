@@ -12,6 +12,7 @@ const ProductReview = ({ productRev, setChange }) => {
     const [rating, setRating] = useState(null);
     const [review, setReview] = useState('');
     const [loading, setLoading] = useState(false);
+    const [view, setView] = useState(false);
     const router = useRouter();
     const { user } = useAuth();
     const date = new Date().getDate();
@@ -82,11 +83,19 @@ const ProductReview = ({ productRev, setChange }) => {
                 </>
                 :
                 <>
-                    <div className='flex flex-col mb-12 gap-8'>
-                        {
+                    <div className='flex flex-col mb-8 gap-8'>
+                        {view ?
                             productRev.map(r => <Review key={r._id} review={r} />)
+                            :
+                            productRev.slice(0, 4).map(r => <Review key={r._id} review={r} />)
                         }
                     </div>
+                    {productRev.length > 4 &&
+                        <button onClick={() => setView(!view)} className='font-bold text-red-500 mb-6'>
+                            {view ? "Show Less.." : "View More.."}
+                        </button>
+                    }
+
                     <p className='font-bold text-[18px] border-b-2 border-slate-400 pb-3'>Add a review</p>
                 </>
             }
