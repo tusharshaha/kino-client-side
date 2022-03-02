@@ -1,16 +1,23 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DRContainer from "../../Components/Product/DRContainer";
 import ProductTop from "../../Components/Product/ProductTop";
 import RelatedProduct from "../../Components/Product/RelatedProduct";
 import useProducts from "../../Hooks/useProducts";
-import useReviews from "../../Hooks/useReviews";
 import { BaseUrl } from "../../Service/BaseUrl";
 
 export default function ProductDetails({ product }) {
     const category = product.categories.split(', ');
     const { products } = useProducts();
-    const { reviews } = useReviews();
+    const [revChange, setRevChange] = useState(false);
+    const [reviews, setReviews] = useState([]);
+    useEffect(() => {
+        (async () => {
+            const res = await axios.get(`${BaseUrl}/review`);
+            const data = await res.data;
+            setReviews(data);
+        })()
+    }, [revChange])
     // filter for related product
     const catFilter = products?.filter(p => p.categories.includes(category[2] || category[0]));
     // filter for product review
@@ -25,8 +32,14 @@ export default function ProductDetails({ product }) {
                 gallary={gallary}
                 productRev={productRev}
             />
-            <DRContainer productRev={productRev}></DRContainer>
-            <RelatedProduct related={catFilter}></RelatedProduct>
+            <DRContainer
+                productRev={productRev}
+                setChange={setRevChange}
+            />
+            
+            <RelatedProduct
+                related={catFilter}
+            />
         </div>
     )
 }

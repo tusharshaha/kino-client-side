@@ -1,11 +1,18 @@
 // get stored prouduct
-const getCart = () => JSON.parse(localStorage.getItem("cart") || "[]");
+const getCart = () => JSON.parse(localStorage.getItem("cart"));
 // add product to store
-const addToCart = (product)=>{
+const addToCart = (product) => {
     const cart = getCart();
-    if(!cart){
+    if (!cart) {
         localStorage.setItem('cart', JSON.stringify(product));
-    }else{
-
+    } else {
+        if (cart[product]) {
+            cart[product] = 1;
+        } else {
+            cart[product] += 1;
+        }
     }
+}
+const removeFromCart = () => {
+
 }
