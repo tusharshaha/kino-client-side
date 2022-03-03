@@ -25,6 +25,7 @@ const Wishlist = () => {
             }
             setCartItem(storedCart);
         }
+        
     }, [update, change, products])
     const handleRemove = (id) => {
         removeStore("wishlist", id)
