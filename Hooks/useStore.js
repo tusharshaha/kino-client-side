@@ -26,7 +26,14 @@ const useStore = () => {
             }
         }
         updateStore("cart", orders);
+        Swal.fire({
+            icon: "success",
+            title: "Product Added to Cart.",
+            showConfirmButton: false,
+            timer: 1700
+        })
     }
+    // add product to wishlist
     const addToWishlist = (id, date) => {
         const products = getStore("wishlist");
         let orders = {}
@@ -45,8 +52,15 @@ const useStore = () => {
         }
         updateStore("wishlist", orders)
     }
-    const removeStore = (store = "cart", filter) => {
-        localStorage.setItem(store, JSON.stringify(filter));
+    // remove product from store
+    const removeStore = (store = "cart", id) => {
+        const products = getStore(store) || {};
+        if (products[id]) {
+            delete products[id]
+            updateStore("cart", products)
+            const cartLength = Object.keys(products).length;
+            setCartNum(cartLength)
+        }
     }
     // clear all from localstorage
     const clearStore = (store) => {

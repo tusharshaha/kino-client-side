@@ -9,7 +9,8 @@ import { IoClose } from "react-icons/io5";
 const Cart = () => {
     const [cartItem, setCartItem] = useState([]);
     const [update, setUpdate] = useState(false);
-    const { getStore } = useGStore();
+    const [change, setChange] = useState(false);
+    const { getStore, removeStore } = useGStore();
     const { products } = useProducts();
     const { user } = useAuth();
     // set the order document
@@ -21,6 +22,11 @@ const Cart = () => {
             status: "PENDING"
         }
     });
+    // remove cart product
+    const handleRemove = (id) => {
+        removeStore("cart", id)
+        setChange(!change)
+    }
     // get the cart product
     useEffect(() => {
         const cart = getStore("cart")
@@ -35,7 +41,7 @@ const Cart = () => {
             }
             setCartItem(storedCart);
         }
-    }, [update, products])
+    }, [update, change, products])
     // this is subtotal count
     const subTotalCount = cartItem.map(item => item.curPrice * item.qty);
     // get total subtotal
@@ -83,7 +89,7 @@ const Cart = () => {
                                             &#163;{item.curPrice * item.qty}
                                         </td>
                                         <td className='border py-2 px-8 border-slate-200'>
-                                            <button className='font-bold text-2xl'><IoClose /></button>
+                                            <button onClick={() => handleRemove(item._id)} className='font-bold text-2xl'><IoClose /></button>
                                         </td>
                                     </tr>)
                                 }
