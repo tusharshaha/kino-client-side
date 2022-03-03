@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
 import React from 'react';
-import { FiHeart, FiSearch } from 'react-icons/fi'
-import { MdAddShoppingCart } from 'react-icons/md'
+import { FiHeart, FiSearch } from 'react-icons/fi';
+import { MdAddShoppingCart } from 'react-icons/md';
 import useStore from '../../Hooks/useStore';
-import styles from '../../styles/Home/Product.module.css'
+import styles from '../../styles/Home/Product.module.css';
+
 const Product = ({ product, mode }) => {
     const router = useRouter();
     const showDiscount = () => {
@@ -13,8 +14,13 @@ const Product = ({ product, mode }) => {
         return parseInt(Math.ceil(calcDiscount));
     }
     const discount = String(showDiscount());
-    const { addToWishlit, addToCart, cartNum } = useStore();
-    console.log(cartNum)
+    // const { reducer } = Reducer();
+    const { addToWishlist, addToCart } = useStore();
+    const date = new Date().getDate();
+    const month = new Date().toLocaleDateString("default", { month: 'long' });
+    const year = new Date().getFullYear();
+    const wishlistDate = `${month} ${date}, ${year}`
+
     return (
         <div className={`${styles.shop_card} ${mode === 'show product' && styles.show} text-center`}>
             <div className='relative'>
@@ -27,11 +33,15 @@ const Product = ({ product, mode }) => {
                 <img src={product?.img} height='100%' width='100%' alt='product img' />
 
                 <div className={`${styles.shopping} flex gap-3 justify-center items-center`}>
-                    <button className='product-btn'><FiHeart /></button>
-
-                    <button onClick={()=>addToWishlit(product._id, 'sdf')} className='product-btn'><MdAddShoppingCart /></button>
-
-                    <button onClick={() => { router.push(`/products/${product._id}`) }} className='product-btn'><FiSearch /></button>
+                    <button onClick={() => addToWishlist(product._id, wishlistDate)} className='product-btn'>
+                        <FiHeart />
+                    </button>
+                    <button onClick={() => addToCart(product._id)} className='product-btn'>
+                        <MdAddShoppingCart />
+                    </button>
+                    <button onClick={() => { router.push(`/products/${product._id}`) }} className='product-btn'>
+                        <FiSearch />
+                    </button>
                 </div>
             </div>
             <div className='mt-6 font-bold pb-8'>
