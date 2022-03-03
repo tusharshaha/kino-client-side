@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import CalcCart from '../Components/Cart/CalcCart';
 import CartTable from '../Components/Cart/CartTable';
@@ -55,18 +56,22 @@ const Cart = () => {
             <main>
                 <TopBanner name="Cart" route="Cart" />
                 <div className='cus-container'>
-                    <div className='overflow-auto'>
-                        <CartTable
-                            cartItem={cartItem}
-                            handleRemove={handleRemove}
-                            update={update}
-                        />
-                        <h5 className='mt-12 mb-6 font-medium'>Cart Totals</h5>
-                        <CalcCart
-                            subTotal={subTotal}
-                        />
-                        <button className='addr-btn py-4 mt-6 w-[300px]'>Proceed To Checkout</button>
-                    </div>
+                    {cartItem.length > 0 ?
+                        <div className='overflow-auto'>
+                            <CartTable
+                                cartItem={cartItem}
+                                handleRemove={handleRemove}
+                                update={update}
+                            />
+                            <h5 className='mt-12 mb-6 font-medium'>Cart Totals</h5>
+                            <CalcCart
+                                subTotal={subTotal}
+                            />
+                            <button className='addr-btn py-4 mt-6 w-[300px]'>Proceed To Checkout</button>
+                        </div>
+                        :
+                        <p className='text-slate-400'>You have no product in cart. <Link href='/products'><a className="text-red-500">Browse Products</a></Link>.</p>
+                    }
                 </div>
             </main>
         </>

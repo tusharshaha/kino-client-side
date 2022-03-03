@@ -21,7 +21,7 @@ const useStore = () => {
         const products = getStore("cart");
         let orders = {}
         if (!products) {
-            orders[id] = qty || 1
+            orders[id] = qty || 1;
         } else {
             orders = products;
             if (orders[id]) {
@@ -57,13 +57,19 @@ const useStore = () => {
             }
         }
         updateStore("wishlist", orders)
+        Swal.fire({
+            icon: "success",
+            title: "Product Added to Wishlist",
+            showConfirmButton: false,
+            timer: 1700
+        })
     }
     // remove product from store
     const removeStore = (store = "cart", id) => {
         const products = getStore(store) || {};
         if (products[id]) {
             delete products[id]
-            updateStore("cart", products)
+            updateStore(store, products)
         }
     }
     // clear all from localstorage
