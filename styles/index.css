@@ -46,6 +46,12 @@
     .addr-btn{
         @apply cus-btn transition duration-300 hover:bg-red-500 py-3 px-8 uppercase w-[210px];
     }
+    .cart-table{
+        @apply text-slate-400 table-auto w-full border-collapse border border-slate-200;
+    }
+    .disabled-btn{
+        @apply cus-btn bg-sky-300 transition py-3 px-8 duration-300 hover:bg-red-400 uppercase w-[210px];
+    }
     .icon{
         @apply text-slate-400 ring-1 ring-slate-400 rounded-full p-2.5 transition duration-300 hover:bg-sky-500 hover:text-white hover:ring-sky-500;
     }

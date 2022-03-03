@@ -17,7 +17,8 @@ const Cart = () => {
         return {
             productId: item._id,
             qty: item.qty,
-            user: user.email
+            user: user.email,
+            status: "PENDING"
         }
     });
     // get the cart product
@@ -35,7 +36,10 @@ const Cart = () => {
             setCartItem(storedCart);
         }
     }, [update, products])
-    console.log(cartItem)
+    // this is subtotal count
+    const subTotalCount = cartItem.map(item => item.curPrice * item.qty);
+    // get total subtotal
+    const subTotal = subTotalCount.reduce((prevPrice, curPrice) => prevPrice + curPrice, 0);
     return (
         <>
             <Head>
@@ -45,7 +49,7 @@ const Cart = () => {
                 <TopBanner name="Cart" route="Cart" />
                 <div className='cus-container'>
                     <div className='overflow-auto'>
-                        <table className='text-slate-400 table-auto w-full border-collapse text-center border border-slate-200'>
+                        <table className='cart-table text-center'>
                             <thead>
                                 <tr>
                                     <th className='border py-2 px-6 border-slate-200'></th>
@@ -83,11 +87,37 @@ const Cart = () => {
                                         </td>
                                     </tr>)
                                 }
+
                                 <tr>
-                                    <td colSpan={6} className='border py-2 px-4 border-slate-200'>f</td>
+                                    <td colSpan={6}>
+                                        <div style={{ justifyContent: 'space-between' }} className='flex items-center py-4 px-2 '>
+                                            <div className='flex gap-2'>
+                                                <input type="text" className="input" placeholder='Cupon Code' />
+                                                <button className='addr-btn w-full'>Apply Cupon</button>
+                                            </div>
+                                            <div>
+                                                <button className={`${update ? "addr-btn" : "disabled-btn"}`} disabled>Update</button>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
+
+                        <h5 className='mt-12 mb-6 font-medium'>Cart Totals</h5>
+                        <table className='cart-table text-[17px] text-left'>
+                            <tbody>
+                                <tr>
+                                    <th className='border py-2 px-4 border-slate-200'>SubTotal</th>
+                                    <td className='border py-2 px-4 border-slate-200'>&#163;{subTotal}</td>
+                                </tr>
+                                <tr>
+                                    <th className='border py-2 px-4 border-slate-200'>Total</th>
+                                    <th className='border py-2 px-4 border-slate-200'>&#163;{subTotal}</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button className='addr-btn py-4 mt-6 w-[300px]'>Proceed To Checkout</button>
                     </div>
                 </div>
             </main>
