@@ -75,6 +75,10 @@ const useStore = () => {
     // clear all from localstorage
     const clearStore = (store) => {
         localStorage.removeItem(store);
+        if (store === "cart") {
+            const cartLength = Object.keys(products).length;
+            setCartNum(cartLength)
+        }
     }
 
     return { getStore, addToCart, addToWishlist, removeStore, clearStore, cartNum, setCartNum }
