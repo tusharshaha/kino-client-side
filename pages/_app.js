@@ -4,6 +4,7 @@ import '../styles/globals.css'
 import Layout from '../Components/Layout/Layout'
 import AuthProvider from '../Context/AuthProvider'
 import Loader from '../Shared/Loader'
+import StoreProvider from '../Context/StorePriovider'
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(true);
@@ -16,9 +17,11 @@ function MyApp({ Component, pageProps }) {
     <Loader />
     :
     <AuthProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <StoreProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </StoreProvider>
     </AuthProvider>
 }
 
