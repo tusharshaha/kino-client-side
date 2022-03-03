@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaRegStar, FaStarHalfAlt, FaStar } from 'react-icons/fa';
 import ReactStars from "react-rating-stars-component";
+import useGStore from '../../Hooks/useGStore';
 
 const ProductTop = ({ product, gallary, productRev }) => {
-    const [counter, setCounter] = useState(1);
+    const [qty, setQty] = useState(1);
     const [src, setSrc] = useState(product.img);
+    const { addToCart } = useGStore();
     const totalReview = productRev?.length;
     const totalRating = productRev.reduce((prev, curr) => prev + curr.rating, 0);
     const countAvg = parseFloat(totalRating / totalReview).toFixed(1);
     const avgRating = parseFloat(countAvg);
 
     const handleDecrase = () => {
-        if (counter <= 1) {
+        if (qty <= 1) {
             return;
         }
-        setCounter(prev => prev - 1)
+        setQty(prev => prev - 1)
     }
     return (
         <div className="flex flex-col lg:flex-row gap-16">
@@ -60,10 +62,10 @@ const ProductTop = ({ product, gallary, productRev }) => {
                 <div className='flex items-center flex-wrap gap-4 mb-8'>
                     <div className='bg-red-100 text-slate-500 flex items-center gap-6 p-2 rounded-full'>
                         <button onClick={handleDecrase} className='counter-btn'>-</button>
-                        <span>{counter}</span>
-                        <button onClick={() => setCounter(prev => prev + 1)} className='counter-btn'>+</button>
+                        <span>{qty}</span>
+                        <button onClick={() => setQty(prev => prev + 1)} className='counter-btn'>+</button>
                     </div>
-                    <button className="bg-red-500 text-white uppercase font-bold py-4 px-8 rounded-full transition duration-300 hover:bg-red-600">Add To Cart +</button>
+                    <button onClick={()=> addToCart(product._id, qty)} className="bg-red-500 text-white uppercase font-bold py-4 px-8 rounded-full transition duration-300 hover:bg-red-600">Add To Cart +</button>
                 </div>
                 <p className='text-slate-400'><span className='font-bold text-black text-[18px]'>SKU:</span> {product.sku}</p>
                 <p className='my-4 text-slate-400'>Category: {product.categories}</p>

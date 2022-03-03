@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { FiHeart, FiSearch } from 'react-icons/fi';
 import { MdAddShoppingCart } from 'react-icons/md';
-import useStore from '../../Hooks/useStore';
+import useGStore from '../../Hooks/useGStore';
 import styles from '../../styles/Home/Product.module.css';
 
 const Product = ({ product, mode }) => {
@@ -15,7 +15,7 @@ const Product = ({ product, mode }) => {
     }
     const discount = String(showDiscount());
     // const { reducer } = Reducer();
-    const { addToWishlist, addToCart } = useStore();
+    const { addToWishlist, addToCart } = useGStore();
     const date = new Date().getDate();
     const month = new Date().toLocaleDateString("default", { month: 'long' });
     const year = new Date().getFullYear();
@@ -36,7 +36,10 @@ const Product = ({ product, mode }) => {
                     <button onClick={() => addToWishlist(product._id, wishlistDate)} className='product-btn'>
                         <FiHeart />
                     </button>
-                    <button onClick={() => addToCart(product._id)} className='product-btn'>
+                    <button onClick={() =>{
+                        addToCart(product._id)}
+
+                        } className='product-btn'>
                         <MdAddShoppingCart />
                     </button>
                     <button onClick={() => { router.push(`/products/${product._id}`) }} className='product-btn'>
