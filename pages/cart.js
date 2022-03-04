@@ -11,8 +11,7 @@ import TopBanner from '../Shared/TopBanner';
 const Cart = () => {
     const [cartItem, setCartItem] = useState([]);
     const [update, setUpdate] = useState(false);
-    const [change, setChange] = useState(false);
-    const { getStore, removeStore } = useGStore();
+    const { getStore, removeStore, clearStore } = useGStore();
     const { products } = useProducts();
     const { user } = useAuth();
     // set the order document
@@ -27,7 +26,12 @@ const Cart = () => {
     // remove cart product
     const handleRemove = (id) => {
         removeStore("cart", id)
-        setChange(!change)
+        setUpdate(!update)
+    }
+    // clear cart
+    const handleClearCart = ()=>{
+        clearStore("cart")
+        setUpdate(prev => !prev);
     }
     // get the cart product
     useEffect(() => {
@@ -43,7 +47,7 @@ const Cart = () => {
             }
             setCartItem(storedCart);
         }
-    }, [update, change, products])
+    }, [update, products])
     // this is subtotal count
     const subTotalCount = cartItem.map(item => item.curPrice * item.qty);
     // get total subtotal
@@ -61,7 +65,8 @@ const Cart = () => {
                             <CartTable
                                 cartItem={cartItem}
                                 handleRemove={handleRemove}
-                                update={update}
+                                setUpdate={setUpdate}
+                                handleClearCart={handleClearCart}
                             />
                             <h5 className='mt-12 mb-6 font-medium'>Cart Totals</h5>
                             <CalcCart

@@ -1,8 +1,23 @@
 import React, { useState } from 'react';
 import { IoClose } from "react-icons/io5";
+import useGStore from '../../Hooks/useGStore';
 
-const CartTable = ({cartItem, handleRemove, update}) => {
+const CartTable = ({ cartItem, handleRemove, setUpdate, handleClearCart }) => {
     const [cupon, setCupon] = useState('');
+    const { addToCart } = useGStore();
+    const handleIncrase = (id, qty) => {
+        const updatedQty = qty + 1;
+        addToCart(id, updatedQty);
+        setUpdate(prev => !prev);
+    }
+    const handleDecrase = (id, qty) => {
+        const updatedQty = qty - 1;
+        if (updatedQty <= 0) {
+            return;
+        }
+        addToCart(id, updatedQty);
+        setUpdate(prev => !prev);
+    }
     return (
         <table className='cart-table text-center'>
             <thead>
@@ -29,9 +44,9 @@ const CartTable = ({cartItem, handleRemove, update}) => {
                         </td>
                         <td className='border py-2 px-8 border-slate-200'>
                             <div className='bg-red-100 text-slate-500 flex justify-around items-center gap-4 p-2 rounded-full'>
-                                <button className='counter-btn'>-</button>
+                                <button onClick={() => handleDecrase(item._id, item.qty)} className='counter-btn'>-</button>
                                 <span>{item.qty}</span>
-                                <button className='counter-btn'>+</button>
+                                <button onClick={() => handleIncrase(item._id, item.qty)} className='counter-btn'>+</button>
                             </div>
                         </td>
                         <td className='border py-2 px-8 border-slate-200'>
@@ -51,7 +66,7 @@ const CartTable = ({cartItem, handleRemove, update}) => {
                                 <button className='addr-btn w-full'>Apply Cupon</button>
                             </div>
                             <div>
-                                <button className={`${update ? "addr-btn" : "disabled-btn"}`} disabled>Update</button>
+                                <button onClick={handleClearCart} className="addr-btn">Clear</button>
                             </div>
                         </div>
                     </td>
