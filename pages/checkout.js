@@ -57,8 +57,23 @@ const Checkout = () => {
             <main>
                 <TopBanner route="Checkout" name="Checkout" />
                 <div className='cus-container'>
-                    <div className='grid grid-cols-2 gap-8'>
-                        <BillAdd></BillAdd>
+                    <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+                        <div>
+                            <BillAdd order="order"></BillAdd>
+                            <div className='mt-8'>
+                                <h5 className='font-medium border-b-2 pb-3 mb-4'>Additional information</h5>
+
+                                <label className='flex flex-col gap-2'>
+                                    <span className="cursor-pointer">Orders Notes (optional)</span>
+                                    <textarea
+                                        className='input'
+                                        cols="10"
+                                        rows="3"
+                                        placeholder='Notes about your order, e.g. special notes for delivery'
+                                    />
+                                </label>
+                            </div>
+                        </div>
                         {/* this is order detail section  */}
                         <YourOrder
                             subTotal={subTotal}

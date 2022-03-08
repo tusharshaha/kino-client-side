@@ -1,7 +1,7 @@
 import React from 'react';
 import useAuth from '../../Hooks/useAuth';
 
-const BillAdd = () => {
+const BillAdd = ({order}) => {
     const { user } = useAuth();
     return (
         <div>
@@ -50,7 +50,7 @@ const BillAdd = () => {
                     <span className="after:content-['*'] after:ml-1 after:text-red-500 cursor-pointer">Email Address</span>
                     <input className='input' type="email" defaultValue={user?.email} required />
                 </label>
-                <button className='addr-btn mt-6'>Save Address</button>
+                {!order && <button className='addr-btn mt-6'>Save Address</button>}
             </form>
         </div>
     );
