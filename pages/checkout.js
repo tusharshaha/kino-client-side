@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
 import BillAdd from '../Components/Address/BillAdd';
+import YourOrder from '../Components/Checkout/YourOrder';
 import useAuth from '../Hooks/useAuth';
 import useGStore from '../Hooks/useGStore';
 import useProducts from '../Hooks/useProducts';
@@ -47,7 +48,7 @@ const Checkout = () => {
     const subTotalCount = cartItem.map(item => item.curPrice * item.qty);
     // get total subtotal
     const subTotal = subTotalCount.reduce((prevPrice, curPrice) => prevPrice + curPrice, 0);
-    console.log(orders)
+
     return (
         <>
             <Head>
@@ -56,11 +57,13 @@ const Checkout = () => {
             <main>
                 <TopBanner route="Checkout" name="Checkout" />
                 <div className='cus-container'>
-                    <div className='grid grid-cols-2 gap-6'>
+                    <div className='grid grid-cols-2 gap-8'>
                         <BillAdd></BillAdd>
-                        <div>
-
-                        </div>
+                        {/* this is order detail section  */}
+                        <YourOrder
+                            subTotal={subTotal}
+                            cartItem={cartItem}
+                        />
                     </div>
                 </div>
             </main>

@@ -5,7 +5,7 @@ const BillAdd = () => {
     const { user } = useAuth();
     return (
         <div>
-            <h4 className='font-medium'>Bill Address</h4>
+            <h4 className='font-medium border-b-2 pb-3 '>Bill Address</h4>
             <form onSubmit={(e) => e.preventDefault()} className='grid grid-cols-1 mt-5 gap-4'>
                 <label className='flex flex-col gap-2'>
                     <span className="after:content-['*'] after:ml-1 after:text-red-500 cursor-pointer">First Name</span>
