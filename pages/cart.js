@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import CalcCart from '../Components/Cart/CalcCart';
 import CartTable from '../Components/Cart/CartTable';
-import useAuth from '../Hooks/useAuth';
 import useGStore from '../Hooks/useGStore';
 import useProducts from '../Hooks/useProducts';
 import TopBanner from '../Shared/TopBanner';
@@ -13,23 +13,14 @@ const Cart = () => {
     const [update, setUpdate] = useState(false);
     const { getStore, removeStore, clearStore } = useGStore();
     const { products } = useProducts();
-    const { user } = useAuth();
-    // set the order document
-    const orders = cartItem.map(item => {
-        return {
-            productId: item._id,
-            qty: item.qty,
-            user: user.email,
-            status: "PENDING"
-        }
-    });
+    const router = useRouter();
     // remove cart product
     const handleRemove = (id) => {
         removeStore("cart", id)
         setUpdate(!update)
     }
     // clear cart
-    const handleClearCart = ()=>{
+    const handleClearCart = () => {
         clearStore("cart")
         setUpdate(prev => !prev);
     }
@@ -72,7 +63,7 @@ const Cart = () => {
                             <CalcCart
                                 subTotal={subTotal}
                             />
-                            <button className='addr-btn py-4 mt-6 w-[300px]'>Proceed To Checkout</button>
+                            <button onClick={() => router.push("/checkout")} className='addr-btn py-4 mt-6 w-[300px]'>Proceed To Checkout</button>
                         </div>
                         :
                         <p className='text-slate-400'>You have no product in cart. <Link href='/products'><a className="text-red-500">Browse Products</a></Link>.</p>

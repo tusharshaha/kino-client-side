@@ -17,7 +17,7 @@ const useStore = () => {
         Object.keys(getStore("cart") || {}).length
     );
     // add product to cart
-    const addToCart = (id, qty) => {
+    const addToCart = (id, qty, update) => {
         const products = getStore("cart");
         let orders = {}
         if (!products) {
@@ -33,12 +33,14 @@ const useStore = () => {
             if (orders[id]) {
                 const newCount = qty || (orders[id] + 1);
                 orders[id] = newCount;
-                Swal.fire({
-                    icon: "success",
-                    title: "Updated Product Count.",
-                    showConfirmButton: false,
-                    timer: 1300
-                })
+                if (update !== "update") {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Updated Product Count.",
+                        showConfirmButton: false,
+                        timer: 1300
+                    })
+                }
             } else {
                 orders[id] = qty || 1;
                 Swal.fire({

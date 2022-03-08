@@ -35,8 +35,9 @@ export default function ProductDetails({ product }) {
             <DRContainer
                 productRev={productRev}
                 setChange={setRevChange}
+                product={product}
             />
-            
+
             <RelatedProduct
                 related={catFilter}
             />

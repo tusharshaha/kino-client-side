@@ -8,7 +8,7 @@ import axios from 'axios';
 import { BaseUrl } from '../../Service/BaseUrl';
 import Review from './Review';
 
-const ProductReview = ({ productRev, setChange }) => {
+const ProductReview = ({ productRev, setChange, product }) => {
     const [rating, setRating] = useState(null);
     const [review, setReview] = useState('');
     const [loading, setLoading] = useState(false);
@@ -79,7 +79,7 @@ const ProductReview = ({ productRev, setChange }) => {
                 <>
                     <h5 className='font-medium'>Reviews</h5>
                     <p className='text-slate-400 my-4'>There are no review yet</p>
-                    <p className='font-bold text-[17px] border-b-2 border-slate-400 pb-3'>Be the first to review “Hand Sanitizer Covid -19”</p>
+                    <p className='font-bold text-[17px] border-b-2 border-slate-400 pb-3'>Be the first to review “{product.name}”</p>
                 </>
                 :
                 <>

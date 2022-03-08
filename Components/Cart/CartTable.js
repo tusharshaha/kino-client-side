@@ -7,7 +7,7 @@ const CartTable = ({ cartItem, handleRemove, setUpdate, handleClearCart }) => {
     const { addToCart } = useGStore();
     const handleIncrase = (id, qty) => {
         const updatedQty = qty + 1;
-        addToCart(id, updatedQty);
+        addToCart(id, updatedQty, "update");
         setUpdate(prev => !prev);
     }
     const handleDecrase = (id, qty) => {
@@ -15,14 +15,14 @@ const CartTable = ({ cartItem, handleRemove, setUpdate, handleClearCart }) => {
         if (updatedQty <= 0) {
             return;
         }
-        addToCart(id, updatedQty);
+        addToCart(id, updatedQty, "update");
         setUpdate(prev => !prev);
     }
     return (
         <table className='cart-table text-center'>
             <thead>
                 <tr>
-                    <th className='border py-2 px-6 border-slate-200'></th>
+                    <th className='border py-2 px-6 border-slate-200'> </th>
                     <th className='border py-2 px-6 border-slate-200'>Product</th>
                     <th className='border py-2 px-6 border-slate-200'>Price</th>
                     <th className='border py-2 px-6 border-slate-200'>Quantity</th>
