@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-const YourOrder = ({ cartItem, subTotal }) => {
-    const [accordion, setAccordion] = useState('bank')
+const YourOrder = ({ cartItem, subTotal, submitOrder, accordion, setAccordion }) => {
     const active = "trasition duration-300 relative";
     return (
         <div className='p-6 border-2 h-[900px] border-sky-200'>
@@ -71,7 +70,7 @@ const YourOrder = ({ cartItem, subTotal }) => {
                 </div>
             </div>
             <p className='text-slate-400 mt-4'>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.</p>
-            <button type='submit' className='product-btn w-full mt-6'>Place Order</button>
+            <button onClick={submitOrder} className='product-btn w-full mt-6'>Place Order</button>
         </div>
     );
 };

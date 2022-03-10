@@ -1,17 +1,23 @@
+import axios from 'axios';
 import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 import BillAdd from '../Components/Address/BillAdd';
 import YourOrder from '../Components/Checkout/YourOrder';
 import useAuth from '../Hooks/useAuth';
 import useGStore from '../Hooks/useGStore';
 import useProducts from '../Hooks/useProducts';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import { BaseUrl } from '../Service/BaseUrl';
+import Loader from '../Shared/Loader';
 import TopBanner from '../Shared/TopBanner';
 
 const Checkout = () => {
     const { user } = useAuth();
     const [cartItem, setCartItem] = useState([]);
-    const [billInfo, setBillInfo] = useState({})
+    const [billInfo, setBillInfo] = useState({});
+    const [accordion, setAccordion] = useState('bank');
+    const [loading, setLoading] = useState(false);
     const { getStore } = useGStore();
     const { products } = useProducts();
     // get the cart product
@@ -42,7 +48,9 @@ const Checkout = () => {
             qty: item.qty,
             user: user.email,
             date: orderDate,
-            status: "Processing"
+            payment: accordion === "bank" ? "Direct Bank Transfer" : accordion === "check" ? "Check Payment" : "Cash on Delivery",
+            status: "Processing",
+            billInfo
         }
     });
     const handleBlur = (e) => {
@@ -50,7 +58,31 @@ const Checkout = () => {
         const value = e.target.value;
         const newBill = { ...billInfo };
         newBill[field] = value;
-        setBillInfo(newOrder);
+        newBill.email = newBill.email || user.email;
+        setBillInfo(newBill);
+    }
+    // submit user order
+    const handleSubmitOrder = () => {
+        if (!billInfo.FName || !billInfo.LName || !billInfo.country || !billInfo.street1 || !billInfo.street2 || !billInfo.phone || !billInfo.post_code || !billInfo.city) {
+            return Swal.fire({
+                icon: 'warning',
+                title: "Please Complete Required Field"
+            })
+        }
+        if (user.email) {
+            setLoading(true);
+            axios.post(`${BaseUrl}/order`, orders)
+                .then(res => {
+                    if (res.data.acknowledged) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Product Submitted Successfully",
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                }).finally(() => setLoading(false));
+        }
     }
     // this is subtotal count
     const subTotalCount = cartItem.map(item => item.curPrice * item.qty);
@@ -59,6 +91,7 @@ const Checkout = () => {
 
     return (
         <>
+            {loading && <Loader />}
             <Head>
                 <title>Kino | Checkout</title>
             </Head>
@@ -74,7 +107,9 @@ const Checkout = () => {
                                 <label className='flex flex-col gap-2'>
                                     <span className="cursor-pointer">Orders Notes (optional)</span>
                                     <textarea
+                                        onBlur={handleBlur}
                                         className='input'
+                                        name='orderN'
                                         cols="10"
                                         rows="3"
                                         placeholder='Notes about your order, e.g. special notes for delivery'
@@ -84,6 +119,9 @@ const Checkout = () => {
                         </div>
                         {/* this is order detail section  */}
                         <YourOrder
+                            submitOrder={handleSubmitOrder}
+                            accordion={accordion}
+                            setAccordion={setAccordion}
                             subTotal={subTotal}
                             cartItem={cartItem}
                         />
