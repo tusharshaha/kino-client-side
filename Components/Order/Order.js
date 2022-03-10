@@ -4,45 +4,47 @@ import React from 'react';
 const Order = ({ orders }) => {
     const router = useRouter();
     // this is subtotal count
-    const subTotalCount = orders.map(item => item.price * item.qty);
+    const itemContainer = orders.map(({ orders }) => orders);
+    const items = itemContainer[0]?.map(item => item.price * item.qty);
     // get total subtotal
-    const subTotal = subTotalCount.reduce((prevPrice, curPrice) => prevPrice + curPrice, 0);
+    const subTotal = items.reduce((prevPrice, curPrice) => prevPrice + curPrice, 0);
+
     return (
-        <div>
-            <h4 className='mb-6 font-medium'>Order Details</h4>
-            <table className='cart-table w-[800px] text-left text-slate-400 text-[18px]'>
+        <div className='overflow-auto'>
+            <table className='cart-table text-left text-slate-400 text-[18px]'>
                 <thead>
                     <tr>
-                        <th className='border py-2 px-6 border-slate-200'>Products</th>
-                        <th className='border py-2 px-6 border-slate-200'>Total</th>
+                        <th className='border p-2 border-slate-200'>Order Id</th>
+                        <th className='border p-2 border-slate-200'>Date</th>
+                        <th className='border p-2 border-slate-200'>Status</th>
+                        <th className='border p-2 border-slate-200'>Total</th>
+                        <th className='border p-2 border-slate-200'>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         orders.map(order => <tr key={order._id}>
-                            <td className='border py-2 px-6 border-slate-200'>
-                                <button onClick={() => router.push(`/products/${order.productId}`)} className='text-red-400'>
-                                    {order.pName}
+                            <td className='border w-[50px] p-2 border-slate-200'>
+                                <button onClick={() => router.push(`/my_account/view_order/${order._id}}`)} className='text-red-400'>
+                                    {order._id}
                                 </button>
-                                <span className='font-bold'> x {order.qty}</span>
                             </td>
-                            <td className='border py-2 px-6 border-slate-200'>
-                                &#163;{order.price * order.qty}.00
+                            <td className='border p-2 border-slate-200'>
+                                {order.date}
+                            </td>
+                            <td className='border p-2 border-slate-200'>
+                                {order.status}
+                            </td>
+                            <td className='border p-2 border-slate-200'>
+                                &#163;{subTotal}.00 for {items.length} items
+                            </td>
+                            <td className='border p-2 border-slate-200'>
+                                <button className='text-red-400'>
+                                    View
+                                </button>
                             </td>
                         </tr>)
                     }
-                    <tr>
-                        <th className='border py-2 px-6 border-slate-200'>Subtotal</th>
-                        <td className='border py-2 px-6 border-slate-200'>
-                            &#163;{subTotal}.00
-                        </td>
-                    </tr>
-                    <tr>
-                        <th className='border py-2 px-6 border-slate-200'>Payment Method</th>
-                        <td className='border py-2 px-6 border-slate-200'>
-                            &#163;{orders.payment}.00
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>

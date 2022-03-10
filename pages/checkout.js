@@ -44,19 +44,22 @@ const Checkout = () => {
     const year = new Date().getFullYear()
     const orderDate = `${month} ${date}, ${year}`
     // set the order document
-    const orders = cartItem.map(item => {
+    const items = cartItem.map(item => {
         return {
             productId: item._id,
             pName: item.name,
             price: item.curPrice,
             qty: item.qty,
-            user: user.email,
-            date: orderDate,
-            payment: accordion === "bank" ? "Direct Bank Transfer" : accordion === "check" ? "Check Payment" : "Cash on Delivery",
-            status: "Processing",
-            billInfo
         }
     });
+    const orders = {
+        userEmail: user.email,
+        date: orderDate,
+        payment: accordion === "bank" ? "Direct Bank Transfer" : accordion === "check" ? "Check Payment" : "Cash on Delivery",
+        status: "Processing",
+        orders: items,
+        billInfo
+    };
     const handleBlur = (e) => {
         const field = e.target.name;
         const value = e.target.value;
