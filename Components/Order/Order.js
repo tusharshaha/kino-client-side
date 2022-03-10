@@ -6,7 +6,7 @@ const Order = ({ orders }) => {
     // this is subtotal count
     const itemContainer = orders.map(({ orders }) => orders);
     const items = itemContainer[0]?.map(item => item.price * item.qty);
-    // get total subtotal
+    // get subtotal
     const subTotal = items.reduce((prevPrice, curPrice) => prevPrice + curPrice, 0);
 
     return (
@@ -25,7 +25,7 @@ const Order = ({ orders }) => {
                     {
                         orders.map(order => <tr key={order._id}>
                             <td className='border w-[50px] p-2 border-slate-200'>
-                                <button onClick={() => router.push(`/my_account/view_order/${order._id}}`)} className='text-red-400'>
+                                <button onClick={() => router.push(`/my_account/view_order/${order._id}`)} className='text-red-400'>
                                     {order._id}
                                 </button>
                             </td>
@@ -39,7 +39,7 @@ const Order = ({ orders }) => {
                                 &#163;{subTotal}.00 for {items.length} items
                             </td>
                             <td className='border p-2 border-slate-200'>
-                                <button className='text-red-400'>
+                                <button onClick={() => router.push(`/my_account/view_order/${order._id}`)} className='text-red-400'>
                                     View
                                 </button>
                             </td>
