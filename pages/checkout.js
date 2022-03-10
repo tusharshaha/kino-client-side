@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import BillAdd from '../Components/Address/BillAdd';
@@ -16,10 +17,12 @@ const Checkout = () => {
     const { user } = useAuth();
     const [cartItem, setCartItem] = useState([]);
     const [billInfo, setBillInfo] = useState({});
+    const [update, setUpdate] = useState(false);
     const [accordion, setAccordion] = useState('bank');
     const [loading, setLoading] = useState(false);
-    const { getStore } = useGStore();
+    const { getStore, clearStore } = useGStore();
     const { products } = useProducts();
+    const router = useRouter();
     // get the cart product
     useEffect(() => {
         const cart = getStore("cart")
@@ -34,7 +37,7 @@ const Checkout = () => {
             }
             setCartItem(storedCart);
         }
-    }, [products])
+    }, [products, update])
     // set order date
     const date = new Date().getDate();
     const month = new Date().toLocaleDateString("default", { month: 'long' });
@@ -45,6 +48,7 @@ const Checkout = () => {
         return {
             productId: item._id,
             pName: item.name,
+            price: item.curPrice,
             qty: item.qty,
             user: user.email,
             date: orderDate,
@@ -76,10 +80,13 @@ const Checkout = () => {
                     if (res.data.acknowledged) {
                         Swal.fire({
                             icon: "success",
-                            title: "Product Submitted Successfully",
+                            title: "Successfully Placed Your Order",
                             showConfirmButton: false,
-                            timer: 1500
-                        })
+                            timer: 2000
+                        });
+                        clearStore("cart");
+                        setUpdate(!update);
+                        router.push("/my_account/orders");
                     }
                 }).finally(() => setLoading(false));
         }
