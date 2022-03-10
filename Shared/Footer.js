@@ -71,7 +71,7 @@ const Footer = () => {
                 </div>
                 {/* footer bootom part  */}
                 <div className='py-5 text-center flex gap-4 flex-col flex-col-reverse text-slate-500 md:gap-0 md:flex-row justify-between'>
-                    <p className='flex flex-wrap mx-auto md:mx-0'>Copyright 2021.KlbTheme. All rights reserved.</p>
+                    <p className='flex flex-wrap mx-auto md:mx-0'>Copyright 2022. Kino. All rights reserved.</p>
                     <ul className={`${styles.menu}`}>
                         <li>
                             <Link href="/home"><a>Home</a></Link>

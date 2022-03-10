@@ -42,26 +42,28 @@ const Shop = () => {
                 />
 
                 {products.length !== 0 ?
-                    <div className='flex flex-col gap-12'>
+                    <div className='flex grow flex-col gap-12'>
                         <div className="grid grow grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {
                                 filteredProduct.slice(pagesVisited, pagesVisited + productPerPage).map(product =>
                                     <Product key={product._id} product={product} mode='show product' />)
                             }
                         </div>
-                        <ReactPaginate
-                            previousLabel={<GrFormPreviousLink />}
-                            nextLabel={<GrFormNextLink />}
-                            pageCount={pageCount}
-                            onPageChange={handlePageChange}
-                            containerClassName={"flex items-center gap-4"}
-                            pageClassName={"bg-slate-200 pagin-btn"}
-                            pageLinkClassName={"pagin-btn pagin-btn-hover"}
-                            previousLinkClassName={"bg-slate-200 pagin-btn pagin-btn-hover"}
-                            nextLinkClassName={"bg-slate-200 pagin-btn pagin-btn-hover"}
-                            disabledClassName={"hidden"}
-                            activeLinkClassName={"pagin-btn-hover text-white bg-sky-500"}
-                        />
+                        {filteredProduct.length > productPerPage &&
+                            <ReactPaginate
+                                previousLabel={<GrFormPreviousLink />}
+                                nextLabel={<GrFormNextLink />}
+                                pageCount={pageCount}
+                                onPageChange={handlePageChange}
+                                containerClassName={"flex items-center gap-4"}
+                                pageClassName={"bg-slate-200 pagin-btn"}
+                                pageLinkClassName={"pagin-btn pagin-btn-hover"}
+                                previousLinkClassName={"bg-slate-200 pagin-btn pagin-btn-hover"}
+                                nextLinkClassName={"bg-slate-200 pagin-btn pagin-btn-hover"}
+                                disabledClassName={"hidden"}
+                                activeLinkClassName={"pagin-btn-hover text-white bg-sky-500"}
+                            />
+                        }
                     </div>
                     :
                     <div className='grid grow grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>

@@ -11,6 +11,7 @@ import TopBanner from '../Shared/TopBanner';
 const Checkout = () => {
     const { user } = useAuth();
     const [cartItem, setCartItem] = useState([]);
+    const [billInfo, setBillInfo] = useState({})
     const { getStore } = useGStore();
     const { products } = useProducts();
     // get the cart product
@@ -44,6 +45,13 @@ const Checkout = () => {
             status: "Processing"
         }
     });
+    const handleBlur = (e) => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newBill = { ...billInfo };
+        newBill[field] = value;
+        setBillInfo(newOrder);
+    }
     // this is subtotal count
     const subTotalCount = cartItem.map(item => item.curPrice * item.qty);
     // get total subtotal
@@ -59,7 +67,7 @@ const Checkout = () => {
                 <div className='cus-container'>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
                         <div>
-                            <BillAdd order="order"></BillAdd>
+                            <BillAdd handleBlur={handleBlur} order="order" />
                             <div className='mt-8'>
                                 <h5 className='font-medium border-b-2 pb-3 mb-4'>Additional information</h5>
 
