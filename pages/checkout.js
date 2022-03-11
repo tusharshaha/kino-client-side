@@ -76,7 +76,7 @@ const Checkout = () => {
                 title: "Please Complete Required Field"
             })
         }
-        if (user.email) {
+        if (user.emailVerified) {
             setLoading(true);
             axios.post(`${BaseUrl}/order`, orders)
                 .then(res => {
@@ -92,6 +92,12 @@ const Checkout = () => {
                         router.push("/my_account/orders");
                     }
                 }).finally(() => setLoading(false));
+        } else {
+            return Swal.fire({
+                icon: "warning",
+                title: "Please Verify Your Email!",
+                text: "You can verify your email from your dashboard. In the dashboard you will found verify email option. Then click the button after verification you can checkout your order"
+            })
         }
     }
     // this is subtotal count

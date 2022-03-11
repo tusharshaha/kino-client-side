@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, sendEmailVerification } from "firebase/auth";
 import initializeFirebase from '../Firebase/firebase.init';
+import Swal from 'sweetalert2';
 
 initializeFirebase()
 
@@ -24,11 +25,11 @@ const useFirebase = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                const newUser = { email, displayName: name };
+                // const newUser = { email, displayName: name };
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then(() => {
-                    setUser(newUser);
+                    setUser(auth.currentUser);
                     setRegError('')
                 }).catch(err => {
                     setRegError(err.message);
@@ -36,12 +37,23 @@ const useFirebase = () => {
             }).catch(err => {
                 if (err.message.includes('email-already-in-use')) {
                     setRegError('The email already registered! Please login..')
-                }else if(err.message.includes('auth/weak-password')) {
+                } else if (err.message.includes('auth/weak-password')) {
                     setRegError('Set a strong password!')
                 } else {
                     setRegError(err.message)
                 }
             }).finally(() => setLoading(false));
+    }
+    // verify user email
+    const verifyUserEmail = () => {
+        sendEmailVerification(auth.currentUser)
+            .then(() => {
+                Swal.fire({
+                    icon: "info",
+                    title: "Verification Email Sent!",
+                    text: "A verfication email was sent to your email. Please check your email and verify your email address."
+                })
+            })
     }
     // login old user
     const login = (email, password, Swal) => {
@@ -81,9 +93,9 @@ const useFirebase = () => {
             }).catch(err => {
                 if (err.message.includes("auth/configuration-not-found")) {
                     setAuthError('Email not found! Please Register')
-                }else if(err.message.includes("auth/invalid-email")) {
+                } else if (err.message.includes("auth/invalid-email")) {
                     setAuthError('Write a valid email!')
-                }else {
+                } else {
                     setAuthError(err.message)
                 }
             }).finally(() => setLoading(false));
@@ -115,6 +127,7 @@ const useFirebase = () => {
         createUser,
         logOut,
         resetPassword,
+        verifyUserEmail,
         regError,
         loading,
         user,

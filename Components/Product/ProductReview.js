@@ -43,6 +43,13 @@ const ProductReview = ({ productRev, setChange, product }) => {
             })
         }
         if (user.email) {
+            if(!user.emailVerified){
+                return Swal.fire({
+                    icon: "warning",
+                    title: "Please Verify Your Email!",
+                    text: "You can verify your email from your dashboard. In the dashboard you will found verify email option. Then click the button after verification you can give a review"
+                })
+            }
             setLoading(true);
             const res = await axios.post(`${BaseUrl}/review`, revBody);
             const data = await res.data;
