@@ -1,6 +1,8 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 
 const OrderTable = ({ orders, subTotal, payment }) => {
+    const router = useRouter();
     return (
         <div className='overflow-auto'>
             <h4 className='font-medium my-4'>Order Details</h4>
@@ -15,7 +17,7 @@ const OrderTable = ({ orders, subTotal, payment }) => {
                     {
                         orders?.map((order, i) => <tr key={i}>
                             <td className='border p-2 border-slate-200'>
-                                <button className='text-red-400'>{order.pName}</button>
+                                <button onClick={()=>router.push(`/products/${order.productId}`)} className='text-red-400'>{order.pName}</button>
                                 <span className='font-bold ml-2'>x {order.qty}</span>
                             </td>
                             <td className='border p-2 border-slate-200'>
