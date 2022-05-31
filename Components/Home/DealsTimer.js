@@ -8,7 +8,7 @@ const DealsTimer = () => {
 
     let interval;
     const startTimer = () => {
-        const countDownDate = new Date("May 30, 2022").getTime();
+        const countDownDate = new Date("June 30, 2022").getTime();
         interval = setInterval(() => {
             const newDate = new Date().getTime();
             const distance = countDownDate - newDate;
@@ -28,6 +28,7 @@ const DealsTimer = () => {
     }
     useEffect(() => {
         startTimer()
+        // eslint-disable-next-line
     }, [])
     return (
         <div className='cus-container text-center border-t-2 border-slate-400 pt-16 pb-10'>

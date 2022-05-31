@@ -1,11 +1,25 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
 import { GoLocation } from 'react-icons/go'
-import {BiArrowToTop} from 'react-icons/bi'
-import {AiOutlinePhone, AiOutlineMail} from 'react-icons/ai'
+import { BiArrowToTop } from 'react-icons/bi'
+import { AiOutlinePhone, AiOutlineMail } from 'react-icons/ai'
 import styles from '../styles/Footer.module.css'
 const Footer = () => {
+    const [topClass, setTopClass] = useState('hidden')
+    const handleGoTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
+    // handle visibality for go to btn
+    const handleGoTopBtn = () => {
+        if (window.scrollY >= 500) {
+            setTopClass("");
+        } else { setTopClass("hidden") }
+    }
+    window.addEventListener('scroll', handleGoTopBtn);
     return (
         <footer>
             <div className='cus-container'>
@@ -60,14 +74,14 @@ const Footer = () => {
                                     <div className='icon2 mr-3'><AiOutlinePhone /></div>+ 888 456-7890
                                 </li>
                                 <li>
-                                    <div className='icon2 mr-3'><AiOutlineMail/></div>medibazar@klbtheme.com
+                                    <div className='icon2 mr-3'><AiOutlineMail /></div>medibazar@klbtheme.com
                                 </li>
                             </ul>
                         </div>
                     </div>
-                <a href='#top' className='go-top'>
-                    <BiArrowToTop/>
-                </a>
+                    <button onClick={handleGoTop} className={`${topClass} go-top`}>
+                        <BiArrowToTop />
+                    </button>
                 </div>
                 {/* footer bootom part  */}
                 <div className='py-5 text-center flex gap-4 flex-col flex-col-reverse text-slate-500 md:gap-0 md:flex-row justify-between'>

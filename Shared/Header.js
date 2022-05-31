@@ -20,7 +20,7 @@ const Header = () => {
     return (
         <>
             {/* this is navbar is user navbar */}
-            <nav id='top' className='py-3 px-2 flex-col gap-4 text-center sm:flex-row border-b-2 nav-container flex items-center justify-between'>
+            <nav className='py-3 px-2 flex-col gap-4 text-center sm:flex-row border-b-2 nav-container flex items-center justify-between'>
                 <div className='flex items-center'>
                     <p className='text-slate-500 md:flex hidden'><BsSuitHeartFill className='text-2xl text-red-600 mr-2' />Welcome to Kino. We provides <span className='text-sky-500 font-bold mx-2'>Covid-19</span> medical accessories</p>
                     <span className='flex items-center py-1 px-3 bg-sky-500 text-white font-bold rounded-full ml-2'>
