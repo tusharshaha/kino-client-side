@@ -41,7 +41,7 @@ const Wishlist = () => {
                 <div className="cus-container">
                     {cartItem.length > 0 ?
                         <>
-                            <h3 className='font-medium mb-8'>Default Wishlist</h3>
+                            <h3 className='font-medium mb-8'>Your Wishlist</h3>
                             <div className='overflow-auto'>
                                 <WishlistTable
                                     cartItem={cartItem}
