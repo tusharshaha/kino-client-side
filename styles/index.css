@@ -67,6 +67,9 @@
     .input{
         @apply px-4 py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full sm:text-sm focus:ring-1;
     }
+    .loader {
+        @apply animate-spin border-slate-200 border-b-sky-500 border-8 w-[70px] h-[70px] mx-auto mb-20 rounded-full
+    }
 }
 @layer utilities{
     .nav-container{
