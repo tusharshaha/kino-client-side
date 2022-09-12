@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const YourOrder = ({ cartItem, subTotal, submitOrder, accordion, setAccordion }) => {
     const active = "trasition duration-300 relative";
