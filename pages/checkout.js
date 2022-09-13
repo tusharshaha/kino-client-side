@@ -9,7 +9,6 @@ import useAuth from '../Hooks/useAuth';
 import useGStore from '../Hooks/useGStore';
 import useProducts from '../Hooks/useProducts';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
-import { BaseUrl } from '../Service/BaseUrl';
 import Loader from '../Shared/Loader';
 import TopBanner from '../Shared/TopBanner';
 
@@ -78,9 +77,9 @@ const Checkout = () => {
         }
         if (user.emailVerified) {
             setLoading(true);
-            axios.post(`${BaseUrl}/order`, orders)
+            axios.post("/api/v1/orders", orders)
                 .then(res => {
-                    if (res.data.acknowledged) {
+                    if (res.data.success) {
                         Swal.fire({
                             icon: "success",
                             title: "Successfully Placed Your Order",

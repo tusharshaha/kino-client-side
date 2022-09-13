@@ -5,7 +5,6 @@ import Swal from 'sweetalert2';
 import { useRouter } from 'next/router';
 import useAuth from '../../Hooks/useAuth';
 import axios from 'axios';
-import { BaseUrl } from '../../Service/BaseUrl';
 import Review from './Review';
 
 const ProductReview = ({ productRev, setChange, product }) => {
@@ -51,9 +50,9 @@ const ProductReview = ({ productRev, setChange, product }) => {
                 })
             }
             setLoading(true);
-            const res = await axios.post(`${BaseUrl}/review`, revBody);
+            const res = await axios.post("/api/v1/review", revBody);
             const data = await res.data;
-            if (data.acknowledged) {
+            if (data.success) {
                 Swal.fire({
                     icon: "success",
                     title: "Review Send Successfully!",

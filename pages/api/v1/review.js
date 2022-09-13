@@ -7,7 +7,7 @@ export default async function review(req, res) {
             res.status(200).json({
                 success: true,
                 messages: "success",
-                data: reviews
+                reviews
             });
         } else if (req.method === "POST") {
             await Review.create(req.body);
