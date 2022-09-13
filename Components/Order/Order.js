@@ -3,12 +3,6 @@ import React from 'react';
 
 const Order = ({ orders }) => {
     const router = useRouter();
-    // this is subtotal count
-    const itemContainer = orders.map(({ orders }) => orders);
-    const items = itemContainer[0]?.map(item => item.price * item.qty);
-    // get subtotal
-    const subTotal = items.reduce((prevPrice, curPrice) => prevPrice + curPrice, 0);
-
     return (
         <div className='overflow-auto'>
             <table className='cart-table text-left text-slate-400 text-[18px]'>
@@ -36,7 +30,7 @@ const Order = ({ orders }) => {
                                 {order.status}
                             </td>
                             <td className='border p-2 border-slate-200'>
-                                &#163;{subTotal}.00 for {items.length} items
+                                &#163;{order.subTotal}.00 for {order.totaQty} items
                             </td>
                             <td className='border p-2 border-slate-200'>
                                 <button onClick={() => router.push(`/my_account/view_order/${order._id}`)} className='text-red-400'>

@@ -1,4 +1,7 @@
 import Product from "../../../models/Product.model";
+import connectDB from "../../../utils/connectDB";
+
+connectDB();
 
 export default async function getProduct(req, res) {
     try {

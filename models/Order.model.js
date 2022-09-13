@@ -11,6 +11,14 @@ const orderSchema = mongoose.Schema({
             message: "Payment can't be {VALUE}"
         }
     },
+    subTotal: {
+        type: Number,
+        required: true
+    },
+    totalQty: {
+        type: Number,
+        required: true
+    },
     orders: [{
         productId: {
             type: String,

@@ -51,12 +51,21 @@ const Checkout = () => {
             qty: item.qty,
         }
     });
+    const { subTotal, totalQty } = items.reduce((cartTotal, item) => {
+        const { price, qty } = item;
+        const totalPrice = price * qty;
+        cartTotal.subTotal += totalPrice
+        cartTotal.totalQty += qty;
+        return cartTotal
+    }, { subTotal: 0, totalQty: 0 })
     const orders = {
         userEmail: user.email,
         date: orderDate,
         payment: accordion === "bank" ? "Direct Bank Transfer" : accordion === "check" ? "Check Payment" : "Cash on Delivery",
         status: "Processing",
         orders: items,
+        subTotal,
+        totalQty,
         billInfo
     };
     const handleBlur = (e) => {
@@ -69,7 +78,7 @@ const Checkout = () => {
     }
     // submit user order
     const handleSubmitOrder = () => {
-        if (!billInfo.FName || !billInfo.LName || !billInfo.country || !billInfo.street1 || !billInfo.street2 || !billInfo.phone || !billInfo.post_code || !billInfo.city) {
+        if (!billInfo.FName || !billInfo.LName || !billInfo.country || !billInfo.street1 || !billInfo.phone || !billInfo.post_code || !billInfo.city) {
             return Swal.fire({
                 icon: 'warning',
                 title: "Please Complete Required Field"
@@ -88,7 +97,7 @@ const Checkout = () => {
                         });
                         clearStore("cart");
                         setUpdate(!update);
-                        router.push("/my_account/orders");
+                        // router.push("/my_account/orders");
                     }
                 }).finally(() => setLoading(false));
         } else {
@@ -99,14 +108,9 @@ const Checkout = () => {
             })
         }
     }
-    // this is subtotal count
-    const subTotalCount = cartItem.map(item => item.curPrice * item.qty);
-    // get total subtotal
-    const subTotal = subTotalCount.reduce((prevPrice, curPrice) => prevPrice + curPrice, 0);
 
     return (
         <>
-            {loading && <Loader />}
             <Head>
                 <title>Kino | Checkout</title>
             </Head>
@@ -139,6 +143,7 @@ const Checkout = () => {
                             setAccordion={setAccordion}
                             subTotal={subTotal}
                             cartItem={cartItem}
+                            loading={loading}
                         />
                     </div>
                 </div>

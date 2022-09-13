@@ -1,4 +1,7 @@
 import Order from "../../../../models/Order.model";
+import connectDB from "../../../../utils/connectDB";
+
+connectDB();
 
 export default async function sendOrder(req, res) {
     try {

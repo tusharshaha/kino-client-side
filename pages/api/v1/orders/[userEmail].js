@@ -1,9 +1,11 @@
 import Order from "../../../../models/Order.model";
+import connectDB from "../../../../utils/connectDB";
+
+connectDB();
 
 export default async function getOrder(req, res) {
     try {
         const query = { userEmail: req.query.userEmail };
-        console.log(query)
         const orders = await Order.find(query);
         res.status(200).json({
             success: true,

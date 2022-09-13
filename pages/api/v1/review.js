@@ -1,4 +1,7 @@
 import Review from "../../../models/Review.model";
+import connectDB from "../../../utils/connectDB";
+
+connectDB();
 
 export default async function review(req, res) {
     try {

@@ -70,6 +70,9 @@
     .loader {
         @apply animate-spin border-slate-200 border-b-sky-500 border-8 w-[70px] h-[70px] mx-auto mb-20 rounded-full
     }
+    .loader2{
+        @apply animate-spin inline-block rounded-full border-4 ml-2 mb-[-5px] border-t-white h-6 w-6
+    }
 }
 @layer utilities{
     .nav-container{
