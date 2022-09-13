@@ -97,7 +97,7 @@ const Checkout = () => {
                         });
                         clearStore("cart");
                         setUpdate(!update);
-                        // router.push("/my_account/orders");
+                        router.push("/my_account/orders");
                     }
                 }).finally(() => setLoading(false));
         } else {

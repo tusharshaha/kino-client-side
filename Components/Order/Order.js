@@ -30,7 +30,7 @@ const Order = ({ orders }) => {
                                 {order.status}
                             </td>
                             <td className='border p-2 border-slate-200'>
-                                &#163;{order.subTotal}.00 for {order.totaQty} items
+                                &#163;{order.subTotal}.00 for {order.totalQty} items
                             </td>
                             <td className='border p-2 border-slate-200'>
                                 <button onClick={() => router.push(`/my_account/view_order/${order._id}`)} className='text-red-400'>
