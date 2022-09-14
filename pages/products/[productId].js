@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import DRContainer from "../../Components/Product/DRContainer";
 import ProductTop from "../../Components/Product/ProductTop";
@@ -13,7 +14,7 @@ export default function ProductDetails({ product }) {
     useEffect(() => {
         (async () => {
             const res = await axios.get("/api/v1/review");
-            const data = await res.data.orders;
+            const data = await res.data.reviews;
             setReviews(data);
         })()
     }, [revChange])
@@ -23,7 +24,6 @@ export default function ProductDetails({ product }) {
     const productRev = reviews?.filter(p => p.productId === product._id);
     // gallary for product image
     const gallary = catFilter.map(p => p.img);
-
     return (
         <div className="cus-container my-32">
             <ProductTop
@@ -43,26 +43,11 @@ export default function ProductDetails({ product }) {
         </div>
     )
 }
-// define all dynamic path
-export async function getStaticPaths() {
-    const res = await axios.get("/api/v1/products");
-    const products = await res.data.products;
-    const paths = products?.map(product => {
-        return {
-            params: { productId: product._id }
-        }
-    })
-    return {
-        paths,
-        fallback: false
-    }
-}
-// finding single product via id
-export async function getStaticProps(context) {
+
+export async function getServerSideProps(context) {
     const id = context.params.productId;
-    const res = await axios("/api/v1/products");
-    const products = await res.data.products;
-    const product = products?.find(p => p._id === id);
+    const res = await axios(`http://${process.env.VERCEL_URL}/api/v1/products/${id}`);
+    const product = await res.data.product;
     return {
         props: { product }
     }

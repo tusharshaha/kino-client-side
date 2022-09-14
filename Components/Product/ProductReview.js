@@ -81,7 +81,7 @@ const ProductReview = ({ productRev, setChange, product }) => {
     }
     return (
         <div>
-            {!productRev.length ?
+            {!productRev?.length ?
                 <>
                     <h5 className='font-medium'>Reviews</h5>
                     <p className='text-slate-400 my-4'>There are no review yet</p>

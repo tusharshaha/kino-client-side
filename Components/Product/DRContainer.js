@@ -15,7 +15,7 @@ const DRContainer = ({ productRev, setChange, product }) => {
                         <button onClick={() => setSection('d')} className={`${section === 'd' && styles.selected} font-bold`}>Descripton</button>
                     </li>
                     <li>
-                        <button onClick={() => setSection('r')} className={`${section === 'r' && styles.selected} font-bold`}>Review ({productRev.length})</button>
+                        <button onClick={() => setSection('r')} className={`${section === 'r' && styles.selected} font-bold`}>Review ({productRev?.length})</button>
                     </li>
                 </ul>
 

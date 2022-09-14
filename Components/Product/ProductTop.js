@@ -5,10 +5,10 @@ import useGStore from '../../Hooks/useGStore';
 
 const ProductTop = ({ product, gallary, productRev }) => {
     const [qty, setQty] = useState(1);
-    const [src, setSrc] = useState(product.img);
+    const [src, setSrc] = useState(product?.img);
     const { addToCart } = useGStore();
     const totalReview = productRev?.length;
-    const totalRating = productRev.reduce((prev, curr) => prev + curr.rating, 0);
+    const totalRating = productRev?.reduce((prev, curr) => prev + curr.rating, 0);
     const countAvg = parseFloat(totalRating / totalReview).toFixed(1);
     const avgRating = parseFloat(countAvg);
 
@@ -32,8 +32,8 @@ const ProductTop = ({ product, gallary, productRev }) => {
             </div>
 
             <div className='grow'>
-                <h3 className='font-medium'>{product.name}</h3>
-                {productRev.length > 0 &&
+                <h3 className='font-medium'>{product?.name}</h3>
+                {productRev?.length > 0 &&
                     <div className='flex items-center mt-2 gap-2'>
                         <ReactStars
                             count={5}
@@ -65,10 +65,10 @@ const ProductTop = ({ product, gallary, productRev }) => {
                         <span>{qty}</span>
                         <button onClick={() => setQty(prev => prev + 1)} className='counter-btn'>+</button>
                     </div>
-                    <button onClick={()=> addToCart(product._id, qty)} className="bg-red-500 text-white uppercase font-bold py-4 px-8 rounded-full transition duration-300 hover:bg-red-600">Add To Cart +</button>
+                    <button onClick={()=> addToCart(product?._id, qty)} className="bg-red-500 text-white uppercase font-bold py-4 px-8 rounded-full transition duration-300 hover:bg-red-600">Add To Cart +</button>
                 </div>
-                <p className='text-slate-400'><span className='font-bold text-black text-[18px]'>SKU:</span> {product.sku}</p>
-                <p className='my-4 text-slate-400'>Category: {product.categories}</p>
+                <p className='text-slate-400'><span className='font-bold text-black text-[18px]'>SKU:</span> {product?.sku}</p>
+                <p className='my-4 text-slate-400'>Category: {product?.categories}</p>
                 <div className='flex gap-3 items-center'>
                     <span className='font-bold text-[18px]'>Share Now:</span>
                     <div className='flex gap-2'>
