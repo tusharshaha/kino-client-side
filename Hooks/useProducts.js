@@ -6,7 +6,9 @@ const useProducts = () => {
     useEffect(() => {
         (async () => {
             const res = await axios.get("/api/v1/products");
-            setProducts(res.data.products);
+            const data = await res.data.products
+            const suffleProducts = data.sort(() => Math.random() - 0.5)
+            setProducts(suffleProducts);
         })()
     }, [])
     return { products }
