@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import DRContainer from "../../Components/Product/DRContainer";
 import ProductTop from "../../Components/Product/ProductTop";
