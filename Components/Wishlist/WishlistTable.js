@@ -49,7 +49,7 @@ const WishlistTable = ({ cartItem, handleRemove }) => {
                                 <button className='addr-btn w-full'>Add Selected To Cart</button>
                             </div>
                             <div className=''>
-                                <button className="addr-btn w-full">Add All To Cart</button>
+                                <button className="addr-btn">Clear</button>
                             </div>
                         </div>
                     </td>

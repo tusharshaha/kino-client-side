@@ -2,8 +2,8 @@ import { ADD_TO_STORE, CLEAR_STORE, REMOVE_FROM_STORE, UPDATE_QTY } from "../typ
 
 const initCart = {
     items: [],
-    totalQty: 0,
-    totalPrice: 0
+    totalPrice: 0,
+    count: 0
 }
 function updateCartTotal(state) {
     const total = state.reduce((cartTotal, cartItem) => {
@@ -12,7 +12,7 @@ function updateCartTotal(state) {
         cartTotal.totalQty += qty;
         cartTotal.totalPrice += subTotal;
         return totalPrice
-    }, { totalPrice: 0, totalQty: 0 });
+    }, { totalPrice: 0, count: 0 });
     return total
 }
 function updateItems(state, id, qty) {
@@ -36,22 +36,22 @@ export default function cartReducer(state = initCart, action) {
             if (findItem) {
                 const prevItems = [...state];
                 const updatedItem = updateItems(prevItems);
-                const { totalPrice, totalQty } = updateCartTotal(updatedItem);
+                const { totalPrice, count } = updateCartTotal(updatedItem);
                 return {
                     items: updatedItem,
-                    totalQty,
-                    totalPrice
+                    totalPrice,
+                    count
                 }
             } else {
                 const newItem = {
                     ...action.payload,
                     subTotal: action.payload.price
                 }
-                const { totalPrice, totalQty } = updateCartTotal(state.items);
+                const { totalPrice, count } = updateCartTotal(state.items);
                 return {
                     items: [...state.items, newItem],
-                    totalQty,
-                    totalPrice
+                    totalPrice,
+                    count
                 };
             }
         }
