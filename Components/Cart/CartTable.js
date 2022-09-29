@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import { IoClose } from "react-icons/io5";
-import useGStore from '../../Hooks/useGStore';
+import { useDispatch } from 'react-redux';
+import { updateQty } from '../../redux/actions/cart.action';
 
-const CartTable = ({ cartItem, handleRemove, setUpdate, handleClearCart }) => {
+const CartTable = ({ cartItems, handleRemove, handleClearCart }) => {
     const [cupon, setCupon] = useState('');
-    const { addToCart } = useGStore();
+    const dispatch = useDispatch();
     const handleIncrase = (id, qty) => {
         const updatedQty = qty + 1;
-        addToCart(id, updatedQty, "update");
-        setUpdate(prev => !prev);
+        dispatch(updateQty(id, updatedQty));
     }
     const handleDecrase = (id, qty) => {
         const updatedQty = qty - 1;
         if (updatedQty <= 0) {
             return;
         }
-        addToCart(id, updatedQty, "update");
-        setUpdate(prev => !prev);
+        dispatch(updateQty(id, updatedQty));
     }
     return (
         <table className='cart-table text-center'>
@@ -32,7 +31,7 @@ const CartTable = ({ cartItem, handleRemove, setUpdate, handleClearCart }) => {
             </thead>
             <tbody>
                 {
-                    cartItem.map(item => <tr key={item._id}>
+                    cartItems.map(item => <tr key={item.id}>
                         <td className='border py-2 px-8 border-slate-200'>
                             <img src={item.img} alt="Product Img" className='w-[90px] mx-auto' />
                         </td>
@@ -40,20 +39,20 @@ const CartTable = ({ cartItem, handleRemove, setUpdate, handleClearCart }) => {
                             {item.name}
                         </td>
                         <td className='border py-2 px-8 border-slate-200'>
-                            &#163;{item.curPrice}
+                            &#163;{item.price}
                         </td>
                         <td className='border py-2 px-8 border-slate-200'>
                             <div className='bg-red-100 text-slate-500 flex justify-around items-center gap-4 p-2 rounded-full'>
-                                <button onClick={() => handleDecrase(item._id, item.qty)} className='counter-btn'>-</button>
+                                <button onClick={() => handleDecrase(item.id, item.qty)} className='counter-btn'>-</button>
                                 <span>{item.qty}</span>
-                                <button onClick={() => handleIncrase(item._id, item.qty)} className='counter-btn'>+</button>
+                                <button onClick={() => handleIncrase(item.id, item.qty)} className='counter-btn'>+</button>
                             </div>
                         </td>
                         <td className='border py-2 px-8 border-slate-200'>
-                            &#163;{item.curPrice * item.qty}
+                            &#163;{item.subTotal}
                         </td>
                         <td className='border py-2 px-8 border-slate-200'>
-                            <button onClick={() => handleRemove(item._id)} className='font-bold text-2xl'><IoClose /></button>
+                            <button onClick={() => handleRemove(item.id)} className='font-bold text-2xl'><IoClose /></button>
                         </td>
                     </tr>)
                 }

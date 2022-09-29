@@ -9,14 +9,14 @@ import { useRouter } from 'next/router';
 import styles from '../styles/Header.module.css'
 import Sidebar from '../Components/Home/Sidebar';
 import useAuth from '../Hooks/useAuth';
-import useGStore from '../Hooks/useGStore';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
     const router = useRouter();
     const [sideToggle, setSideToggle] = useState(false);
     const [navToggle, setNavToggle] = useState(false);
     const { user } = useAuth();
-    const { cartNum } = useGStore();
+    const count = useSelector((state) => state.cart.count);
     return (
         <>
             {/* this is navbar is user navbar */}
@@ -86,7 +86,7 @@ const Header = () => {
                             <button onClick={() => router.push('/cart')} className='flex cus-btn py-2'>
                                 <AiOutlineShoppingCart className='text-2xl' />
                                 <div className='bg-white mx-2 px-2 rounded-full text-blue-600'>
-                                    {cartNum}
+                                    {count}
                                 </div>
                                 My Cart
                             </button>

@@ -1,25 +1,25 @@
-import cartTypes from "../types"
+import { ADD_TO_CART, CLEAR_CART, REMOVE_FROM_CART, UPDATE_QTY } from "../types"
 
 export function addToCart(item) {
     return {
-        type: cartTypes.ADD_TO_STORE,
+        type: ADD_TO_CART,
         payload: item
     }
 }
 export function updateQty(id, qty) {
     return {
-        type: cartTypes.UPDATE_QTY,
+        type: UPDATE_QTY,
         id,
         qty
     }
 }
 export function removeFromCart(id) {
     return {
-        type: cartTypes.REMOVE_FROM_STORE,
+        type: REMOVE_FROM_CART,
         payload: id
     }
 }
 
 export function clearCart() {
-    return { type: cartTypes.CLEAR_STORE }
+    return { type: CLEAR_CART }
 }

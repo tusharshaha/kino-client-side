@@ -1,4 +1,4 @@
-import { ADD_TO_STORE, CLEAR_STORE, REMOVE_FROM_STORE, UPDATE_QTY } from "../types";
+import { ADD_TO_CART, CLEAR_CART, REMOVE_FROM_CART, UPDATE_QTY } from "../types";
 
 const initCart = {
     items: [],
@@ -9,47 +9,44 @@ function updateCartTotal(state) {
     const total = state.reduce((cartTotal, cartItem) => {
         const { price, qty } = cartItem;
         const subTotal = price * qty;
-        cartTotal.totalQty += qty;
+        cartTotal.count += qty;
         cartTotal.totalPrice += subTotal;
-        return totalPrice
+        return cartTotal
     }, { totalPrice: 0, count: 0 });
     return total
 }
-function updateItems(state, id, qty) {
-    state.forEach(ele => {
-        if (!id || !qty) {
-            ele.qty += 1;
-            ele.subTotal = ele.price * ele.qty;
-        } else {
-            if (ele.id === id) {
-                ele.qty = qty;
-                subTotal = ele.price * ele.qty
-            }
-        }
-    });
-    return state
-}
+
 export default function cartReducer(state = initCart, action) {
     switch (action.type) {
-        case (ADD_TO_STORE): {
-            const findItem = state.items.find(ele => ele.id === action.payload.id);
+        case (ADD_TO_CART): {
+            const prevItems = [...state.items];
+            const findItem = prevItems.find(ele => ele.id === action.payload.id);
             if (findItem) {
-                const prevItems = [...state];
-                const updatedItem = updateItems(prevItems);
-                const { totalPrice, count } = updateCartTotal(updatedItem);
+                prevItems.forEach(ele => {
+                    if (ele.id === action.payload.id) {
+                        if (action.payload.qty > 1) {
+                            ele.qty = action.payload.qty
+                        } else {
+                            ele.qty += 1;
+                        }
+                        ele.subTotal = ele.price * ele.qty
+                    }
+                })
+                const { totalPrice, count } = updateCartTotal(prevItems);
                 return {
-                    items: updatedItem,
+                    items: prevItems,
                     totalPrice,
                     count
                 }
             } else {
                 const newItem = {
                     ...action.payload,
-                    subTotal: action.payload.price
+                    subTotal: action.payload.price * action.payload.qty
                 }
-                const { totalPrice, count } = updateCartTotal(state.items);
+                const prevItems = [...state.items, newItem];
+                const { totalPrice, count } = updateCartTotal(prevItems);
                 return {
-                    items: [...state.items, newItem],
+                    items: prevItems,
                     totalPrice,
                     count
                 };
@@ -57,23 +54,29 @@ export default function cartReducer(state = initCart, action) {
         }
         case (UPDATE_QTY): {
             const prevItems = [...state.items]
-            const updatedItem = updateItems(prevItems, action.id, action.qty);
-            const { totalPrice, totalQty } = updateCartTotal(updatedItem);
+            prevItems.forEach(ele => {
+                if (ele.id === action.id) {
+                    ele.qty = action.qty;
+                    ele.subTotal = ele.price * action.qty
+                }
+            });
+            const { totalPrice, count } = updateCartTotal(prevItems);
             return {
-                items: updatedItem,
-                totalQty,
-                totalPrice
+                items: prevItems,
+                totalPrice,
+                count
             }
         }
-        case (REMOVE_FROM_STORE): {
+        case (REMOVE_FROM_CART): {
             const newState = state.items.filter(ele => ele.id !== action.payload);
-            const totalPrice = updateCartTotal(state.items);
+            const { totalPrice, count } = updateCartTotal(newState);
             return {
                 items: newState,
-                totalPrice
+                totalPrice,
+                count
             };
         }
-        case (CLEAR_STORE):
+        case (CLEAR_CART):
             return initCart;
         default:
             return state

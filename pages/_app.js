@@ -4,25 +4,29 @@ import '../styles/globals.css'
 import Layout from '../Components/Layout/Layout'
 import AuthProvider from '../Context/AuthProvider'
 import Loader from '../Shared/Loader'
-import StoreProvider from '../Context/StorePriovider'
+import { Provider } from 'react-redux'
+import store, { persistor } from '../redux/store'
+import { PersistGate } from 'redux-persist/integration/react'
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000)
+    }, 1100)
   }, [])
   return loading ?
     <Loader />
     :
-    <AuthProvider>
-      <StoreProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </StoreProvider>
-    </AuthProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <AuthProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </AuthProvider>
+      </PersistGate>
+    </Provider>
 }
 
 export default MyApp

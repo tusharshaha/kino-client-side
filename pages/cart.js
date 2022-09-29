@@ -1,48 +1,24 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import CalcCart from '../Components/Cart/CalcCart';
 import CartTable from '../Components/Cart/CartTable';
-import useGStore from '../Hooks/useGStore';
-import useProducts from '../Hooks/useProducts';
+import { clearCart, removeFromCart } from '../redux/actions/cart.action';
 import TopBanner from '../Shared/TopBanner';
 
 const Cart = () => {
-    const [cartItem, setCartItem] = useState([]);
-    const [update, setUpdate] = useState(false);
-    const { getStore, removeStore, clearStore } = useGStore();
-    const { products } = useProducts();
+    const cartItems = useSelector(state => state.cart);
+    const dispatch = useDispatch();
     const router = useRouter();
     // remove cart product
     const handleRemove = (id) => {
-        removeStore("cart", id)
-        setUpdate(!update)
+        dispatch(removeFromCart(id))
     }
     // clear cart
     const handleClearCart = () => {
-        clearStore("cart")
-        setUpdate(prev => !prev);
+        dispatch(clearCart())
     }
-    // get the cart product
-    useEffect(() => {
-        const cart = getStore("cart")
-        const storedCart = [];
-        if (cart) {
-            for (const key in cart) {
-                const addedProduct = products.find(p => p._id === key);
-                if (addedProduct) {
-                    addedProduct.qty = cart[key];
-                    storedCart.push(addedProduct);
-                }
-            }
-            setCartItem(storedCart);
-        }
-    }, [update, products])
-    // this is subtotal count
-    const subTotalCount = cartItem.map(item => item.curPrice * item.qty);
-    // get total subtotal
-    const subTotal = subTotalCount.reduce((prevPrice, curPrice) => prevPrice + curPrice, 0);
     return (
         <>
             <Head>
@@ -51,17 +27,16 @@ const Cart = () => {
             <main>
                 <TopBanner name="Cart" route="Cart" />
                 <div className='cus-container'>
-                    {cartItem.length > 0 ?
+                    {cartItems.items.length > 0 ?
                         <div className='overflow-auto'>
                             <CartTable
-                                cartItem={cartItem}
+                                cartItems={cartItems.items}
                                 handleRemove={handleRemove}
-                                setUpdate={setUpdate}
                                 handleClearCart={handleClearCart}
                             />
                             <h5 className='mt-12 mb-6 font-medium'>Cart Totals</h5>
                             <CalcCart
-                                subTotal={subTotal}
+                                subTotal={cartItems.totalPrice}
                             />
                             <button onClick={() => router.push("/checkout")} className='addr-btn py-4 mt-6 w-[300px]'>Proceed To Checkout</button>
                         </div>

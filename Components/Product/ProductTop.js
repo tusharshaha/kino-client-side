@@ -1,17 +1,34 @@
 import React, { useState } from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaRegStar, FaStarHalfAlt, FaStar } from 'react-icons/fa';
 import ReactStars from "react-rating-stars-component";
-import useGStore from '../../Hooks/useGStore';
+import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
+import { addToCart } from '../../redux/actions/cart.action';
 
 const ProductTop = ({ product, gallary, productRev }) => {
     const [qty, setQty] = useState(1);
     const [src, setSrc] = useState(product?.img);
-    const { addToCart } = useGStore();
+    const dispatch = useDispatch();
     const totalReview = productRev?.length;
     const totalRating = productRev?.reduce((prev, curr) => prev + curr.rating, 0);
     const countAvg = parseFloat(totalRating / totalReview).toFixed(1);
     const avgRating = parseFloat(countAvg);
 
+    const handleAddToCart = (product) => {
+        const item = {
+            id: product._id,
+            img: product.img,
+            name: product.name,
+            price: product.curPrice,
+            qty
+        }
+        dispatch(addToCart(item));
+        Swal.fire({
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
     const handleDecrase = () => {
         if (qty <= 1) {
             return;
@@ -65,7 +82,7 @@ const ProductTop = ({ product, gallary, productRev }) => {
                         <span>{qty}</span>
                         <button onClick={() => setQty(prev => prev + 1)} className='counter-btn'>+</button>
                     </div>
-                    <button onClick={()=> addToCart(product?._id, qty)} className="bg-red-500 text-white uppercase font-bold py-4 px-8 rounded-full transition duration-300 hover:bg-red-600">Add To Cart +</button>
+                    <button onClick={() => handleAddToCart(product)} className="bg-red-500 text-white uppercase font-bold py-4 px-8 rounded-full transition duration-300 hover:bg-red-600">Add To Cart +</button>
                 </div>
                 <p className='text-slate-400'><span className='font-bold text-black text-[18px]'>SKU:</span> {product?.sku}</p>
                 <p className='my-4 text-slate-400'>Category: {product?.categories}</p>

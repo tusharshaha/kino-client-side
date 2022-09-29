@@ -1,7 +1,7 @@
 import React from 'react';
 import { IoClose } from 'react-icons/io5';
 
-const WishlistTable = ({ cartItem, handleRemove }) => {
+const WishlistTable = ({ wishlistItems, handleRemove, handleClearWishlist }) => {
     return (
         <table className='cart-table text-center'>
             <thead>
@@ -17,12 +17,12 @@ const WishlistTable = ({ cartItem, handleRemove }) => {
             </thead>
             <tbody>
                 {
-                    cartItem.map(item => <tr key={item._id}>
+                    wishlistItems.map(item => <tr key={item.id}>
                         <td className='border py-2 px-1 border-slate-200'>
                             <input type="checkbox" name="" id="" />
                         </td>
                         <td className='border py-2 px-1 border-slate-200'>
-                            <button onClick={() => handleRemove(item._id)} className='font-bold text-2xl'><IoClose /></button>
+                            <button onClick={() => handleRemove(item.id)} className='font-bold text-2xl'><IoClose /></button>
                         </td>
                         <td className='border py-2 px-1 border-slate-200'>
                             <img src={item.img} alt="Product Img" className='w-[80px] mx-auto' />
@@ -31,10 +31,10 @@ const WishlistTable = ({ cartItem, handleRemove }) => {
                             {item.name}
                         </td>
                         <td className='border py-2 px-1 border-slate-200'>
-                            &#163;{item.curPrice}
+                            &#163;{item.price}
                         </td>
                         <td className='border py-2 px-1 border-slate-200'>
-                            {item.wDate}
+                            {item.date}
                         </td>
                         <td className='border py-2 px-1 border-slate-200'>
                             <span className='font-bold text-sky-500'>In Stock</span>
@@ -49,7 +49,7 @@ const WishlistTable = ({ cartItem, handleRemove }) => {
                                 <button className='addr-btn w-full'>Add Selected To Cart</button>
                             </div>
                             <div className=''>
-                                <button className="addr-btn">Clear</button>
+                                <button onClick={handleClearWishlist} className="addr-btn">Clear</button>
                             </div>
                         </div>
                     </td>

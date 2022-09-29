@@ -1,42 +1,24 @@
 import axios from 'axios';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import BillAdd from '../Components/Address/BillAdd';
 import YourOrder from '../Components/Checkout/YourOrder';
 import useAuth from '../Hooks/useAuth';
-import useGStore from '../Hooks/useGStore';
-import useProducts from '../Hooks/useProducts';
+import { clearWishlist } from "../redux/actions/wishlist.action";
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
-import Loader from '../Shared/Loader';
 import TopBanner from '../Shared/TopBanner';
 
 const Checkout = () => {
     const { user } = useAuth();
-    const [cartItem, setCartItem] = useState([]);
+    const cartItem = useSelector((state) => state.cart.items);
+    const dispatch = useDispatch();
     const [billInfo, setBillInfo] = useState({});
-    const [update, setUpdate] = useState(false);
     const [accordion, setAccordion] = useState('bank');
     const [loading, setLoading] = useState(false);
-    const { getStore, clearStore } = useGStore();
-    const { products } = useProducts();
     const router = useRouter();
-    // get the cart product
-    useEffect(() => {
-        const cart = getStore("cart")
-        const storedCart = [];
-        if (cart) {
-            for (const key in cart) {
-                const addedProduct = products.find(p => p._id === key);
-                if (addedProduct) {
-                    addedProduct.qty = cart[key];
-                    storedCart.push(addedProduct);
-                }
-            }
-            setCartItem(storedCart);
-        }
-    }, [products, update])
     // set order date
     const date = new Date().getDate();
     const month = new Date().toLocaleDateString("default", { month: 'long' });
@@ -45,12 +27,13 @@ const Checkout = () => {
     // set the order document
     const items = cartItem.map(item => {
         return {
-            productId: item._id,
+            productId: item.id,
             pName: item.name,
-            price: item.curPrice,
+            price: item.price,
             qty: item.qty,
         }
     });
+    
     const { subTotal, totalQty } = items.reduce((cartTotal, item) => {
         const { price, qty } = item;
         const totalPrice = price * qty;
@@ -58,6 +41,7 @@ const Checkout = () => {
         cartTotal.totalQty += qty;
         return cartTotal
     }, { subTotal: 0, totalQty: 0 })
+
     const orders = {
         userEmail: user.email,
         date: orderDate,
@@ -95,8 +79,7 @@ const Checkout = () => {
                             showConfirmButton: false,
                             timer: 2000
                         });
-                        clearStore("cart");
-                        setUpdate(!update);
+                        dispatch(clearWishlist())
                         router.push("/my_account/orders");
                     }
                 }).finally(() => setLoading(false));

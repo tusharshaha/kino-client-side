@@ -1,35 +1,18 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import WishlistTable from '../Components/Wishlist/WishlistTable';
-import useGStore from '../Hooks/useGStore';
-import useProducts from '../Hooks/useProducts';
+import { clearWishlist, removeFromWishlist } from '../redux/actions/wishlist.action';
 import TopBanner from '../Shared/TopBanner';
 
 const Wishlist = () => {
-    const [cartItem, setCartItem] = useState([]);
-    const [update, setUpdate] = useState(false);
-    const [change, setChange] = useState(false);
-    const { products } = useProducts();
-    const { getStore, removeStore } = useGStore();
-    useEffect(() => {
-        const cart = getStore("wishlist")
-        const storedCart = [];
-        if (cart) {
-            for (const key in cart) {
-                const addedProduct = products.find(p => p._id === key);
-                if (addedProduct) {
-                    addedProduct.wDate = cart[key];
-                    storedCart.push(addedProduct);
-                }
-            }
-            setCartItem(storedCart);
-        }
-        
-    }, [update, change, products])
+    const wishlistItems = useSelector((state) => state.wishlist);
+    const dispatch = useDispatch();
     const handleRemove = (id) => {
-        removeStore("wishlist", id)
-        setChange(!change)
+        dispatch(removeFromWishlist(id));
+    }
+    const handleClearWishlist = () => {
+        dispatch(clearWishlist());
     }
     return (
         <>
@@ -39,13 +22,14 @@ const Wishlist = () => {
             <main>
                 <TopBanner name="Wishlist" route="Wishlist" />
                 <div className="cus-container">
-                    {cartItem.length > 0 ?
+                    {wishlistItems.length > 0 ?
                         <>
                             <h3 className='font-medium mb-8'>Your Wishlist</h3>
                             <div className='overflow-auto'>
                                 <WishlistTable
-                                    cartItem={cartItem}
+                                    wishlistItems={wishlistItems}
                                     handleRemove={handleRemove}
+                                    handleClearWishlist={handleClearWishlist}
                                 />
                             </div>
                         </>
