@@ -7,6 +7,6 @@ Visit my pharmacy related website [Kino](https://kino-one.vercel.app/)
 * After login a verify user can review any product.
 * login user can visit their dashboard. There he/she can view their order, downloads.
 * In the dashboard user will found address. user can add bill and shipping address.
-* Technology Used: Next.js, Tailwind CSS, Firebase, Node.js, Express.js, MongoDB
+* Technology Used: Next.js, Tailwind CSS, Redux, Firebase, Node.js, Express.js, MongoDB
 
 
