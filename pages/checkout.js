@@ -7,9 +7,9 @@ import Swal from 'sweetalert2';
 import BillAdd from '../Components/Address/BillAdd';
 import YourOrder from '../Components/Checkout/YourOrder';
 import useAuth from '../Hooks/useAuth';
-import { clearWishlist } from "../redux/actions/wishlist.action";
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import TopBanner from '../Shared/TopBanner';
+import { clearCart } from '../redux/actions/cart.action';
 
 const Checkout = () => {
     const { user } = useAuth();
@@ -33,7 +33,7 @@ const Checkout = () => {
             qty: item.qty,
         }
     });
-    
+
     const { subTotal, totalQty } = items.reduce((cartTotal, item) => {
         const { price, qty } = item;
         const totalPrice = price * qty;
@@ -72,14 +72,20 @@ const Checkout = () => {
             setLoading(true);
             axios.post("/api/v1/orders", orders)
                 .then(res => {
-                    if (res.data.success) {
+                    const order = res.data.order;
+                    if (accordion === "bank") {
+                        axios.post("/api/v1/payment", order)
+                            .then(res => {
+                                window.location.replace(res.data.URL)
+                            })
+                    } else {
                         Swal.fire({
                             icon: "success",
                             title: "Successfully Placed Your Order",
                             showConfirmButton: false,
                             timer: 2000
                         });
-                        dispatch(clearWishlist())
+                        dispatch(clearCart());
                         router.push("/my_account/orders");
                     }
                 }).finally(() => setLoading(false));

@@ -24,7 +24,7 @@ const OrderDetails = () => {
                 <div className="cus-container">
                     <UserLayout>
                         <div>
-                            <p className="text-slate-400">Order <span className='bg-amber-100 text-slate-700'>{singleOrder?._id}</span> was placed on <span className='bg-amber-100 text-slate-700'>{singleOrder?.date}</span> and is currently <span className='bg-amber-100 text-slate-700'>{singleOrder?.status}</span>.</p>
+                            <p className="text-slate-400">Order <span className='bg-amber-100 text-slate-700'>{singleOrder?._id.toUpperCase()}</span> was placed on <span className='bg-amber-100 text-slate-700'>{singleOrder?.date}</span> and is currently <span className='bg-amber-100 text-slate-700'>{singleOrder?.status}</span>.</p>
                             <OrderTable
                                 orders={singleOrder?.orders}
                                 subTotal={subTotal}

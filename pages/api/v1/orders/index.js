@@ -6,10 +6,11 @@ connectDB();
 export default async function sendOrder(req, res) {
     try {
         if (req.method === "POST") {
-            await Order.create(req.body);
+            const order = await Order.create(req.body);
             res.status(200).json({
                 success: true,
                 messages: "success",
+                order
             })
         }
     } catch (err) {

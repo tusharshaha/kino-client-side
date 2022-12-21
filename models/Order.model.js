@@ -11,6 +11,7 @@ const orderSchema = mongoose.Schema({
             message: "Payment can't be {VALUE}"
         }
     },
+    tran_id: String,
     subTotal: {
         type: Number,
         required: true

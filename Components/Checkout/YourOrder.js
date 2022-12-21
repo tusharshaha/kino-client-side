@@ -14,13 +14,13 @@ const YourOrder = ({ cartItem, subTotal, submitOrder, accordion, setAccordion, l
                 </thead>
                 <tbody>
                     {
-                        cartItem.map(item => <tr key={item._id} className='border-b'>
+                        cartItem.map((item, i) => <tr key={i} className='border-b'>
                             <td className='py-3 text-left'>
                                 {item.name}
-                                <span className='font-bold ml-2'>x {item.qty}</span>
+                                <span className='font-bold ml-2'>x {item.qty} </span>
                             </td>
                             <td className='py-3 text-right'>
-                                &#163;{item.curPrice * item.qty}.00
+                                &#163;{item.price * item.qty}.00
                             </td>
                         </tr>)
                     }
@@ -49,7 +49,7 @@ const YourOrder = ({ cartItem, subTotal, submitOrder, accordion, setAccordion, l
                         Direct Bank Transfer
                     </button>
                     <div className={`${accordion === "bank" ? active : "hidden"} text-slate-400 border py-6 px-6`}>
-                        Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
+                        Make your payment by SSL-Commerz. After successful payment you will be redirect to your dashboard and you can view your order. Your order will not be shipped until the funds have cleared in our account.
                     </div>
                 </div>
                 <div className='relative'>
