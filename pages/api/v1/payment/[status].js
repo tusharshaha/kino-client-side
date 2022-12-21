@@ -9,12 +9,12 @@ export default async function paymentStatus(req, res) {
             if (req.query.status === "fail") {
                 const tran_id = req.body.tran_id
                 await Order.findOneAndDelete({ tran_id })
-                res.status(400).redirect(`https://${process.env.VERCEL_URL}/checkout`)
+                res.status(400).redirect("https://kino-one.vercel.app/checkout")
             }
             if (req.query.status === "cancel") {
                 const tran_id = req.body.tran_id
                 await Order.findOneAndDelete({ tran_id })
-                res.status(400).redirect(`https://${process.env.VERCEL_URL}/checkout`)
+                res.status(400).redirect("https://kino-one.vercel.app/checkout")
             }
         }
     } catch (err) {
