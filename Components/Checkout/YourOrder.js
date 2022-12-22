@@ -49,7 +49,7 @@ const YourOrder = ({ cartItem, subTotal, submitOrder, accordion, setAccordion, l
                         Direct Bank Transfer
                     </button>
                     <div className={`${accordion === "bank" ? active : "hidden"} text-slate-400 border py-6 px-6`}>
-                        Make your payment by SSL-Commerz. After successful payment you will be redirect to your dashboard and you can view your order. Your order will not be shipped until the funds have cleared in our account.
+                        Make your payment by <b>sslcommerz</b>. After successful payment you will be redirect to your dashboard and you can view your order. Your order will not be shipped until the funds have cleared in our account.
                     </div>
                 </div>
                 <div className='relative'>
