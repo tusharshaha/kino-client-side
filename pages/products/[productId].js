@@ -45,7 +45,7 @@ export default function ProductDetails({ product }) {
 
 export async function getServerSideProps(context) {
     const id = context.params.productId;
-    const res = await axios(`http://${process.env.VERCEL_URL}/api/v1/products/${id}`);
+    const res = await axios(`http://${process.env.BASE_URL}/api/v1/products/${id}`);
     const product = await res.data.product;
     return {
         props: { product }
