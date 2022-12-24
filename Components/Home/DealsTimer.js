@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {FaGreaterThan} from 'react-icons/fa'
+
 const DealsTimer = () => {
     const [days, setDays] = useState('00');
     const [hours, setHours] = useState('00');

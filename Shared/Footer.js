@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
 import { GoLocation } from 'react-icons/go'
 import { BiArrowToTop } from 'react-icons/bi'
@@ -19,7 +19,10 @@ const Footer = () => {
             setTopClass("");
         } else { setTopClass("hidden") }
     }
-    window.addEventListener('scroll', handleGoTopBtn);
+    useEffect(()=>{
+        window.addEventListener('scroll', handleGoTopBtn);
+        return ()=> window.removeEventListener('scroll', handleGoTopBtn);
+    },[])
     return (
         <footer>
             <div className='cus-container'>

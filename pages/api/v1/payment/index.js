@@ -14,7 +14,7 @@ export default async function payment(req, res) {
                 total_amount: order.subTotal,
                 currency: 'BDT',
                 tran_id,
-                success_url: `https://kino-one.vercel.app/my_account/orders`,
+                success_url: `https://kino-one.vercel.app/api/v1/payment/success`,
                 fail_url: `https://kino-one.vercel.app/api/v1/payment/fail`,
                 cancel_url: `https://kino-one.vercel.app/api/v1/payment/cancel`,
                 ipn_url: 'http://yoursite.com/ipn',
