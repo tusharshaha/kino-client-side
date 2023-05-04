@@ -11,10 +11,11 @@ import { PersistGate } from 'redux-persist/integration/react'
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1100)
-  }, [])
+    const handleComplete = () => setLoading(false);
+
+    window.addEventListener('load', handleComplete);
+    return () => window.removeEventListener('load', handleComplete);
+  }, []);
   return loading ?
     <Loader />
     :

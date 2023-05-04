@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
 
 const Counter = ({ end }) => {
-    return (
-        <CountUp end={end} duration={2} redraw={true}>
-            {({ countUpRef, start }) => (
-                <VisibilitySensor onChange={start} delayedCall>
-                    <span ref={countUpRef} />
-                </VisibilitySensor>
-            )}
-        </CountUp>
-    );
+  const [isVisible, setIsVisible] = useState(false);
+
+  const onVisibilityChange = (visible) => {
+    if (visible) {
+      setIsVisible(true);
+    }
+  };
+
+  return (
+    <VisibilitySensor onChange={onVisibilityChange} delayedCall>
+      <CountUp
+        end={isVisible ? end : 0}
+        duration={2}
+        redraw={true}
+      />
+    </VisibilitySensor>
+  );
 };
 
 export default Counter;
