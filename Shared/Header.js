@@ -7,20 +7,19 @@ import { FaRegUserCircle, FaBriefcaseMedical } from 'react-icons/fa'
 import { MdDashboardCustomize } from 'react-icons/md'
 import { useRouter } from 'next/router';
 import styles from '../styles/Header.module.css'
-import Sidebar from '../Components/Home/Sidebar';
 import useAuth from '../Hooks/useAuth';
 import { useSelector } from 'react-redux';
 
 const Header = () => {
     const router = useRouter();
-    const [sideToggle, setSideToggle] = useState(false);
     const [navToggle, setNavToggle] = useState(false);
     const { user } = useAuth();
     const count = useSelector((state) => state.cart.count);
     return (
         <>
             {/* this is navbar is user navbar */}
-            <nav className='py-3 px-2 flex-col gap-4 text-center sm:flex-row border-b-2 nav-container flex items-center justify-between'>
+            <div className="border-b-2">
+            <nav className='py-3 px-2 flex-col gap-4 text-center lg:flex-row cus-container flex items-center justify-between'>
                 <div className='flex items-center'>
                     <p className='text-slate-500 md:flex hidden'><BsSuitHeartFill className='text-2xl text-red-600 mr-2' />Welcome to Kino. We provides <span className='text-sky-500 font-bold mx-2'>Covid-19</span> medical accessories</p>
                     <span className='flex items-center py-1 px-3 bg-sky-500 text-white font-bold rounded-full ml-2'>
@@ -53,9 +52,10 @@ const Header = () => {
                     </button>
                 </div>
             </nav>
+            </div>
             {/* this is shop navbar  */}
-            <nav className='py-3 px-2 nav-container sticky top-0 shadow-md bg-white z-10'>
-                <div className='nav-container relative flex items-center justify-between'>
+            <nav className='py-3 sticky top-0 shadow-md bg-white z-10'>
+                <div className='cus-container relative flex items-center justify-between'>
                     <h3 className='logo text-sky-500'><FaBriefcaseMedical className='mr-2' /> Kino</h3>
                     <ul className={`${!navToggle ? styles.shop_menu : styles.show_menu}  text-slate-400 font-bold`}>
                         <li>
@@ -79,14 +79,12 @@ const Header = () => {
                                 <button className='absolute top-3.5 right-5'><FiSearch /></button>
                             </div>
                         </li>
-                        <li>
-                            <button className='text-2xl' onClick={() => setSideToggle(!sideToggle)}><FiMenu /></button>
-                        </li>
+                        
                         <li>
                             <button onClick={() => router.push('/cart')} className='flex cus-btn py-2'>
                                 <AiOutlineShoppingCart className='text-2xl' />
                                 <div className='bg-white mx-2 px-2 rounded-full text-blue-600'>
-                                    {count}
+                                    {count || 0}
                                 </div>
                                 My Cart
                             </button>
@@ -98,8 +96,6 @@ const Header = () => {
                     </button>
                 </div>
             </nav>
-
-            <Sidebar setToggle={setSideToggle} toggle={sideToggle} />
         </>
     );
 };

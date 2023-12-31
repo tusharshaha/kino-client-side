@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    height: 600px;
+    @apply h-[450px] md:h-[600px];
 }
 .btn_after::after{
     content: '';

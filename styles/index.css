@@ -23,7 +23,7 @@
 
 @layer components{
     .cus-container{
-        @apply container px-6 mx-auto;
+        @apply container px-5 mx-auto;
     }
     .go-top{
         @apply text-left bg-sky-500 text-white text-3xl p-3 flex items-center justify-center rounded-full fixed bottom-20 shadow-md right-10 z-10 animate-bounce;
@@ -72,11 +72,5 @@
     }
     .loader2{
         @apply animate-spin inline-block rounded-full border-4 ml-2 mb-[-5px] border-t-white h-6 w-6
-    }
-}
-@layer utilities{
-    .nav-container{
-        max-width: 1600px;
-        margin: 0 auto;
     }
 }

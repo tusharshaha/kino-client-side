@@ -9,7 +9,7 @@ const TopBanner = () => {
         <div className={styles.top_banner}>
             <div className='cus-container grid grid-cols-1 md:grid-cols-2 gap-6'>
                 <div className='flex flex-col justify-center'>
-                    <span className='block uppercase bg-red-500 text-white w-48 font-bold rounded-lg py-0.5 mb-3 flex items-center justify-center'>COVID -19 PRODUCTS</span>
+                    <span className='uppercase bg-red-500 text-white w-48 font-bold rounded-lg py-0.5 mb-3 flex items-center justify-center'>COVID -19 PRODUCTS</span>
                     <h1 className='text-4xl md:text-6xl'>Face Mask <br /> Thermometer</h1>
                     <div className='text-slate-500 mt-4 pl-10 pr-24 border-l-4 border-red-500'>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo atque quidem id aliquam non ex nulla asperiores doloribus.
