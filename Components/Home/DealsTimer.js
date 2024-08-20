@@ -8,7 +8,7 @@ const DealsTimer = () => {
 
     let interval;
     const startTimer = () => {
-        const countDownDate = new Date("March 30, 2024").getTime();
+        const countDownDate = new Date("January 31, 2025").getTime();
         interval = setInterval(() => {
             const newDate = new Date().getTime();
             const distance = countDownDate - newDate;
